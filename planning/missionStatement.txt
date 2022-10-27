@@ -1,0 +1,6 @@
+My-life is an all-purpose notification application designed to give utility and value to the user experience. 
+Using real-time push notifications My-life can be used to designate tasks, and reminders and help with the everyday.
+It's estimated that over 50% of Americans struggle with mental health conditions which is why we have a system designed to combat that,
+called our guardian account. 
+A parent or SO can create an account, send you notifications for tasks, reminders or tell you they love you.
+Setting a calendar can be hard especially if it has to be done every day. Making and arranging the next day can feel impossible. But with a little push from a loved one, it can be that much easier
