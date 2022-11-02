@@ -4,7 +4,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import CommentIcon from '@mui/icons-material/Comment';
 import IconButton from '@mui/material/IconButton';
-import { Alert } from '@mui/material';
+// import { Alert } from '@mui/material';
 // import Seed from '../../Seeds.json';
 export default function GutterlessList() {
     // function SeedDisplay(){
