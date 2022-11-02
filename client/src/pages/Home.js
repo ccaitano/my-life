@@ -50,6 +50,7 @@ const Home = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     height: 240,
+                    width: 600
                   }}
                 >
                   <ToDoList />
