@@ -1,13 +1,16 @@
 [
+    
     {
       "username": "Brian Kernighan",
       "email": "bkernighan@techfriends.dev",
-      "password": "password01"
+      "password": "password01",
+      "id": 1
     },
     {
       "username": "Max Kanat-Alexander",
       "email": "mkanatalexander@techfriends.dev",
-      "password": "password02"
+      "password": "password02",
+      "id": 2
     },
     {
       "username": "Why The Lucky Stiff",
