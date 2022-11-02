@@ -4,7 +4,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import CommentIcon from '@mui/icons-material/Comment';
 import IconButton from '@mui/material/IconButton';
-import Seed from '../../userSeeds.json';
+import Seed from '../../Seeds.json';
 export default function GutterlessList() {
   return (
     <List sx={{ width: '450%%', maxWidth: 600, bgcolor: 'background.paper' }}>
