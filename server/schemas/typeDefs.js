@@ -30,6 +30,15 @@ const typeDefs = gql`
   }
 
   type Query {
+    # WEATHER QUERIES
+
+    # TO-DO QUERIES
+
+    # QUOTE QUERIES
+
+    # CHART QUERIES
+
+    
     users: [User]
     user(username: String!): User
     thoughts(username: String): [Thought]
@@ -38,6 +47,15 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    # WEATHER MUTATIONS
+
+    # TO-DO MUTATIONS
+
+    # QUOTE MUTATIONS
+
+    # CHART MUTATIONS
+
+
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addThought(thoughtText: String!): Thought
