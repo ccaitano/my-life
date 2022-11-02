@@ -1,5 +1,14 @@
 import { gql } from '@apollo/client';
 
+// WEATHER MUTATIONS
+
+// TO-DO MUTATIONS
+
+// QUOTE MUTATIONS
+
+// CHART MUTATIONS
+
+
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {

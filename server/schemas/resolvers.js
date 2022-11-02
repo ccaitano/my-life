@@ -4,6 +4,14 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
+    // WEATHER QUERIES
+
+    // TO-DO QUERIES
+
+    // QUOTE QUERIES
+
+    // CHART QUERIES
+
     users: async () => {
       return User.find().populate('thoughts');
     },
@@ -26,6 +34,16 @@ const resolvers = {
   },
 
   Mutation: {
+
+    // WEATHER MUTATIONS
+
+    // TO-DO MUTATIONS
+
+    // QUOTE MUTATIONS
+
+    // CHART MUTATIONS
+
+    
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
       const token = signToken(user);
