@@ -1,5 +1,14 @@
 import { gql } from '@apollo/client';
 
+// WEATHER QUERIES
+
+// TO-DO QUERIES
+
+// QUOTE QUERIES
+
+// CHART QUERIES
+
+
 export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {
