@@ -3,10 +3,12 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type User {
     _id: ID
-    username: String
-    email: String
-    password: String
-    thoughts: [Thought]!
+    firstName: String!
+    lastName: String!
+    location: String!
+    email: String!
+    password: String!
+    # thoughts: [Thought]!
   }
 
   type Thought {
@@ -40,8 +42,8 @@ const typeDefs = gql`
 
     
     users: [User]
-    user(username: String!): User
-    thoughts(username: String): [Thought]
+    # user(username: String!): User
+    # thoughts(username: String): [Thought]
     thought(thoughtId: ID!): Thought
     me: User
   }
@@ -56,7 +58,7 @@ const typeDefs = gql`
     # CHART MUTATIONS
 
 
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(firstName: String!, lastName: String!, location: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addThought(thoughtText: String!): Thought
     addComment(thoughtId: ID!, commentText: String!): Thought
