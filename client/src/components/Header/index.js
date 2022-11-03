@@ -15,7 +15,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import { mainListItems, secondaryListItems } from './listItems';
+import { mainListItems} from './listItems';
 
 const drawerWidth = 240;
 
@@ -167,8 +167,6 @@ function Header() {
         <Divider />
         <List component="nav">
           {mainListItems}
-          <Divider sx={{ my: 1 }} />
-          {secondaryListItems}
         </List>
       </Drawer>
     </>
