@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Home from './pages/Home';
-// import Signup from './pages/Signup';
+import Signup from './pages/Signup';
 // import Login from './pages/Login';
 // import SingleThought from './pages/SingleThought';
 // import Profile from './pages/Profile';
@@ -68,15 +68,16 @@ function App() {
                       path="/"
                       element={<Home />}
                     />
+                    <Route 
+                      path="/signup" 
+                      element={<Signup />}
+                    />
                     {/* !!! Add In Different Routes Here !!! */}
                     {/* <Route 
                       path="/login" 
                       element={<Login />}
                     />
-                    <Route 
-                      path="/signup" 
-                      element={<Signup />}
-                    />
+                    
                     <Route 
                       path="/me" 
                       element={<Profile />}
