@@ -8,7 +8,7 @@ const typeDefs = gql`
     location: String!
     email: String!
     password: String!
-    thoughts: [Thought]!
+    # thoughts: [Thought]!
   }
 
   type Thought {
@@ -42,8 +42,8 @@ const typeDefs = gql`
 
     
     users: [User]
-    user(username: String!): User
-    thoughts(username: String): [Thought]
+    # user(username: String!): User
+    # thoughts(username: String): [Thought]
     thought(thoughtId: ID!): Thought
     me: User
   }

@@ -7,13 +7,13 @@ const resolvers = {
     users: async () => {
       return User.find().populate('thoughts');
     },
-    user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('thoughts');
-    },
-    thoughts: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Thought.find(params).sort({ createdAt: -1 });
-    },
+    // user: async (parent, { username }) => {
+    //   return User.findOne({ username }).populate('thoughts');
+    // },
+    // thoughts: async (parent, { username }) => {
+    //   const params = username ? { username } : {};
+    //   return Thought.find(params).sort({ createdAt: -1 });
+    // },
     thought: async (parent, { thoughtId }) => {
       return Thought.findOne({ _id: thoughtId });
     },
@@ -26,8 +26,8 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+    addUser: async (parent, { firstName, lastName, location, email, password }) => {
+      const user = await User.create({ firstName, lastName, location, email, password });
       const token = signToken(user);
       return { token, user };
     },

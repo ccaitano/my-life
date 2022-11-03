@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 // import { Link } from 'react-router-dom';
-
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import Avatar from '@mui/material/Avatar';
@@ -27,7 +26,8 @@ const Signup = () => {
     password: '',
   });
 
-  const [addUser, { error, data }] = useMutation(ADD_USER);
+  const [showAlert, setShowAlert] = useState(false);
+  const [addUser] = useMutation(ADD_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -40,7 +40,12 @@ const Signup = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+    
+    // const form = event.currentTarget;
+    // if (form.checkValidity() === false) {
+    //   event.preventDefault();
+    //   event.stopPropagation();
+    // };
 
     try {
       const { data } = await addUser({
@@ -48,9 +53,11 @@ const Signup = () => {
       });
 
       Auth.login(data.addUser.token);
+      console.log(formState);
     } catch (e) {
+      setShowAlert(true);
       console.error(e);
-    }
+    };
   };
 
   return (
