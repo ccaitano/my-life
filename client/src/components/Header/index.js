@@ -15,7 +15,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import { mainListItems, secondaryListItems } from './listItems';
+import { mainListItems} from './listItems';
+import { grey } from '@mui/material/colors';
 
 const drawerWidth = 240;
 
@@ -26,6 +27,7 @@ const AppBar = styled(MuiAppBar, {
   transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
+
   }),
   ...(open && {
     marginLeft: drawerWidth,
@@ -88,7 +90,7 @@ function Header() {
     <>
       <CssBaseline />
       {/* Top Header Nav Bar and Icons */}
-      <AppBar position="absolute" open={open}>
+      <AppBar position="absolute" style={{ background: 'rgba(0,0,0,0.2)'}} open={open}>
         <Toolbar
             sx={{
               pr: '24px', // keep right padding when drawer closed
@@ -167,8 +169,6 @@ function Header() {
         <Divider />
         <List component="nav">
           {mainListItems}
-          <Divider sx={{ my: 1 }} />
-          {secondaryListItems}
         </List>
       </Drawer>
     </>
