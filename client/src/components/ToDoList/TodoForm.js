@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function BucketForm(props) {
+function TodoForm(props) {
   const [input, setInput] = useState('');
   let [eagerness, setEagerness] = useState('');
 
@@ -31,13 +31,13 @@ function BucketForm(props) {
   // If the prop "edit" exists, we know to render the update form instead
   return !props.edit ? (
     <div>
-      <form className="bucket-form" onSubmit={handleSubmit}>
+      <form className="Todo-form" onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Add to your bucket list"
+          placeholder="Add to your Todo list"
           value={input}
           name="text"
-          className="bucket-input"
+          className="Todo-input"
           onChange={handleChange}
         ></input>
         <div className="dropdown">
@@ -50,19 +50,19 @@ function BucketForm(props) {
             <p onClick={() => setEagerness(eagernessLevel[2])}>Take it or leave it</p>
           </div>
         </div>
-        <button className="bucket-button">Add bucket list item</button>
+        <button className="Todo-button">Add Todo list item</button>
       </form>
     </div>
   ) : (
     <div>
       <h3>Update entry: {props.edit.value}</h3>
-      <form className="bucket-form" onSubmit={handleSubmit}>
+      <form className="Todo-form" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder={props.edit.value}
           value={input}
           name="text"
-          className="bucket-input"
+          className="Todo-input"
           onChange={handleChange}
         ></input>
         <div className="dropdown">
@@ -75,10 +75,10 @@ function BucketForm(props) {
             <p onClick={() => setEagerness(eagernessLevel[2])}>Take it or leave it</p>
           </div>
         </div>
-        <button className="bucket-button">Update</button>
+        <button className="Todo-button">Update</button>
       </form>
     </div>
   );
 }
 
-export default BucketForm;
+export default TodoForm;

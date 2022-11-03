@@ -1,1 +1,13 @@
-import * as React from 'react';
+import '../../../src/';
+import BucketList from './components/BucketList';
+
+function App() {
+  return (
+    <div className="bucket-app">
+      <BucketList />
+    </div>
+  );
+}
+
+export default App;
+
