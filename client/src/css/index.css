@@ -1,0 +1,17 @@
+.page{
+  background-image: url("https://images.pexels.com/photos/844297/pexels-photo-844297.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.box{
+  position: absolute;
+  cursor: move;
+  color: black;
+  max-width: 400px;
+  border-radius: 10px;
+  padding: 1em;
+  margin: auto;
+  user-select: none;
+}
+

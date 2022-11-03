@@ -17,6 +17,8 @@ import Home from './pages/Home';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+import './css/index.css'
+
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -47,17 +49,13 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
+        <div className="flex-column justify-flex-start min-100-vh page">
           <ThemeProvider theme={mdTheme}>
             <Box sx={{ display: 'flex' }}>
               <Header />
               <Box
                 component="main"
                 sx={{
-                  backgroundColor: (theme) =>
-                    theme.palette.mode === 'light'
-                      ? theme.palette.grey[100]
-                      : theme.palette.grey[900],
                   flexGrow: 1,
                   pt: '100px',
                   height: '100vh',

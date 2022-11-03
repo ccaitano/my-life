@@ -8,6 +8,7 @@ import ToDoList from '../components/ToDo/index';
 import Quote from '../components/Quote/index';
 import Chart from '../components/Chart/index';
 import Draggable from 'react-draggable';
+import '../css/index.css'
 // import ThoughtList from '../components/ThoughtList';
 // import ThoughtForm from '../components/ThoughtForm';
 
@@ -18,7 +19,7 @@ const Home = () => {
   // const thoughts = data?.thoughts || [];
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+    <Container maxWidth="lg" background="none" sx={{ mt: 4, mb: 4 }} >
             <Grid container spacing={4}>
 
 
