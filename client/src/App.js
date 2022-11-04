@@ -11,7 +11,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
-// import Login from './pages/Login';
+import Login from './pages/Login';
 // import SingleThought from './pages/SingleThought';
 // import Profile from './pages/Profile';
 import Header from './components/Header';
@@ -73,12 +73,12 @@ function App() {
                       element={<Signup />}
                     />
                     {/* !!! Add In Different Routes Here !!! */}
-                    {/* <Route 
+                     <Route 
                       path="/login" 
                       element={<Login />}
                     />
                     
-                    <Route 
+                    {/*<Route 
                       path="/me" 
                       element={<Profile />}
                     />

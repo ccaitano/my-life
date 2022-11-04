@@ -17,6 +17,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { mainListItems} from './listItems';
 import { grey } from '@mui/material/colors';
+import Auth from '../../utils/auth';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const drawerWidth = 240;
 
@@ -85,6 +87,10 @@ function Header() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
 
   return (
     <>
@@ -150,6 +156,16 @@ function Header() {
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
               </Menu>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={logout}
+                color="inherit"
+              >
+                <LogoutIcon />
+              </IconButton>
         </Toolbar>
       </AppBar>
       {/* Drawer Menu on Left Hand Side of Page */}
