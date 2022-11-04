@@ -10,12 +10,23 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
+import { spacing } from '@mui/system';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Auth from '../utils/auth';
+
+const signUpTheme = createTheme({
+  spacing: 8,
+  palette: {
+    primary: {
+      main: '#424242'
+    } ,
+  }
+});
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -58,10 +69,21 @@ const Signup = () => {
       setShowAlert(true);
       console.error(e);
     };
+
+    setFormState({
+      firstName: '',
+      lastName: '',
+      location: '',
+      email: '',
+      password: '',
+    });
+
   };
 
+
   return (
-    <main className="flex-row justify-center mb-4">
+    <main>
+      <ThemeProvider theme={signUpTheme}>
     <Box
           sx={{
             marginTop: 8,
@@ -70,11 +92,14 @@ const Signup = () => {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          
+          <Paper elevation={3} >
+          <Box sx={{ p: 3 }}> 
+          {/* <Avatar textAlign="center" sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign up
+          </Avatar> */}
+          <Typography component="h1" variant="h5" fontFamily="'Arsenal', sans-serif;">
+            SIGN UP
           </Typography>
           <Box component="form" noValidate onSubmit={handleFormSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -140,19 +165,25 @@ const Signup = () => {
               type="submit"
               fullWidth
               variant="contained"
+              color="primary"
               sx={{ mt: 3, mb: 2 }}
+              fontFamily="'Arsenal', sans-serif"
             >
-              Sign Up
+              SUBMIT
             </Button>
-            <Grid container justifyContent="flex-end">
+            <Grid container justifyContent="center" >
               <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
+                <Link href="/login" variant="body2" fontFamily="'Arsenal', sans-serif">
+                  Already have an account? Log In
                 </Link>
               </Grid>
             </Grid>
           </Box>
+          </Box>
+          </Paper>
+          
         </Box>
+        </ThemeProvider>
         </main>
     
     //   <div className="col-12 col-lg-10">

@@ -51,7 +51,7 @@ function App() {
       <Router>
         <div className="flex-column justify-flex-start min-100-vh page">
           <ThemeProvider theme={mdTheme}>
-            <Box sx={{ display: 'flex' }}>
+            <Box sx={{ display: 'flex' }} textAlign="center">
               <Header />
               <Box
                 component="main"
