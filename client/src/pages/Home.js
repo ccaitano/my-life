@@ -4,7 +4,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Weather from '../components/Weather/index';
-import ToDoList from '../components/ToDoList/index';
+import ToDoList from '../components/ToDo/index';
 import Quote from '../components/Quote/index';
 import Chart from '../components/Chart/index';
 import Draggable from 'react-draggable';
