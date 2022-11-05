@@ -10,6 +10,8 @@ import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import Link from '@mui/material/Link';
 
+
+
 export const mainListItems = (
   <React.Fragment>
     <ListItemButton component={Link} to='/login'>
@@ -28,7 +30,7 @@ export const mainListItems = (
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
-      <ListItemText primary="Contacts" />
+      <ListItemText primary="New Friends!" />
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
