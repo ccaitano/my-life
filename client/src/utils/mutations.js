@@ -3,6 +3,27 @@ import { gql } from '@apollo/client';
 // WEATHER MUTATIONS
 
 // TO-DO MUTATIONS
+export const ADD_TASK = gql`
+  mutation addTask($task: savedTaskInput) {
+    addTask(task: $task) {
+      _id
+      taskText
+      createdAt
+      priority
+    }
+  }
+`;
+
+export const REMOVE_TASK = gql`
+  mutation removeTask($taskId: String!) {
+    removeTask(taskId: $taskId) {
+      _id
+      taskText
+      createdAt
+      priority
+    }
+  }
+`;
 
 // QUOTE MUTATIONS
 
@@ -15,7 +36,7 @@ export const LOGIN_USER = gql`
       token
       user {
         _id
-        username
+        email
       }
     }
   }
@@ -37,33 +58,20 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_THOUGHT = gql`
-  mutation addThought($thoughtText: String!) {
-    addThought(thoughtText: $thoughtText) {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-      }
-    }
-  }
-`;
 
-export const ADD_COMMENT = gql`
-  mutation addComment($thoughtId: ID!, $commentText: String!) {
-    addComment(thoughtId: $thoughtId, commentText: $commentText) {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-        createdAt
-      }
-    }
-  }
-`;
+
+// export const ADD_COMMENT = gql`
+//   mutation addComment($thoughtId: ID!, $commentText: String!) {
+//     addComment(thoughtId: $thoughtId, commentText: $commentText) {
+//       _id
+//       thoughtText
+//       thoughtAuthor
+//       createdAt
+//       comments {
+//         _id
+//         commentText
+//         createdAt
+//       }
+//     }
+//   }
+// `;

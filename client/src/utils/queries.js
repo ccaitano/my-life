@@ -3,50 +3,35 @@ import { gql } from '@apollo/client';
 // WEATHER QUERIES
 
 // TO-DO QUERIES
-
+export const QUERY_TASKS = gql`
+  query getTasks {
+    tasks {
+      _id
+      taskText
+      createdAt
+      priority
+    }
+  }
+`;
 // QUOTE QUERIES
 
 // CHART QUERIES
 
 
 export const QUERY_USER = gql`
-  query user($username: String!) {
-    user(username: $username) {
+  query user($email: String!) {
+    user(email: $email) {
       _id
-      username
+      firstName
+      lastName
+      location
       email
-      thoughts {
+      password
+      tasks {
         _id
-        thoughtText
+        taskText
         createdAt
-      }
-    }
-  }
-`;
-
-export const QUERY_THOUGHTS = gql`
-  query getThoughts {
-    thoughts {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-    }
-  }
-`;
-
-export const QUERY_SINGLE_THOUGHT = gql`
-  query getSingleThought($thoughtId: ID!) {
-    thought(thoughtId: $thoughtId) {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-        commentAuthor
-        createdAt
+        priority
       }
     }
   }
@@ -56,13 +41,16 @@ export const QUERY_ME = gql`
   query me {
     me {
       _id
-      username
+      firstName
+      lastName
+      location
       email
-      thoughts {
+      password
+      tasks {
         _id
-        thoughtText
-        thoughtAuthor
+        taskText
         createdAt
+        priority
       }
     }
   }

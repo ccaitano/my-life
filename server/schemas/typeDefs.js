@@ -8,22 +8,21 @@ const typeDefs = gql`
     location: String!
     email: String!
     password: String!
-    # thoughts: [Thought]!
+    tasks: [Task]!
+  }  
+  
+  type Task {
+    _id: ID
+    taskText: String
+    createdAt: String
+    priority: String
   }
 
-  type Thought {
-    _id: ID
-    thoughtText: String
-    thoughtAuthor: String
+  input savedTaskInput {
+    taskId: String
+    taskText: String
     createdAt: String
-    comments: [Comment]!
-  }
-
-  type Comment {
-    _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
+    priority: String
   }
 
   type Auth {
@@ -35,6 +34,8 @@ const typeDefs = gql`
     # WEATHER QUERIES
 
     # TO-DO QUERIES
+    tasks(email: String!): User
+    getTasks(taskId: ID!): Task
 
     # QUOTE QUERIES
 
@@ -42,16 +43,17 @@ const typeDefs = gql`
 
     
     users: [User]
-    # user(username: String!): User
-    # thoughts(username: String): [Thought]
-    thought(thoughtId: ID!): Thought
+    user(email: String!): User
     me: User
+   
   }
 
   type Mutation {
     # WEATHER MUTATIONS
 
     # TO-DO MUTATIONS
+    addTask(taskText: String!): Task
+    removeTask(taskId: ID!): Task
 
     # QUOTE MUTATIONS
 
@@ -60,10 +62,9 @@ const typeDefs = gql`
 
     addUser(firstName: String!, lastName: String!, location: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addThought(thoughtText: String!): Thought
-    addComment(thoughtId: ID!, commentText: String!): Thought
-    removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
+
+    # addComment(thoughtId: ID!, commentText: String!): Thought
+    # removeComment(thoughtId: ID!, commentId: ID!): Thought
   }
 `;
 
