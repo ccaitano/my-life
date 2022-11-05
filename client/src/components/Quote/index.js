@@ -4,8 +4,8 @@ import { ListComponent } from './ListComponent.js';
 
 function Quote() { 
   
-  const [components, setComponents] = useState(["Mercury"]); 
-  const [componentNames, setComponentNames] = useState([ 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune' ]); 
+  const [components, setComponents] = useState(["Hey you got this!"]); 
+  const [componentNames] = useState([ 'Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7' ]); 
   
   function addComponent() { 
     
@@ -14,19 +14,15 @@ function Quote() {
       setComponents([...components, componentNames[0]]);
       componentNames.splice(0, 1);
       
-    } else { 
-      
-      window.alert("No more planets to add!");
-      
     } 
-    
   } 
-  
+
+    console.log("yoooo whats good"); 
   return ( 
     
     <div> 
     
-      <Button onClick={addComponent} text="Call Component"/> 
+      <Button onClick={addComponent} text="Get a new affermation"/> 
       {components.map((item, i) => ( <ListComponent text={item} /> ))} 
       
     </div> 
