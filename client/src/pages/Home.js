@@ -48,10 +48,8 @@ const Home = () => {
                 <Paper
                   sx={{
                     p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                    width: 600
+                    height: 800,
+                    maxWidth: '150%'
                   }}
                 >
                   <ToDoList />

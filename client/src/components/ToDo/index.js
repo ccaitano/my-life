@@ -1,12 +1,24 @@
-import FullList from './ToDoList';
+import React from 'react';
+import './App.css'
+import BucketList from './BucketList';
 
-function ToDoFunction() {
-  return (
-    <div className="ToDo-app">
-      <FullList />
-    </div>
-  );
-}
+const ToDoList = () => {
 
-export default ToDoFunction;
+    return (
+        <div
+        style={{
+            display: "flex", 
+            flexDirection: "column", 
+            justifyContent: "center",
+            alignItems: "center"
+        }}
+        
+        >
+            {/* Code goes here! */}
+            <BucketList/>
+        </div>
+    );
+  };
+  
+  export default ToDoList;
 

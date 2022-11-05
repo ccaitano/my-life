@@ -16,7 +16,6 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { mainListItems} from './listItems';
-import { grey } from '@mui/material/colors';
 import Auth from '../../utils/auth';
 import LogoutIcon from '@mui/icons-material/Logout';
 
@@ -116,7 +115,7 @@ function Header() {
             </IconButton>
             <Typography
               component="h1"
-              variant="h6"
+              variant="h4"
               color="inherit"
               noWrap
               sx={{ flexGrow: 1 }}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import BucketForm from './TodoForm';
-import Bucket from './Todo';
+import BucketForm from './BucketForm';
+import Bucket from './Bucket';
 
 function BucketList() {
   const [bucket, setBucket] = useState([]);
@@ -8,7 +8,6 @@ function BucketList() {
   // Function to add a bucket list item
   const addBucketItem = (item) => {
     console.log(
-      '🚀 ~ file: BucketList.js ~ line 10 ~ addBucketItem ~ item',
       item
     );
     // Check to see if the item text is empty
@@ -61,7 +60,7 @@ function BucketList() {
 
   return (
     <div>
-      <h1>What is on your bucket list?</h1>
+      <h1>Reminders</h1>
       <BucketForm onSubmit={addBucketItem} />
       <Bucket
         bucket={bucket}

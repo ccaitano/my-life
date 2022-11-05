@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import BucketForm from './TodoForm';
+import BucketForm from './BucketForm';
+import CloseIcon from '@mui/icons-material/Close';
+import EditIcon from '@mui/icons-material/Edit';
+import {Card} from '@mui/material'
+import CssBaseline from '@mui/material';
 
 function Bucket(props) {
   const [edit, setEdit] = useState({
@@ -20,7 +24,7 @@ function Bucket(props) {
   }
 
   return props.bucket.map((item, i) => (
-    <div
+    <Card
       className={
         item.isComplete
           ? `bucket-row complete ${item.eagerness}`
@@ -31,12 +35,12 @@ function Bucket(props) {
       <div key={item.id} onClick={() => props.completeBucketItem(item.id)}>
         {item.text}
       </div>
-      <div className="icons">
+      <div>
         {console.log(item)}
-        <p onClick={() => setEdit({ id: item.id, value: item.text, eagerness: item.eagerness })}> ✏️</p>
-        <p onClick={() => props.removeBucketItem(item.id)}> 🗑️</p>
+        <p onClick={() => setEdit({ id: item.id, value: item.text, eagerness: item.eagerness })}><EditIcon/></p>
+        <p onClick={() => props.removeBucketItem(item.id)}><CloseIcon/> </p>
       </div>
-    </div>
+    </Card>
   ));
 }
 
