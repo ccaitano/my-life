@@ -11,7 +11,6 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import Link from '@mui/material/Link';
 
 
-
 export const mainListItems = (
   <React.Fragment>
     <ListItemButton component={Link} to='/login'>
@@ -26,7 +25,7 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItemButton>
-    <ListItemButton>
+    <ListItemButton component={Link} to='/UserPage'>
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
