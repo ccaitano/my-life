@@ -12,7 +12,7 @@ import Box from '@mui/material/Box';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import UserInteraction from './pages/UserInteractionPage';
+import Content from './pages/UserInteractionPage';
 // import SingleThought from './pages/SingleThought';
 // import Profile from './pages/Profile';
 import Header from './components/Header';
@@ -80,7 +80,7 @@ function App() {
                     />
                     <Route 
                       path="/UserPage" 
-                      element={<UserInteraction/>}
+                      element={<Content/>}
                     />
                     
                     {/*<Route 
