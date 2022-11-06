@@ -4,8 +4,19 @@ import { gql } from '@apollo/client';
 
 // TO-DO QUERIES
 export const QUERY_TASKS = gql`
-  query getTasks {
+  query tasks{
     tasks {
+      _id
+      taskText
+      createdAt
+      priority
+    }
+  }
+`;
+
+export const QUERY_SINGLE_TASK = gql`
+  query task($taskId: ID) {
+    task(taskId: $taskId) {
       _id
       taskText
       createdAt
@@ -17,6 +28,25 @@ export const QUERY_TASKS = gql`
 
 // CHART QUERIES
 
+
+export const QUERY_USERS = gql`
+  query users {
+    user {
+      _id
+      firstName
+      lastName
+      location
+      email
+      password
+      tasks {
+        _id
+        taskText
+        createdAt
+        priority
+      }
+    }
+  }
+`;
 
 export const QUERY_USER = gql`
   query user($email: String!) {

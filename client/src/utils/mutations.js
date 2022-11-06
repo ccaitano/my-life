@@ -4,23 +4,23 @@ import { gql } from '@apollo/client';
 
 // TO-DO MUTATIONS
 export const ADD_TASK = gql`
-  mutation addTask($task: savedTaskInput) {
-    addTask(task: $task) {
-      _id
-      taskText
-      createdAt
-      priority
+  mutation addTask($taskText: String) {
+    addTask(taskText: $taskText) {
+        _id
+        taskText
+        createdAt
+        priority
     }
   }
 `;
 
 export const REMOVE_TASK = gql`
-  mutation removeTask($taskId: String!) {
+  mutation removeTask($taskId: ID) {
     removeTask(taskId: $taskId) {
-      _id
-      taskText
-      createdAt
-      priority
+        _id
+        taskText
+        createdAt
+        priority
     }
   }
 `;

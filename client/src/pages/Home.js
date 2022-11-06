@@ -7,7 +7,8 @@ import Weather from '../components/Weather/index';
 import ToDoList from '../components/ToDo/index';
 import Quote from '../components/Quote/index';
 import Chart from '../components/Chart/index';
-import Draggable from 'react-draggable';
+import Box from '@mui/material/Box';
+// import Draggable from 'react-draggable';
 import '../css/index.css'
 // import ThoughtList from '../components/ThoughtList';
 // import ThoughtForm from '../components/ThoughtForm';
@@ -23,8 +24,8 @@ const Home = () => {
             <Grid container spacing={4}>
 
 
-            <box>
-                <Draggable>
+            <Box>
+                {/* <Draggable> */}
               {/* Weather API Container */}
               <Grid item xs={12} md={8} lg={4}>
                 <Paper
@@ -38,11 +39,11 @@ const Home = () => {
                   <Weather />
                 </Paper>
               </Grid>
-              </Draggable>
-              </box>
+              {/* </Draggable> */}
+              </Box>
 
-                <box>
-                <Draggable>
+                <Box>
+                {/* <Draggable> */}
               {/* To-Do List Container */}
               <Grid item xs={12} md={4} lg={8}>
                 <Paper
@@ -55,32 +56,32 @@ const Home = () => {
                   <ToDoList />
                 </Paper>
               </Grid>
-              </Draggable>
-              </box>
+              {/* </Draggable> */}
+              </Box>
 
 
-              <box>
-                <Draggable>
+              <Box>
+                {/* <Draggable> */}
               
               {/* Positive Affirmation Container */}
               <Grid item xs={12} md={4} lg={8}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', height: 240, }}>
-                  <Quote />
+                  {/* <Quote /> */}
                 </Paper>
               </Grid>
-              </Draggable>
-              </box>
+              {/* </Draggable> */}
+              </Box>
 
-              <box>
-                <Draggable>
+              <Box>
+                {/* <Draggable> */}
               {/* Chart/History Container */}
               <Grid item xs={12} md={8} lg={4}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', height: 240, }}>
                   <Chart />
                 </Paper>
               </Grid>
-              </Draggable>
-              </box>
+              {/* </Draggable> */}
+              </Box>
             </Grid>
           </Container>
 

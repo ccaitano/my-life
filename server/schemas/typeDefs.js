@@ -3,12 +3,12 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type User {
     _id: ID
-    firstName: String!
-    lastName: String!
-    location: String!
+    firstName: String
+    lastName: String
+    location: String
     email: String!
     password: String!
-    tasks: [Task]!
+    tasks: [Task]
   }  
   
   type Task {
@@ -19,7 +19,7 @@ const typeDefs = gql`
   }
 
   input savedTaskInput {
-    taskId: String
+    _id: ID
     taskText: String
     createdAt: String
     priority: String
@@ -34,17 +34,17 @@ const typeDefs = gql`
     # WEATHER QUERIES
 
     # TO-DO QUERIES
-    tasks(email: String!): User
-    getTasks(taskId: ID!): Task
+    tasks(email: String): [Task]
+    task(taskId: ID): Task
 
     # QUOTE QUERIES
 
     # CHART QUERIES
 
-    
     users: [User]
     user(email: String!): User
     me: User
+    
    
   }
 
@@ -52,8 +52,8 @@ const typeDefs = gql`
     # WEATHER MUTATIONS
 
     # TO-DO MUTATIONS
-    addTask(taskText: String!): Task
-    removeTask(taskId: ID!): Task
+    addTask(taskText: String): Task
+    removeTask(taskId: ID): Task
 
     # QUOTE MUTATIONS
 

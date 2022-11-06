@@ -5,8 +5,6 @@ const taskSchema = new Schema({
   taskText: {
     type: String,
     required: 'You need to enter a task!',
-    minlength: 1,
-    maxlength: 280,
     trim: true,
   },
   createdAt: {
@@ -16,7 +14,6 @@ const taskSchema = new Schema({
   },
   priority: {
     type: String,
-    required: true,
     trim: true,
   },
 });

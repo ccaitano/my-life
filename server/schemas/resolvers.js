@@ -7,23 +7,26 @@ const resolvers = {
     users: async () => {
       return User.find().populate('tasks');
     },
-    // user: async (parent, { username }) => {
-    //   return User.findOne({ username }).populate('thoughts');
-    // },
-    // thoughts: async (parent, { username }) => {
-    //   const params = username ? { username } : {};
-    //   return Thought.find(params).sort({ createdAt: -1 });
-    // },
+    user: async (parent, { email }) => {
+      return User.findOne({ email }).populate('tasks');
+    },
+    
+    tasks: async (parent, { email }) => {
+      const params = email ? { email } : {};
+      return Task.find(params).sort({ createdAt: -1 });
+    },
+    task: async (parent, { taskId }) => {
+      return Task.findOne({ taskId: taskId });
+    },
+
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('thoughts');
+        return User.findOne({ _id: context.user._id }).populate('tasks');
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    getTasks: async (parent, { taskId }) => {
-      return Task.findOne({ _id: taskId });
-    },
     
+
   },
 
   Mutation: {
@@ -49,16 +52,13 @@ const resolvers = {
 
       return { token, user };
     },
-    addTask: async (parent, { taskText, priority }, context) => {
+    addTask: async (parent, { taskText }, context) => {
       if (context.user) {
-        const task = await Task.create({
-          taskText,
-          priority
-        });
+        const task = await Task.create({ taskText });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { tasks: task._id } }
+          { $addToSet: { tasks: task._id} }
         );
 
         return task;
@@ -94,7 +94,8 @@ const resolvers = {
         );
 
         return task;
-      }
+      
+      };
       throw new AuthenticationError('You need to be logged in!');
     },
     // removeComment: async (parent, { thoughtId, commentId }, context) => {
@@ -116,5 +117,4 @@ const resolvers = {
     // },
   },
 };
-
 module.exports = resolvers;
