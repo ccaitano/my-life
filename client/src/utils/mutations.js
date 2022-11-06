@@ -26,8 +26,8 @@ export const REMOVE_TASK = gql`
 `;
 
 export const EDIT_TASK = gql`
-  mutation editTask($taskId: ID) {
-    editTask(taskId: $taskId) {
+  mutation editTask($taskId: ID, $taskText: String) {
+    editTask(taskId: $taskId, taskText: $taskText) {
         _id
         taskText
         createdAt

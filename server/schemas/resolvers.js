@@ -58,44 +58,29 @@ const resolvers = {
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { tasks: task._id} }
+          { $addToSet: { tasks: task._id} },
+          { new: true }
         );
 
         return task;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    // addComment: async (parent, { thoughtId, commentText }, context) => {
-    //   if (context.user) {
-    //     return Thought.findOneAndUpdate(
-    //       { _id: thoughtId },
-    //       {
-    //         $addToSet: {
-    //           comments: { commentText, commentAuthor: context.user.username },
-    //         },
-    //       },
-    //       {
-    //         new: true,
-    //         runValidators: true,
-    //       }
-    //     );
-    //   }
-    //   throw new AuthenticationError('You need to be logged in!');
-    // },
+   
     removeTask: async (parent,  { taskId }, context) => {
       if (context.user) {
         const task = await Task.findOneAndDelete(
           { _id: taskId},
-          { new: true }
+          { new: true}
         );
 
-        await User.findOneAndUpdate(
+        const updatedTaskList = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { tasks: task._id } },
-          { new: true }
+          { $pull: { tasks: { _id: taskId } } },
+          { new: true}
         );
 
-        return task;
+        return updatedTaskList;
       
       };
       throw new AuthenticationError('You need to be logged in!');
@@ -103,38 +88,23 @@ const resolvers = {
 
     editTask: async (parent, { taskId, taskText }, context) => {
       if (context.user) {
-        const task = await Task.findOneAndUpdate({
-          _id: taskId,
-        });
-
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { tasks: task._id } },
-          { new: true }
+        const task = await Task.findOneAndUpdate(
+          { _id: taskId},
+          { taskText: taskText },
+          { new: true}
         );
+
+        // await User.findOneAndUpdate(
+        //   { _id: context.user._id },
+        //   { tasks: {taskText: taskText}},
+        //   { new: true }
+        // );
 
         return task;
       
       };
       throw new AuthenticationError('You need to be logged in!');
     },
-    // removeComment: async (parent, { thoughtId, commentId }, context) => {
-    //   if (context.user) {
-    //     return Thought.findOneAndUpdate(
-    //       { _id: thoughtId },
-    //       {
-    //         $pull: {
-    //           comments: {
-    //             _id: commentId,
-    //             commentAuthor: context.user.username,
-    //           },
-    //         },
-    //       },
-    //       { new: true }
-    //     );
-    //   }
-    //   throw new AuthenticationError('You need to be logged in!');
-    // },
   },
 };
 module.exports = resolvers;
