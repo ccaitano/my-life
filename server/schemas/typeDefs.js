@@ -70,9 +70,6 @@ const typeDefs = gql`
 
     addUser(firstName: String!, lastName: String!, location: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-
-    # addComment(thoughtId: ID!, commentText: String!): Thought
-    # removeComment(thoughtId: ID!, commentId: ID!): Thought
   }
 `;
 
