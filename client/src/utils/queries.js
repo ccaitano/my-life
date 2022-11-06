@@ -10,6 +10,7 @@ export const QUERY_TASKS = gql`
       taskText
       createdAt
       priority
+      completed
     }
   }
 `;
@@ -21,6 +22,7 @@ export const QUERY_SINGLE_TASK = gql`
       taskText
       createdAt
       priority
+      completed
     }
   }
 `;
@@ -43,7 +45,10 @@ export const QUERY_USERS = gql`
         taskText
         createdAt
         priority
+        completed
       }
+      totalTasks
+      completedTasks
     }
   }
 `;
@@ -62,7 +67,10 @@ export const QUERY_USER = gql`
         taskText
         createdAt
         priority
+        completed
       }
+      totalTasks
+      completedTasks
     }
   }
 `;
@@ -81,7 +89,10 @@ export const QUERY_ME = gql`
         taskText
         createdAt
         priority
+        completed
       }
+      totalTasks
+      completedTasks
     }
   }
 `;

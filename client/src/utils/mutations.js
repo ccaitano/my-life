@@ -10,6 +10,7 @@ export const ADD_TASK = gql`
         taskText
         createdAt
         priority
+        completed
     }
   }
 `;
@@ -21,6 +22,7 @@ export const REMOVE_TASK = gql`
         taskText
         createdAt
         priority
+        completed  
     }
   }
 `;
@@ -32,8 +34,41 @@ export const EDIT_TASK = gql`
         taskText
         createdAt
         priority
+        completed
     }
   }
+`;
+
+export const COUNT_TOTAL = gql`
+mutation countTotalTask {
+  countTotalTask {
+    totalTasks
+  }
+}
+`;
+
+export const COUNT_COMPLETED = gql`
+mutation countCompletedTask {
+  countCompletedTask {
+    completedTasks
+  }
+}
+`;
+
+export const MARK_COMPLETED = gql`
+mutation markCompletedTask($taskId: ID) {
+  markCompletedTask(taskId: $taskId) {
+    completed
+  }
+}
+`;
+
+export const COUNT_DELETE = gql`
+mutation countDeleteTask {
+  countDeleteTask {
+    totalTasks
+  }
+}
 `;
 
 // QUOTE MUTATIONS
@@ -64,25 +99,10 @@ export const ADD_USER = gql`
         location
         email
         password
+        totalTasks
+        completedTasks
       }
     }
   }
 `;
 
-
-
-// export const ADD_COMMENT = gql`
-//   mutation addComment($thoughtId: ID!, $commentText: String!) {
-//     addComment(thoughtId: $thoughtId, commentText: $commentText) {
-//       _id
-//       thoughtText
-//       thoughtAuthor
-//       createdAt
-//       comments {
-//         _id
-//         commentText
-//         createdAt
-//       }
-//     }
-//   }
-// `;

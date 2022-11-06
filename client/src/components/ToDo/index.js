@@ -15,7 +15,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import {Card} from '@mui/material';
 import { Button, FormControl, FormHelperText, Input, InputLabel, TextField} from '@mui/material';
 import { QUERY_TASKS } from '../../utils/queries';
-import { ADD_TASK, REMOVE_TASK, EDIT_TASK } from '../../utils/mutations';
+import { ADD_TASK, REMOVE_TASK, EDIT_TASK, COUNT_TOTAL, COUNT_COMPLETED, MARK_COMPLETED, COUNT_DELETE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { saveTaskId, removeTaskId, getSavedTaskIds, saveTaskIds } from '../../utils/localStorage';
 
@@ -28,11 +28,14 @@ const ToDoList = () => {
 
     const {loading, data} = useQuery( QUERY_TASKS );
     let tasks = data?.tasks || [];
-
     const [taskText, setTaskText] = useState('');
     const [editTaskText, setEditTaskText] = useState('');
     const [removeTask] = useMutation( REMOVE_TASK );
     const [editTask] = useMutation( EDIT_TASK );
+    const [countTotalTask] = useMutation( COUNT_TOTAL );
+    const [countCompletedTask] = useMutation( COUNT_COMPLETED );
+    const [markCompletedTask] = useMutation( MARK_COMPLETED );
+    const [countDeleteTask] = useMutation( COUNT_DELETE );
     const [addTask] = useMutation( ADD_TASK, {
         update(cache, { data: { addTask }}) {
             try {
@@ -50,6 +53,7 @@ const ToDoList = () => {
     const [open, setOpen] = React.useState(false);
     const [editItem, setEditItem] = React.useState(false);
     const [editTaskId, setEditTaskId] = useState('');
+    const [done, setCompletedTask] = React.useState(false);
     const handleOpen = (task) => {
       setOpen(true);
       setEditItem(true);
@@ -70,7 +74,9 @@ const ToDoList = () => {
               taskText
             },
           });
+          countTotalTask();
           setTaskText('');
+          console.log(tasks);
         } catch (err) {
           console.error(err);
         }
@@ -97,6 +103,7 @@ const ToDoList = () => {
         const response = await removeTask({
           variables: { taskId: taskId },
         });
+        countDeleteTask();
         window.location.reload();
       } catch (err) {
         console.log(err);
@@ -116,9 +123,20 @@ const ToDoList = () => {
         console.log(err);
       }
     };
-    // const handleComplete = async (taskId) => {
-
-    // };
+    const handleComplete = async (taskId) => {
+      try {
+        countCompletedTask();
+        await markCompletedTask({
+          variables: {taskId: taskId}
+        });
+        console.log(taskId);
+        console.log(tasks);
+        window.location.reload();
+        // setCompletedTask(true);
+      } catch (err) {
+        console.error(err);
+      }
+    };
 
     return (
         <div
@@ -161,7 +179,7 @@ const ToDoList = () => {
               <div id="taskList">
                 {tasks.map((task) => (
                   <Card key={task._id} className="card mb-3">
-                    <p>{task.taskText}</p>
+                    {task.completed ? <p style={{textDecoration: 'line-through'}}>{task.taskText}</p> : <p style={{textDecoration: 'none'}}>{task.taskText}</p>}
                     {/* <span style={{ fontSize: '1rem' }}>
                       created on {task.createdAt}
                       </span> */}
@@ -187,7 +205,7 @@ const ToDoList = () => {
                         </DialogActions>
                     </Dialog>) : null}
                     <p onClick={() => handleDeleteTask(task._id)}><CloseIcon/> </p>
-                    {/* <p onClick={() => handleComplete(task._id)}><CheckCircleIcon/> </p> */}
+                    <p onClick={() => handleComplete(task._id)}><CheckCircleIcon/> </p>
                   </Card>
                 ))};
               </div>

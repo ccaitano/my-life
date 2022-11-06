@@ -9,6 +9,8 @@ const typeDefs = gql`
     email: String!
     password: String!
     tasks: [Task]
+    totalTasks: Int
+    completedTasks: Int
   }  
   
   type Task {
@@ -16,6 +18,7 @@ const typeDefs = gql`
     taskText: String
     createdAt: String
     priority: String
+    completed: Boolean
   }
 
   input savedTaskInput {
@@ -23,6 +26,7 @@ const typeDefs = gql`
     taskText: String
     createdAt: String
     priority: String
+    completed: Boolean
   }
 
   type Auth {
@@ -55,7 +59,10 @@ const typeDefs = gql`
     addTask(taskText: String): Task
     removeTask(taskId: ID): Task
     editTask(taskId: ID, taskText: String): Task
-
+    countTotalTask: User
+    countCompletedTask: User
+    markCompletedTask(taskId: ID): Task
+    countDeleteTask: User
     # QUOTE MUTATIONS
 
     # CHART MUTATIONS

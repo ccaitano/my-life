@@ -76,7 +76,7 @@ const resolvers = {
 
         const updatedTaskList = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { tasks: { _id: taskId } } },
+          { $pull: { tasks: { _id: taskId } }},
           { new: true}
         );
 
@@ -94,11 +94,68 @@ const resolvers = {
           { new: true}
         );
 
-        // await User.findOneAndUpdate(
-        //   { _id: context.user._id },
-        //   { tasks: {taskText: taskText}},
-        //   { new: true }
+        return task;
+      
+      };
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    countTotalTask: async (parent, args, context) => {
+      if (context.user) {
+        const task = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $inc: {totalTasks: 1}},
+          { new: true}
+        );
+          
+        return task;
+      
+      };
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    countCompletedTask: async (parent, args, context) => {
+      if (context.user) {
+        const task = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $inc: {completedTasks: 1}},
+          { new: true}
+        );
+
+        // await Task.findOneAndUpdate(
+        //   { _id: taskId },
+        //   { $set: {completed: true}},
+        //   { new: true}
         // );
+
+        return task;
+      
+      };
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    markCompletedTask: async (parent, {taskId}, context) => {
+      if (context.user) {
+        const task = await Task.findOneAndUpdate(
+          { _id: taskId },
+          { $set: {completed: true}},
+          { new: true}
+        );
+       
+        return task;
+      
+      };
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+
+    countDeleteTask: async (parent, args, context) => {
+      if (context.user) {
+        const task = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $inc: {totalTasks: -1}},
+          { new: true}
+        );
 
         return task;
       
