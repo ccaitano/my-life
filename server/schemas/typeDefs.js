@@ -54,6 +54,7 @@ const typeDefs = gql`
     # TO-DO MUTATIONS
     addTask(taskText: String): Task
     removeTask(taskId: ID): Task
+    editTask(taskId: ID, taskText: String): Task
 
     # QUOTE MUTATIONS
 

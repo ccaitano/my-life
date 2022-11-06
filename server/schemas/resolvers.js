@@ -82,15 +82,35 @@ const resolvers = {
     //   }
     //   throw new AuthenticationError('You need to be logged in!');
     // },
-    removeTask: async (parent, { taskId }, context) => {
+    removeTask: async (parent,  { taskId }, context) => {
       if (context.user) {
-        const task = await Task.findOneAndDelete({
+        const task = await Task.findOneAndDelete(
+          { _id: taskId},
+          { new: true }
+        );
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { tasks: task._id } },
+          { new: true }
+        );
+
+        return task;
+      
+      };
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    editTask: async (parent, { taskId, taskText }, context) => {
+      if (context.user) {
+        const task = await Task.findOneAndUpdate({
           _id: taskId,
         });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { tasks: task._id } }
+          { $pull: { tasks: task._id } },
+          { new: true }
         );
 
         return task;

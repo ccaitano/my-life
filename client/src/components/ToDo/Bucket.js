@@ -24,23 +24,23 @@ function ToDoItems(props) {
   // }
 
   // return props.bucket.map((item, i) => (
-  //   <Card
-  //     className={
-  //       item.isComplete
-  //         ? `bucket-row complete ${item.eagerness}`
-  //         : `bucket-row ${item.eagerness}`
-  //     }
-  //     key={i}
-  //   >
-  //     <div key={item.id} onClick={() => props.completeBucketItem(item.id)}>
-  //       {item.text}
-  //     </div>
-  //     <div>
-  //       {console.log(item)}
-  //       <p onClick={() => setEdit({ id: item.id, value: item.text, eagerness: item.eagerness })}><EditIcon/></p>
-  //       <p onClick={() => props.removeBucketItem(item.id)}><CloseIcon/> </p>
-  //     </div>
-  //   </Card>
+    // <Card
+    //   className={
+    //     item.isComplete
+    //       ? `bucket-row complete ${item.eagerness}`
+    //       : `bucket-row ${item.eagerness}`
+    //   }
+    //   key={i}
+    // >
+    //   <div key={item.id} onClick={() => props.completeBucketItem(item.id)}>
+    //     {item.text}
+    //   </div>
+    //   <div>
+    //     {console.log(item)}
+    //     <p onClick={() => setEdit({ id: item.id, value: item.text, eagerness: item.eagerness })}><EditIcon/></p>
+    //     <p onClick={() => props.removeBucketItem(item.id)}><CloseIcon/> </p>
+    //   </div>
+    // </Card>
   // ));
 }
 

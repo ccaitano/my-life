@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import Grid from '@mui/material/Grid';
+import EditIcon from '@mui/icons-material/Edit';
+import CloseIcon from '@mui/icons-material/Close';
+import {Card} from '@mui/material';
 import { Button, FormControl, FormHelperText, Input, InputLabel, TextField} from '@mui/material';
 import { QUERY_TASKS } from '../../utils/queries';
-import { ADD_TASK, REMOVE_TASK } from '../../utils/mutations';
+import { ADD_TASK, REMOVE_TASK, EDIT_TASK } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { saveTaskId, removeTaskId, getSavedTaskIds, saveTaskIds } from '../../utils/localStorage';
 
@@ -15,9 +18,11 @@ import ToDoItems from './Bucket';
 const ToDoList = () => {
     const {loading, data} = useQuery( QUERY_TASKS);
     const tasks = data?.tasks || [];
-
     const [taskText, setTaskText] = useState('');
-    const [addTask, { error }] = useMutation( ADD_TASK, {
+    const [taskList, setTaskList] = useState([]);
+    const [removeTask] = useMutation( REMOVE_TASK );
+    const [editTask] = useMutation( EDIT_TASK );
+    const [addTask] = useMutation( ADD_TASK, {
         update(cache, { data: { addTask }}) {
             try {
                 // const { tasks } = cache.readQuery({ query: QUERY_TASKS});
@@ -32,17 +37,20 @@ const ToDoList = () => {
         },
     });
 
+    if (!tasks.length) {
+      return <h3>No Tasks Yet!</h3>;
+    };
+    
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log('saved');
         try {
           const { data } = await addTask({
             variables: {
               taskText
             },
           });
-    
           setTaskText('');
+          setTaskList( data );
         } catch (err) {
           console.error(err);
         }
@@ -55,6 +63,36 @@ const ToDoList = () => {
           setTaskText(value);
         }
       };
+
+      const handleDeleteTask = async (taskId) => {
+        
+        try {
+          const response = await removeTask({
+            variables: { taskId },
+          });
+          window.location.reload();
+          console.log(response);
+          // removeTaskId(taskId);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+      // const handleEditTask = async (taskId) => {
+      //   try {
+          
+      //     const response = await editTask({
+      //       variables: { taskId, taskText},
+      //     });
+      //     setTaskText(taskId.taskText);
+      //     console.log(response);
+      //     // removeTaskId(taskId);
+      //   } catch (err) {
+      //     console.log(err);
+      //   }
+      // };
+
+      // setTaskText('');
 
     return (
         <div
@@ -92,11 +130,31 @@ const ToDoList = () => {
                     </div>
                 </div> */}
                 {/* <button className="bucket-button">Add Reminder</button> */}
-                        
+    
                 <Button type="submit" variant="contained" color="primary"  >Add Reminder</Button>
             </FormControl>
                 </form>
-                <TaskList tasks={tasks} title="Current Tasks..."/>
+                <h3>Current Tasks...</h3>
+                {/* <TaskList tasks={tasks} title="Current Tasks..."/> */}
+                <div id="taskList">
+                {tasks.map((task) => (
+                  <Card key={task._id} className="card mb-3">
+                
+                      <p>{task.taskText}</p>
+                        {/* <span style={{ fontSize: '1rem' }}>
+                          created on {task.createdAt}
+                        </span> */}
+                        {/* <p onClick={() => handleEditTask(task._id, task.taskText)}><EditIcon/></p> */}
+                        <p onClick={() => handleDeleteTask(task._id)}><CloseIcon/> </p>
+
+                  </Card>
+                
+              ))}
+              </div>
+                <div>
+      
+      
+    </div>
             </Grid>
         </div>
         

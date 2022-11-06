@@ -25,6 +25,17 @@ export const REMOVE_TASK = gql`
   }
 `;
 
+export const EDIT_TASK = gql`
+  mutation editTask($taskId: ID) {
+    editTask(taskId: $taskId) {
+        _id
+        taskText
+        createdAt
+        priority
+    }
+  }
+`;
+
 // QUOTE MUTATIONS
 
 // CHART MUTATIONS
