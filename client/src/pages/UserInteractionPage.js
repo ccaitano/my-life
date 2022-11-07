@@ -10,8 +10,8 @@ import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import RefreshIcon from '@mui/icons-material/Refresh';
-import UserData from '../Seeds.json'
-import SearchBar from '../UserSearchBar';
+// import UserData from '../Seeds.json';
+// import SearchBar from '../UserSearchBar';
 
 
 export default function Content() {
@@ -41,8 +41,8 @@ export default function Content() {
             </Grid>
             <Grid item>
               <Button variant="contained" sx={{ mr: 1 }}>
-              <UserData />
-              <SearchBar/>
+              {/* <UserData /> */}
+              {/* <SearchBar/> */}
                 Search for user
               </Button>
               <Tooltip title="Reload">
