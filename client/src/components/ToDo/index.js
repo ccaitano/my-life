@@ -202,7 +202,8 @@ const ToDoList = () => {
                     {/* Mark Existing Item as Completed */}
                     <p onClick={() => handleComplete(task._id)}><CheckCircleIcon/> </p>
                   </Card>
-                ))};
+                ))}
+               
               </div>
             </Grid>
         </div>
