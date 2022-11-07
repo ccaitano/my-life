@@ -31,9 +31,17 @@ const userSchema = new Schema({
   tasks: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Thought',
+      ref: 'Task',
     },
   ],
+  totalTasks: {
+    type: Number,
+    default: 0
+  },
+  completedTasks: {
+    type: Number,
+    default: 0
+  },
 });
 
 userSchema.pre('save', async function (next) {

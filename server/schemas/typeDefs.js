@@ -3,27 +3,30 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type User {
     _id: ID
-    firstName: String!
-    lastName: String!
-    location: String!
+    firstName: String
+    lastName: String
+    location: String
     email: String!
     password: String!
-    # thoughts: [Thought]!
+    tasks: [Task]
+    totalTasks: Int
+    completedTasks: Int
+  }  
+  
+  type Task {
+    _id: ID
+    taskText: String
+    createdAt: String
+    priority: String
+    completed: Boolean
   }
 
-  type Thought {
+  input savedTaskInput {
     _id: ID
-    thoughtText: String
-    thoughtAuthor: String
+    taskText: String
     createdAt: String
-    comments: [Comment]!
-  }
-
-  type Comment {
-    _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
+    priority: String
+    completed: Boolean
   }
 
   type Auth {
@@ -35,24 +38,31 @@ const typeDefs = gql`
     # WEATHER QUERIES
 
     # TO-DO QUERIES
+    tasks(email: String): [Task]
+    task(taskId: ID): Task
 
     # QUOTE QUERIES
 
     # CHART QUERIES
 
-    
     users: [User]
-    # user(username: String!): User
-    # thoughts(username: String): [Thought]
-    thought(thoughtId: ID!): Thought
+    user(email: String!): User
     me: User
+    
+   
   }
 
   type Mutation {
     # WEATHER MUTATIONS
 
     # TO-DO MUTATIONS
-
+    addTask(taskText: String): Task
+    removeTask(taskId: ID): Task
+    editTask(taskId: ID, taskText: String): Task
+    countTotalTask: User
+    countCompletedTask: User
+    markCompletedTask(taskId: ID): Task
+    countDeleteTask: User
     # QUOTE MUTATIONS
 
     # CHART MUTATIONS
@@ -60,10 +70,6 @@ const typeDefs = gql`
 
     addUser(firstName: String!, lastName: String!, location: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addThought(thoughtText: String!): Thought
-    addComment(thoughtId: ID!, commentText: String!): Thought
-    removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
   }
 `;
 

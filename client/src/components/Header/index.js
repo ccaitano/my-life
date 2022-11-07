@@ -126,7 +126,7 @@ function Header() {
 
             <Typography
               component="h1"
-              variant="h6"
+              variant="h4"
               color="inherit"
               noWrap
               sx={{ flexGrow: 1 }}
