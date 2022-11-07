@@ -1,7 +1,7 @@
 
 import React from "react";
-import "../SearchBar.css";
-import SearchBar from "./Components/SearchBar";
+// import "../SearchBar.css";
+import SearchBar from "../UserSearchBar";
 import SeedData from "../Seeds.json";
 
 function Content() {

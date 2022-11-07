@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 // import "./SearchBar.css";
-// import SearchIcon from "@material-ui/icons/Search";
-// import CloseIcon from "@material-ui/icons/Close";
-
+import SearchIcon from '@mui/icons-material/Search';
+import CloseIcon from '@mui/icons-material/Close';
 function SearchBar({ placeholder, data }) {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
@@ -10,22 +9,21 @@ function SearchBar({ placeholder, data }) {
   const handleFilter = (event) => {
     const searchWord = event.target.value;
     setWordEntered(searchWord);
-    // const newFilter = data.filter((value) => {
-    //   return value.title.toLowerCase().includes(searchWord.toLowerCase());
-    // });
+    const newFilter = data.filter((value) => {
+      return value.title.toLowerCase().includes(searchWord.toLowerCase());
+    });
 
     if (searchWord === "") {
       setFilteredData([]);
+    } else {
+      setFilteredData(newFilter);
     }
-    //  else {
-    //   setFilteredData(newFilter);
-    // }
   };
 
-//   const clearInput = () => {
-//     setFilteredData([]);
-//     setWordEntered("");
-//   };
+  const clearInput = () => {
+    setFilteredData([]);
+    setWordEntered("");
+  };
 
   return (
     <div className="search">
@@ -36,13 +34,13 @@ function SearchBar({ placeholder, data }) {
           value={wordEntered}
           onChange={handleFilter}
         />
-        {/* <div className="searchIcon">
+        <div className="searchIcon">
           {filteredData.length === 0 ? (
             <SearchIcon />
           ) : (
             <CloseIcon id="clearBtn" onClick={clearInput} />
           )}
-        </div> */}
+        </div>
       </div>
       {filteredData.length !== 0 && (
         <div className="dataResult">
