@@ -18,10 +18,18 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import { mainListItems} from './listItems';
 import { grey } from '@mui/material/colors';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
 
 import Auth from '../../utils/auth';
 
 const drawerWidth = 240;
+
+const rightLink = {
+  fontSize: 16,
+  color: 'common.white',
+  ml: 3,
+};
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -132,6 +140,27 @@ function Header() {
               sx={{ flexGrow: 1 }}
             >
               MyLife
+
+              <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+            <Link
+              color="inherit"
+              variant="h6"
+              underline="none"
+              href="/login"
+              sx={rightLink}
+            >
+              {'Sign In'}
+            </Link>
+            <Link
+              variant="h6"
+              underline="none"
+              href="/signup"
+              sx={{ ...rightLink, color: 'secondary.main' }}
+            >
+              {'Sign Up'}
+            </Link>
+          </Box>
+
             </Typography>
             {Auth.loggedIn() ? (
                 <>
