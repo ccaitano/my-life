@@ -1,6 +1,6 @@
 
 import React from "react";
-import "../cs";
+import "../SearchBar.css";
 import SearchBar from "./Components/SearchBar";
 import SeedData from "../Seeds.json";
 
