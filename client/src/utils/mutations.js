@@ -74,7 +74,14 @@ mutation countDeleteTask {
 // QUOTE MUTATIONS
 
 // CHART MUTATIONS
-
+export const RESET_DATA = gql`
+mutation resetData {
+  resetData {
+    completedTasks
+    totalTasks
+  }
+}
+`;
 
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {

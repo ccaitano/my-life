@@ -49,6 +49,7 @@ const Home = () => {
                   display: 'flex', 
                   flexDirection: 'column', 
                   height: 240, 
+                  width: 240
                 }}
               >
                 <TaskChart />
