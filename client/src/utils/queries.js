@@ -3,51 +3,74 @@ import { gql } from '@apollo/client';
 // WEATHER QUERIES
 
 // TO-DO QUERIES
+export const QUERY_TASKS = gql`
+  query tasks{
+    tasks {
+      _id
+      taskText
+      createdAt
+      priority
+      completed
+    }
+  }
+`;
 
+export const QUERY_SINGLE_TASK = gql`
+  query task($taskId: ID) {
+    task(taskId: $taskId) {
+      _id
+      taskText
+      createdAt
+      priority
+      completed
+    }
+  }
+`;
 // QUOTE QUERIES
 
 // CHART QUERIES
 
 
-export const QUERY_USER = gql`
-  query user($username: String!) {
-    user(username: $username) {
+export const QUERY_USERS = gql`
+  query users {
+    user {
       _id
-      username
+      firstName
+      lastName
+      location
       email
-      thoughts {
+      password
+      tasks {
         _id
-        thoughtText
+        taskText
         createdAt
+        priority
+        completed
       }
+      totalTasks
+      completedTasks
     }
   }
 `;
 
-export const QUERY_THOUGHTS = gql`
-  query getThoughts {
-    thoughts {
+export const QUERY_USER = gql`
+  query user($email: String!) {
+    user(email: $email) {
       _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-    }
-  }
-`;
-
-export const QUERY_SINGLE_THOUGHT = gql`
-  query getSingleThought($thoughtId: ID!) {
-    thought(thoughtId: $thoughtId) {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
+      firstName
+      lastName
+      location
+      email
+      password
+      tasks {
         _id
-        commentText
-        commentAuthor
+        taskText
         createdAt
+        priority
+        completed
       }
+      totalTasks
+      completedTasks
     }
   }
 `;
@@ -56,14 +79,20 @@ export const QUERY_ME = gql`
   query me {
     me {
       _id
-      username
+      firstName
+      lastName
+      location
       email
-      thoughts {
+      password
+      tasks {
         _id
-        thoughtText
-        thoughtAuthor
+        taskText
         createdAt
+        priority
+        completed
       }
+      totalTasks
+      completedTasks
     }
   }
 `;

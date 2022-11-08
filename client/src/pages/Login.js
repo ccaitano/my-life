@@ -13,9 +13,19 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
 // import Container from '@mui/material/Container';
-// import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Auth from '../utils/auth';
+
+const loginTheme = createTheme({
+  spacing: 8,
+  palette: {
+    primary: {
+      main: '#424242'
+    } ,
+  }
+});
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ 
@@ -56,19 +66,21 @@ const Login = (props) => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
+    <main>
+      <ThemeProvider theme={loginTheme}>
            <Box
           sx={{
             marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            backgroundColor: 'white',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Paper elevation={3} >
+          <Box sx={{ p: 3 }}> 
+          {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
-          </Avatar>
+          </Avatar> */}
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
@@ -108,7 +120,7 @@ const Login = (props) => {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="/" variant="body2">
+                <Link href="/signup" variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
@@ -119,7 +131,10 @@ const Login = (props) => {
               </Grid>
             </Grid>
           </Box>
+          </Box>
+          </Paper>
         </Box>
+      </ThemeProvider>
     </main>
   );
 };
