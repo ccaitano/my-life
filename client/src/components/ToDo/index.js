@@ -19,8 +19,8 @@ import './App.css'
 
 const ToDoList = () => {
     // Declare queries and mutations
-    const { data } = useQuery( QUERY_TASKS );
-    let tasks = data?.tasks || [];
+    const { data } = useQuery( QUERY_ME );
+    let tasks = data?.me.tasks || [];
     const [removeTask] = useMutation( REMOVE_TASK );
     const [editTask] = useMutation( EDIT_TASK );
     const [countTotalTask] = useMutation( COUNT_TOTAL );

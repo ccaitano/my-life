@@ -35,7 +35,7 @@ const TaskChart = () => {
     
     return (
         <>
-             <h2>Chart of Complete Tasks vs. All Tasks</h2>
+             <h2>Progress</h2>
             {/* Code goes here! */}
             <div>
         <Pie

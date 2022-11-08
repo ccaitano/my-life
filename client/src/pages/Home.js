@@ -6,7 +6,8 @@ import Weather from '../components/Weather/index';
 import ToDoList from '../components/ToDo/index';
 import Quote from '../components/Quote/index';
 import TaskChart from '../components/Chart/index';
-
+import Auth from '../utils/auth';
+import Link from '@mui/material/Link';
 // import Draggable from 'react-draggable';
 
 import Box from '@mui/material/Box';
@@ -17,6 +18,9 @@ import '../css/index.css'
 const Home = () => {
 
   return (
+    <div>
+    {Auth.loggedIn() ? (
+      <>
     <Container maxWidth="lg" background="none" sx={{ mt: 4, mb: 4 }} >
       <Grid container spacing={4}>
         {/* To-Do List Container */}
@@ -91,6 +95,14 @@ const Home = () => {
         
       </Grid>
     </Container>
+    </>
+    ) : (
+      <p>
+        You need to be logged in to view your dashboard. Please {' '}
+        <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+      </p>
+    )}
+    </div>
   );
 };
 
