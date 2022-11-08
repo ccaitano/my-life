@@ -20,6 +20,7 @@ import { grey } from '@mui/material/colors';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 import Auth from '../../utils/auth';
 
@@ -105,6 +106,10 @@ function Header() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
 
   return (
     <>
@@ -155,7 +160,7 @@ function Header() {
               variant="h6"
               underline="none"
               href="/signup"
-              sx={{ ...rightLink, color: 'secondary.main' }}
+              sx={rightLink}
             >
               {'Sign Up'}
             </Link>
@@ -197,6 +202,16 @@ function Header() {
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
               </Menu>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={logout}
+                color="inherit"
+              >
+                <LogoutIcon />
+              </IconButton>
               </>) : ('')}
         </Toolbar>
       </AppBar>
