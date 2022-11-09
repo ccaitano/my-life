@@ -115,7 +115,7 @@ function Header() {
     <>
       <CssBaseline />
       {/* Top Header Nav Bar and Icons */}
-      <AppBar position="fixed" style={{ background: 'rgba(0,0,0,0.2)'}} open={open}>
+      <AppBar position="fixed" style={{ background: '#212121'}} open={open}>
         <Toolbar
             sx={{
               pr: '24px', // keep right padding when drawer closed
@@ -142,7 +142,7 @@ function Header() {
               variant="h4"
               color="inherit"
               noWrap
-              sx={{ flexGrow: 1 }}
+              sx={{ flexGrow: 10 }}
             >
               MyLife
 

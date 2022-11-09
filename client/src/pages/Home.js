@@ -19,6 +19,9 @@ const Home = () => {
 
   return (
     <Container maxWidth="lg" background="none" sx={{ mt: 4, mb: 4 }} >
+
+      My Life Testing Landing Page
+      
       {Auth.loggedIn() ? (
                 <>
         <Grid container spacing={4}>
