@@ -146,25 +146,7 @@ function Header() {
             >
               MyLife
 
-              <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-            <Link
-              color="inherit"
-              variant="h6"
-              underline="none"
-              href="/login"
-              sx={rightLink}
-            >
-              {'Sign In'}
-            </Link>
-            <Link
-              variant="h6"
-              underline="none"
-              href="/signup"
-              sx={rightLink}
-            >
-              {'Sign Up'}
-            </Link>
-          </Box>
+            
 
             </Typography>
             {Auth.loggedIn() ? (
@@ -212,7 +194,27 @@ function Header() {
               >
                 <LogoutIcon />
               </IconButton>
-              </>) : ('')}
+              </>) : (
+                <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+                <Link
+                  color="inherit"
+                  variant="h6"
+                  underline="none"
+                  href="/login"
+                  sx={rightLink}
+                >
+                  {'Sign In'}
+                </Link>
+                <Link
+                  variant="h6"
+                  underline="none"
+                  href="/signup"
+                  sx={rightLink}
+                >
+                  {'Sign Up'}
+                </Link>
+              </Box>
+              )}
         </Toolbar>
       </AppBar>
       {/* Drawer Menu on Left Hand Side of Page */}
