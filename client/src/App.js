@@ -83,6 +83,10 @@ function App() {
                       element={<Content/>}
                     />
                     
+                    <Route 
+                      path="/HomeReturn" 
+                      element={<Home/>}
+                    />
                     {/*<Route 
                       path="/me" 
                       element={<Profile />}
