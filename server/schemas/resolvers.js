@@ -170,6 +170,20 @@ const resolvers = {
       };
       throw new AuthenticationError('You need to be logged in!');
     },
+    // Reset User Data for Chart
+    resetData: async (parent, args, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $set: {completedTasks: 0, totalTasks: 0}},
+          { new: true}
+        );
+
+        return updatedUser;
+      
+      };
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 };
 module.exports = resolvers;
