@@ -20,6 +20,7 @@ import { grey } from '@mui/material/colors';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 import Auth from '../../utils/auth';
 
@@ -105,12 +106,16 @@ function Header() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
 
   return (
     <>
       <CssBaseline />
       {/* Top Header Nav Bar and Icons */}
-      <AppBar position="fixed" style={{ background: 'rgba(0,0,0,0.2)'}} open={open}>
+      <AppBar position="fixed" style={{ background: '#212121'}} open={open}>
         <Toolbar
             sx={{
               pr: '24px', // keep right padding when drawer closed
@@ -137,29 +142,11 @@ function Header() {
               variant="h4"
               color="inherit"
               noWrap
-              sx={{ flexGrow: 1 }}
+              sx={{ flexGrow: 10 }}
             >
               MyLife
 
-              <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-            <Link
-              color="inherit"
-              variant="h6"
-              underline="none"
-              href="/login"
-              sx={rightLink}
-            >
-              {'Sign In'}
-            </Link>
-            <Link
-              variant="h6"
-              underline="none"
-              href="/signup"
-              sx={{ ...rightLink, color: 'secondary.main' }}
-            >
-              {'Sign Up'}
-            </Link>
-          </Box>
+            
 
             </Typography>
             {Auth.loggedIn() ? (
@@ -197,7 +184,37 @@ function Header() {
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
               </Menu>
-              </>) : ('')}
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={logout}
+                color="inherit"
+              >
+                <LogoutIcon />
+              </IconButton>
+              </>) : (
+                <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+                <Link
+                  color="inherit"
+                  variant="h6"
+                  underline="none"
+                  href="/login"
+                  sx={rightLink}
+                >
+                  {'Sign In'}
+                </Link>
+                <Link
+                  variant="h6"
+                  underline="none"
+                  href="/signup"
+                  sx={rightLink}
+                >
+                  {'Sign Up'}
+                </Link>
+              </Box>
+              )}
         </Toolbar>
       </AppBar>
       {/* Drawer Menu on Left Hand Side of Page */}

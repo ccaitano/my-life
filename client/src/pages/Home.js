@@ -9,102 +9,94 @@ import TaskChart from '../components/Chart/index';
 import Auth from '../utils/auth';
 import Link from '@mui/material/Link';
 // import Draggable from 'react-draggable';
-
 import Box from '@mui/material/Box';
-import Draggable from 'react-draggable';
-
 import '../css/index.css'
+import { Typography } from '@mui/material';
 
 const Home = () => {
 
   return (
     <div>
-    {Auth.loggedIn() ? (
-      <>
-    <Container maxWidth="lg" background="none" sx={{ mt: 4, mb: 4 }} >
-      <Grid container spacing={4}>
-        {/* To-Do List Container */}
-        <Box>
-          {/* <Draggable> */}
-            <Grid item xs={12} md={4} lg={8}>
-              <Paper
-                sx={{
-                  p: 2,
-                  height: 800,
-                  maxWidth: '150%'
-                }}
-              >
-                <ToDoList />
-              </Paper>
-            </Grid>
-          {/* </Draggable> */}
-        </Box>
-        {/* Chart/History Container */}
-        <Box>
-          {/* <Draggable>    */}
-            <Grid item xs={4} md={6} lg={10}>
-              <Paper 
-                sx={{ 
-                  p: 2, 
-                  display: 'flex', 
-                  flexDirection: 'column', 
-                  height: 240, 
-                  width: 240
-                }}
-              >
-                <TaskChart />
-              </Paper>
-            </Grid>
-          {/* </Draggable> */}
-        </Box>
-        {/* Weather API Container */}
-        {/* <Box> */}
-          {/* <Draggable> */}
-            {/* <Grid item xs={12} md={8} lg={4}>
-              <Paper
-                sx={{
-                  p: 2,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: 240,
-                }}
-              >
-                <Weather />
-              </Paper>
+    <Container maxWidth="lg" background="none" sx={{ mt: 4, mb: 4 }} >      
+      {Auth.loggedIn() ? (
+                <>
+        <Grid container spacing={4}>
+          {/* Weather API Container */}
+          <Box>
+            {/* <Draggable> */}
+              <Grid item xs={12} md={8} lg={4}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: 240,
+                  }}
+                >
+                  <Weather />
+                </Paper>
 
-            </Grid> */}
-          {/* </Draggable> */}
-        {/* </Box> */}
-        
-        {/* Positive Affirmation Container */}
-        <Box>
-          {/* <Draggable> */}
-            <Grid item xs={12} md={4} lg={8}>
-              <Paper 
-                sx={{ 
-                  p: 2, 
-                  display: 'flex', 
-                  flexDirection: 'column', 
-                  height: 240, 
-                }}
-              >
-                <Quote />
-              </Paper>
-            </Grid>
-          {/* </Draggable> */}
-        </Box>
-        
-      </Grid>
+              </Grid>
+            {/* </Draggable> */}
+          </Box>
+          {/* To-Do List Container */}
+          <Box>
+            {/* <Draggable> */}
+              <Grid item xs={12} md={4} lg={8}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    height: 800,
+                    maxWidth: '150%'
+                  }}
+                >
+                  <ToDoList />
+                </Paper>
+              </Grid>
+            {/* </Draggable> */}
+          </Box>
+          {/* Positive Affirmation Container */}
+          <Box>
+            {/* <Draggable> */}
+              <Grid item xs={12} md={4} lg={8}>
+                <Paper 
+                  sx={{ 
+                    p: 2, 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    height: 240, 
+                  }}
+                >
+                  <Quote />
+                </Paper>
+              </Grid>
+            {/* </Draggable> */}
+          </Box>
+          {/* Chart/History Container */}
+          <Box>
+            {/* <Draggable>    */}
+              <Grid item xs={12} md={8} lg={4}>
+                <Paper 
+                  sx={{ 
+                    p: 2, 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    height: 240, 
+                  }}
+                >
+                  <Chart />
+                </Paper>
+              </Grid>
+            {/* </Draggable> */}
+          </Box>
+        </Grid>
+        </>) : (
+          <Typography>My Life Testing Landing Page</Typography>
+        )} 
     </Container>
     </>
-    ) : (
-      <p>
-        You need to be logged in to view your dashboard. Please {' '}
-        <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-      </p>
     )}
     </div>
   );
 };
-
 export default Home;
