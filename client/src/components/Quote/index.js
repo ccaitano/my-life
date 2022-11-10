@@ -2,33 +2,18 @@ import { useState } from 'react';
 import { Button } from './Button.js'; 
 import { ListComponent } from './ListComponent.js'; 
 
-function Quote() { 
+const Quote = () => { 
   
-  const [components, setComponents] = useState(["Hey you got this!"]); 
-  const [componentNames] = useState([ 'Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7' ]); 
+  const affirmations = [ "Hey you got this!", "The perfect moment is this one" , "I am deliberate and afraid of nothing" , 'Your perspective is unique. It’s important and it counts', 'Every day above earth is a good day', 'Nothing can dim the light that shines from within', 'You must do the things you think you cannot do', 'I can. I will. End of story.' ]; 
+  const randomNumber = Math.floor(Math.random()* affirmations.length);
   
-  function addComponent() { 
-    
-    if (componentNames.length > 0) { 
-      
-      setComponents([...components, componentNames[0]]);
-      componentNames.splice(0, 1);
-      
-    } 
-  } 
-
-    console.log("yoooo whats good"); 
-  return ( 
-    
+  return (  
     <div> 
-    
-      <Button onClick={addComponent} text="Get a new affermation"/> 
-      {components.map((item, i) => ( <ListComponent text={item} /> ))} 
-      
-    </div> 
-    
+      <h1>Positive Affirmation</h1>
+      {/* <Button onClick={addComponent} text="Get a new affermation"/>  */}
+      <p>{affirmations[randomNumber]}</p>
+    </div>    
   ) 
-  
-} 
+};
 
 export default Quote;

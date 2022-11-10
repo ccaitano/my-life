@@ -5,22 +5,19 @@ import Paper from '@mui/material/Paper';
 import Weather from '../components/Weather/index';
 import ToDoList from '../components/ToDo/index';
 import Quote from '../components/Quote/index';
-import Chart from '../components/Chart/index';
+import TaskChart from '../components/Chart/index';
 import Auth from '../utils/auth';
-
+import Link from '@mui/material/Link';
 // import Draggable from 'react-draggable';
-
 import Box from '@mui/material/Box';
-import Draggable from 'react-draggable';
-
 import '../css/index.css'
 import { Typography } from '@mui/material';
 
 const Home = () => {
 
   return (
-    <Container maxWidth="lg" background="none" sx={{ mt: 4, mb: 4 }} >
-      
+    <div>
+    <Container maxWidth="lg" background="none" sx={{ mt: 4, mb: 4 }} >      
       {Auth.loggedIn() ? (
                 <>
         <Grid container spacing={4}>
@@ -97,7 +94,9 @@ const Home = () => {
           <Typography>My Life Testing Landing Page</Typography>
         )} 
     </Container>
+    </>
+    )}
+    </div>
   );
 };
-
 export default Home;

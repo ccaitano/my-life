@@ -10,7 +10,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Card } from '@mui/material';
 import { Button, FormControl, TextField} from '@mui/material';
-import { QUERY_TASKS } from '../../utils/queries';
+import { QUERY_TASKS, QUERY_ME } from '../../utils/queries';
 import { ADD_TASK, REMOVE_TASK, EDIT_TASK, COUNT_TOTAL, COUNT_COMPLETED, MARK_COMPLETED, COUNT_DELETE } from '../../utils/mutations';
 import './App.css'
 
@@ -19,8 +19,8 @@ import './App.css'
 
 const ToDoList = () => {
     // Declare queries and mutations
-    const { data } = useQuery( QUERY_TASKS );
-    let tasks = data?.tasks || [];
+    const { data } = useQuery( QUERY_ME );
+    let tasks = data?.me.tasks || [];
     const [removeTask] = useMutation( REMOVE_TASK );
     const [editTask] = useMutation( EDIT_TASK );
     const [countTotalTask] = useMutation( COUNT_TOTAL );
@@ -69,6 +69,7 @@ const ToDoList = () => {
           // Adds +1 to totalTask count
           countTotalTask();
           setTaskText('');
+          window.location.reload();
           console.log(tasks);
         } catch (err) {
           console.error(err);
@@ -100,7 +101,10 @@ const ToDoList = () => {
           variables: { taskId: taskId },
         });
         // Removes one item from totalTask count
-        countDeleteTask();
+        const thisTask = tasks.find(item => item._id);
+        if (thisTask._id === taskId && thisTask.completed === false) {
+          countDeleteTask();
+        }
         window.location.reload();
       } catch (err) {
         console.log(err);
