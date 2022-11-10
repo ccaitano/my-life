@@ -1,82 +1,130 @@
-
-// import React from "react";
-// // import "../Style.css";
-// import SearchBar from "../UserSearchBar";
-// import SeedData from "../Seeds.json";
-
-// function Content() {
-//   return (
-//     <div className="App">
-//       <SearchBar placeholder="Enter a Book Name..." data={SeedData} />
-//     </div>
-//   );
-// }
-
-// export default Content;
-
-import * as React from 'react';
+/* eslint-disable no-restricted-globals */
+import React from 'react';
+import { useState } from "react";
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Tooltip from '@mui/material/Tooltip';
-import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import RefreshIcon from '@mui/icons-material/Refresh';
-import UserData from '../Seeds.json';
-import SearchBar from '../UserSearchBar';
-
-
-export default function Content() {
+import CloseIcon from '@mui/icons-material/Close';
+import {useQuery} from '@apollo/react-hooks';
+import {QUERY_USERS} from '../utils/queries';
+import Box from '@mui/material/Box';
+const Content = () => {
+  const [filteredData, setFilteredData] = useState([]);
+  const [wordEntered, setWordEntered] = useState("");
+  const {data} = useQuery(QUERY_USERS); 
+  let users = data?.users ||[];
+  const handleFilter = (event) => {
+    const searchWord = event.target.value;
+    setWordEntered(searchWord);
+    let userEmail = users.map(function (value){
+      return value.email;
+    });
+    const newFilter = userEmail.filter((value) => {
+      return value.toLowerCase().includes(searchWord.toLowerCase());
+    });
+    if (searchWord === "") {
+      setFilteredData([]);
+    }
+     else {
+      setFilteredData(newFilter);
+    }
+  };
+  const clearInput = () => {
+    setFilteredData([]);
+    setWordEntered("");
+  };
+  function confirmFunk(){
+ console.log('I work');
+ if( confirm('Add this user?')){
+//if user wants to add new friend send info to other user profile here
+console.log('I am true');
+ } else {
+  console.log('I am false');
+// if user does not want to add new friend do nothing
+ }
+  }
   return (
     <Paper sx={{ maxWidth: 936, margin: 'auto', overflow: 'hidden' }}>
-        
+            <Box
+      component="form"
+      sx={{
+        '& > :not(style)': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+      height={4}
+    >
+    </Box>
       <AppBar
-      
         position="static"
         color="default"
-        elevation={0}
+        elevation={4}
         sx={{ borderBottom: '1px solid rgba(0, 0, 0, 0.12)' }}
       >
-        <SearchBar data={UserData}>
         <Toolbar>
-          <Grid container spacing={2} alignItems="center">
+          <Grid container spacing={5} alignItems="center">
             <Grid item>
-              <SearchIcon color="inherit" sx={{ display: 'block' }} />
+              {/* <SearchIcon color="inherit" sx={{ display: 'block' }} /> */}
             </Grid>
-            <Grid item xs>
+            <Grid item xs >
+              {/* <Select
+              options={wordEntered}
+              /> */}
               <TextField
                 fullWidth
+                id="outlined-basic" label="Search Users" variant="outlined"
                 placeholder="Search by Username"
                 InputProps={{
                   disableUnderline: true,
                   sx: { fontSize: 'default' },
-                }}
-                variant="standard"
+                }} 
+                 
+                // style
+                value={wordEntered}
+                onChange={handleFilter}
               />
+              <div>
+          {filteredData.length === 0 ? (
+            <SearchIcon alignItems="left"/>
+          ) : (
+            <CloseIcon id="clearBtn" onClick={clearInput} />
+          )}
+        </div>
             </Grid>
             <Grid item>
-              <Button variant="contained" sx={{ mr: 1 }}>
-              {/* <UserData /> */}
-              {/* <SearchBar/> */}
+              {/* <Button variant="contained" sx={{ mr: 1 }}>
                 Search for user
-              </Button>
-              <Tooltip title="Reload">
+              </Button> */}
+              {/* <Tooltip title="Reload">
                 <IconButton>
                   <RefreshIcon color="inherit" sx={{ display: 'block' }} />
                 </IconButton>
-              </Tooltip>
+              </Tooltip> */}
             </Grid>
           </Grid>
         </Toolbar> 
-          </SearchBar>
       </AppBar>
-      <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">
-        No information to display yet
+      <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center"> 
+             {filteredData.length !== 0 && (
+        <div>
+          {filteredData.slice(0, 15).map((value) => {
+            return (
+              <div key={value}>
+              <a className="dataItem" href={value.link} onClick={confirmFunk}>
+                <p>{value}</p>
+              </a>
+              </div>
+            );
+          })}
+        </div>
+      )}
       </Typography>
     </Paper>
   );
 }
+
+export default Content;
