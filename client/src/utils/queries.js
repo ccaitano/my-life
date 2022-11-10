@@ -33,7 +33,7 @@ export const QUERY_SINGLE_TASK = gql`
 
 export const QUERY_USERS = gql`
   query users {
-    user {
+    users {
       _id
       firstName
       lastName

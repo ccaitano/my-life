@@ -6,11 +6,8 @@ import Weather from '../components/Weather/index';
 import ToDoList from '../components/ToDo/index';
 import Quote from '../components/Quote/index';
 import Chart from '../components/Chart/index';
-
-// import Draggable from 'react-draggable';
-
 import Box from '@mui/material/Box';
-import Draggable from 'react-draggable';
+// import Draggable from 'react-draggable';
 
 import '../css/index.css'
 

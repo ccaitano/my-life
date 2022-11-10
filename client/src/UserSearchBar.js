@@ -9,16 +9,16 @@ function SearchBar({ placeholder, data }) {
   const handleFilter = (event) => {
     const searchWord = event.target.value;
     setWordEntered(searchWord);
-    // const newFilter = data.filter((value) => {
-    //   return value.title.toLowerCase().includes(searchWord.toLowerCase());
-    // });
+    const newFilter = data.filter((value) => {
+      return value.title.toLowerCase().includes(searchWord.toLowerCase());
+    });
 
     if (searchWord === "") {
       setFilteredData([]);
     }
-    //  else {
-    //   setFilteredData(newFilter);
-    // }
+     else {
+      setFilteredData(newFilter);
+    }
   };
 
   const clearInput = () => {
