@@ -14,7 +14,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import {useQuery} from '@apollo/react-hooks';
 import {QUERY_USERS} from '../utils/queries';
-import Style from '../css/Style.css';
+// import style from '../css/Style.css';
+// import Select from 'react-select';
 
 const Content = () => {
   const [filteredData, setFilteredData] = useState([]);
@@ -64,6 +65,9 @@ const Content = () => {
               {/* <SearchIcon color="inherit" sx={{ display: 'block' }} /> */}
             </Grid>
             <Grid item xs>
+              {/* <Select
+              options={wordEntered}
+              /> */}
               <TextField
                 fullWidth
                 placeholder="Search by Username"
@@ -71,6 +75,7 @@ const Content = () => {
                   disableUnderline: true,
                   sx: { fontSize: 'default' },
                 }}
+                // style
                 variant="standard"
                 value={wordEntered}
                 onChange={handleFilter}
@@ -82,19 +87,6 @@ const Content = () => {
             <CloseIcon id="clearBtn" onClick={clearInput} />
           )}
         </div>
-        {filteredData.length !== 0 && (
-        <div>
-          {filteredData.slice(0, 15).map((value) => {
-            return (
-              <div key={value}>
-              <a className="dataItem" href={value}>
-                <p>{value} </p>
-              </a>
-              </div>
-            );
-          })}
-        </div>
-      )}
             </Grid>
             <Grid item>
               <Button variant="contained" sx={{ mr: 1 }}>
@@ -109,8 +101,20 @@ const Content = () => {
           </Grid>
         </Toolbar> 
       </AppBar>
-      <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">
-        No information to display yet
+      <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center"> 
+             {filteredData.length !== 0 && (
+        <div>
+          {filteredData.slice(0, 15).map((value) => {
+            return (
+              <div key={value}>
+              <a className="dataItem" href={value}>
+                <p>{value}</p>
+              </a>
+              </div>
+            );
+          })}
+        </div>
+      )}
       </Typography>
     </Paper>
   );
