@@ -82,9 +82,10 @@ const Home = () => {
                     display: 'flex', 
                     flexDirection: 'column', 
                     height: 240, 
+                    width: 301,
                   }}
                 >
-                  <Chart />
+                  <TaskChart />
                 </Paper>
               </Grid>
             {/* </Draggable> */}
@@ -92,11 +93,10 @@ const Home = () => {
         </Grid>
         </>) : (
           <Typography>My Life Testing Landing Page</Typography>
-        )} 
+        )}
     </Container>
-    </>
-    )}
-    </div>
+ </div> 
   );
 };
+
 export default Home;
