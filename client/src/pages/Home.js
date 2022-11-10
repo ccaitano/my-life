@@ -14,13 +14,12 @@ import Box from '@mui/material/Box';
 import Draggable from 'react-draggable';
 
 import '../css/index.css'
+import { Typography } from '@mui/material';
 
 const Home = () => {
 
   return (
     <Container maxWidth="lg" background="none" sx={{ mt: 4, mb: 4 }} >
-
-      My Life Testing Landing Page
       
       {Auth.loggedIn() ? (
                 <>
@@ -94,7 +93,9 @@ const Home = () => {
             {/* </Draggable> */}
           </Box>
         </Grid>
-        </>) : ('')} 
+        </>) : (
+          <Typography>My Life Testing Landing Page</Typography>
+        )} 
     </Container>
   );
 };
