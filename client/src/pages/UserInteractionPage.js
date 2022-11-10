@@ -14,7 +14,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import {useQuery} from '@apollo/react-hooks';
 import {QUERY_USERS} from '../utils/queries';
-
+import Style from '../css/Style.css';
 
 const Content = () => {
   const [filteredData, setFilteredData] = useState([]);
@@ -32,16 +32,17 @@ const Content = () => {
     console.log(userEmail); 
 
 
-    // const newFilter = userEmail.filter((value) => {
-    //   return value.email(searchWord);
-    // });
+    const newFilter = userEmail.filter((value) => {
+      return value.toLowerCase().includes(searchWord.toLowerCase());
+    });
+    console.log(newFilter);
 
     if (searchWord === "") {
       setFilteredData([]);
     }
-    //  else {
-    //   setFilteredData(newFilter);
-    // }
+     else {
+      setFilteredData(newFilter);
+    }
   };
 
   const clearInput = () => {
@@ -83,11 +84,13 @@ const Content = () => {
         </div>
         {filteredData.length !== 0 && (
         <div>
-          {filteredData.slice(0, 15).map((value, key) => {
+          {filteredData.slice(0, 15).map((value) => {
             return (
-              <a className="dataItem" href={value.link} >
-                <p>{value.username} </p>
+              <div key={value}>
+              <a className="dataItem" href={value}>
+                <p>{value} </p>
               </a>
+              </div>
             );
           })}
         </div>
