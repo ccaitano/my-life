@@ -58,9 +58,9 @@ const Home = () => {
           {/* </Draggable> */}
         </Box>
         {/* Weather API Container */}
-        <Box>
+        {/* <Box> */}
           {/* <Draggable> */}
-            <Grid item xs={12} md={8} lg={4}>
+            {/* <Grid item xs={12} md={8} lg={4}>
               <Paper
                 sx={{
                   p: 2,
@@ -72,9 +72,9 @@ const Home = () => {
                 <Weather />
               </Paper>
 
-            </Grid>
+            </Grid> */}
           {/* </Draggable> */}
-        </Box>
+        {/* </Box> */}
         
         {/* Positive Affirmation Container */}
         <Box>
