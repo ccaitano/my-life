@@ -60,7 +60,7 @@ const Content = () => {
         sx={{ borderBottom: '1px solid rgba(0, 0, 0, 0.12)' }}
       >
         <Toolbar>
-          <Grid container spacing={2} alignItems="center">
+          <Grid container spacing={45} alignItems="center">
             <Grid item>
               {/* <SearchIcon color="inherit" sx={{ display: 'block' }} /> */}
             </Grid>
@@ -82,21 +82,21 @@ const Content = () => {
               />
               <div>
           {filteredData.length === 0 ? (
-            <SearchIcon />
+            <SearchIcon alignItems="left"/>
           ) : (
             <CloseIcon id="clearBtn" onClick={clearInput} />
           )}
         </div>
             </Grid>
             <Grid item>
-              <Button variant="contained" sx={{ mr: 1 }}>
+              {/* <Button variant="contained" sx={{ mr: 1 }}>
                 Search for user
-              </Button>
-              <Tooltip title="Reload">
+              </Button> */}
+              {/* <Tooltip title="Reload">
                 <IconButton>
                   <RefreshIcon color="inherit" sx={{ display: 'block' }} />
                 </IconButton>
-              </Tooltip>
+              </Tooltip> */}
             </Grid>
           </Grid>
         </Toolbar> 
