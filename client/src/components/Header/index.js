@@ -16,12 +16,10 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { mainListItems} from './listItems';
-import { grey } from '@mui/material/colors';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import LogoutIcon from '@mui/icons-material/Logout';
-
 import Auth from '../../utils/auth';
 
 const drawerWidth = 240;
@@ -51,31 +49,6 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-// const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-//   ({ theme, open }) => ({
-//     '& .MuiDrawer-paper': {
-//       position: 'relative',
-//       whiteSpace: 'nowrap',
-//       width: drawerWidth,
-//       transition: theme.transitions.create('width', {
-//         easing: theme.transitions.easing.sharp,
-//         duration: theme.transitions.duration.enteringScreen,
-//       }),
-//       boxSizing: 'border-box',
-//       ...(!open && {
-//         overflowX: 'hidden',
-//         transition: theme.transitions.create('width', {
-//           easing: theme.transitions.easing.sharp,
-//           duration: theme.transitions.duration.leavingScreen,
-//         }),
-//         width: theme.spacing(7),
-//         [theme.breakpoints.up('sm')]: {
-//           width: theme.spacing(9),
-//         },
-//       }),
-//     },
-//   }),
-// );
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -92,12 +65,12 @@ function Header() {
   const toggleDrawer = () => {
     setOpen(!open);
   };
-  const [auth, setAuth] = React.useState(true);
+  // const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };
+  // const handleChange = (event) => {
+  //   setAuth(event.target.checked);
+  // };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -136,7 +109,6 @@ function Header() {
                     <MenuIcon />
                   </IconButton>
                 </>) : ('')}
-
             <Typography
               component="h1"
               variant="h4"
@@ -145,9 +117,6 @@ function Header() {
               sx={{ flexGrow: 10 }}
             >
               MyLife
-
-            
-
             </Typography>
             {Auth.loggedIn() ? (
                 <>
@@ -223,14 +192,6 @@ function Header() {
             boxSizing: 'border-box',
           },
         }} anchor="left" variant="persistent" open={open}>
-        {/* <Toolbar
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'flex-end',
-            px: [1],
-          }}
-        > */}
         <DrawerHeader>
           <IconButton onClick={toggleDrawer}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}

@@ -7,7 +7,6 @@ import ToDoList from '../components/ToDo/index';
 import Quote from '../components/Quote/index';
 import TaskChart from '../components/Chart/index';
 import Auth from '../utils/auth';
-import Link from '@mui/material/Link';
 // import Draggable from 'react-draggable';
 import Box from '@mui/material/Box';
 import '../css/index.css'
