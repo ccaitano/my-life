@@ -15,8 +15,6 @@ import { ADD_TASK, REMOVE_TASK, EDIT_TASK, COUNT_TOTAL, COUNT_COMPLETED, MARK_CO
 import './App.css'
 
 // Add next line in for validating if a user is logged in or not
-// import Auth from '../../utils/auth';
-
 const ToDoList = () => {
     // Declare queries and mutations
     const { data } = useQuery( QUERY_ME );
@@ -155,17 +153,6 @@ const ToDoList = () => {
                     style={{ maxWidth: "25vw", width: "50vw"}}
                   />
                     {/* Following Block of Code is if we add in priority... */}
-                    {/* <div className="dropdown">
-                        <Button type="submit" variant="contained" color="primary" className={`dropbtn ${eagerness}`}>
-                        {eagerness || 'Priority'}
-                        </Button>
-                        <div className="dropdown-content">
-                            <p onClick={() => setEagerness(eagernessLevel[0])}>Must do</p>
-                            <p onClick={() => setEagerness(eagernessLevel[1])}>Want to</p>
-                            <p onClick={() => setEagerness(eagernessLevel[2])}>If time</p>
-                        </div>
-                    </div> */}
-                    {/* <button className="bucket-button">Add Reminder</button> */}
                   <Button type="submit" variant="contained" color="primary"  >Add Reminder</Button>
                 </FormControl>
               </form>
@@ -174,10 +161,6 @@ const ToDoList = () => {
                 {tasks.map((task) => (
                   <Card key={task._id} className="card mb-3">
                     {task.completed ? <p style={{textDecoration: 'line-through'}}>{task.taskText}</p> : <p style={{textDecoration: 'none'}}>{task.taskText}</p>}
-                    {/* Following block of code is if we want to display when the task was created... */}
-                    {/* <span style={{ fontSize: '1rem' }}>
-                      created on {task.createdAt}
-                      </span> */}
                     {/* Edit Icon to Edit Existing Reminder/Task */}
                     <p onClick={() => handleOpen(task)}><EditIcon/></p>
                     {editItem ? (
