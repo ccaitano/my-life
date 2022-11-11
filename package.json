@@ -20,6 +20,6 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
-    
+    "react-push-notification": "^1.3.0"
   }
 }

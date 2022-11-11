@@ -69,13 +69,41 @@ const ToDoList = () => {
           // Adds +1 to totalTask count
           countTotalTask();
           setTaskText('');
+          handleNotification(taskText);
+          // const schedule = require('node-schedule');
+          // const rule = new schedule.RecurrenceRule();
+          // rule.minute = 27;
+          // schedule.scheduleJob(rule, handleNotification(taskText));
           window.location.reload();
-          console.log(tasks);
+          console.log(taskText);
         } catch (err) {
           console.error(err);
         }
       };
-    
+      
+      const handleNotification = (taskText) => {
+        let notification;
+        // let interval;
+        Notification.requestPermission().then(perm => {
+          if(perm === 'granted') {
+            // document.addEventListener("visibilitychange", ()=>{
+              // if (document.visibilityState === "hidden") {
+                // interval = setInterval(() => {
+                  notification = new Notification("MyLife", {
+                    tag: "Status",
+                    // body: "Did you complete your tasks?",
+                    body: taskText,
+                  });
+                // }, 100);
+              // } else {
+              //   // clearInterval(interval);
+              //   notification.close();
+              // };
+            // });
+          }
+        });
+      };
+
     // handleChange - Updates text input when adding reminder/task
     const handleChange = (event) => {
       event.preventDefault();
@@ -144,6 +172,7 @@ const ToDoList = () => {
         <div>
           <h1>Reminders</h1>
             <Grid>
+              
               <form onSubmit={handleFormSubmit} >
                 <FormControl>
                   <TextField
