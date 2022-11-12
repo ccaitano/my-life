@@ -49,6 +49,7 @@ export const QUERY_USERS = gql`
       }
       totalTasks
       completedTasks
+      notifications
     }
   }
 `;
@@ -71,6 +72,7 @@ export const QUERY_USER = gql`
       }
       totalTasks
       completedTasks
+      notifications
     }
   }
 `;
@@ -96,3 +98,35 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+// export const GET_NOTIFICATIONS = gql`
+// query notifications  {
+//     notifications {
+//         edges {
+//             cursor
+//             node {
+//                 id
+//                 title
+//                 content
+//                 actionUrl
+//                 archivedAt
+//                 category
+//                 topic
+//                 customAttributes
+//                 readAt
+//                 seenAt
+//                 sentAt
+//             }
+//         }
+//         pageInfo {
+//             endCursor
+//             hasNextPage
+//             hasPreviousPage
+//             startCursor
+//         }
+//         totalCount
+//         unreadCount
+//         unseenCount
+//     }
+// }
+// `;

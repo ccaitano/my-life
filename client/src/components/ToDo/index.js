@@ -13,6 +13,7 @@ import { Button, FormControl, TextField, Stack, Box, Form} from '@mui/material';
 import { QUERY_TASKS, QUERY_ME } from '../../utils/queries';
 import { ADD_TASK, REMOVE_TASK, EDIT_TASK, COUNT_TOTAL, COUNT_COMPLETED, MARK_COMPLETED, COUNT_DELETE } from '../../utils/mutations';
 import './App.css'
+import MagicBell, { FloatingNotificationInbox, NotificationList, useNotifications, PushNotificationsSubscriber } from '@magicbell/magicbell-react';
 
 // Add next line in for validating if a user is logged in or not
 // import Auth from '../../utils/auth';
@@ -37,15 +38,18 @@ const theme = createTheme({
 });
 
 const ToDoList = () => {
+
     // Declare queries and mutations
     const { data } = useQuery( QUERY_ME );
-    let tasks = data?.me.tasks || [];
+    let tasks = data?.me.tasks || null;
+    let userData = data?.me || null;
     const [removeTask] = useMutation( REMOVE_TASK );
     const [editTask] = useMutation( EDIT_TASK );
     const [countTotalTask] = useMutation( COUNT_TOTAL );
     const [countCompletedTask] = useMutation( COUNT_COMPLETED );
     const [markCompletedTask] = useMutation( MARK_COMPLETED );
     const [countDeleteTask] = useMutation( COUNT_DELETE );
+    // const { notifications } = useQuery( GET_NOTIFICATIONS);
     const [addTask] = useMutation( ADD_TASK, {
         update(cache, { data: { addTask }}) {
             try {
@@ -58,6 +62,7 @@ const ToDoList = () => {
             }
         },
     });
+    console.log(userData);
     // Set states
     const [taskText, setTaskText] = useState('');
     const [editTaskText, setEditTaskText] = useState('');
@@ -88,7 +93,8 @@ const ToDoList = () => {
           // Adds +1 to totalTask count
           countTotalTask();
           setTaskText('');
-          handleNotification(taskText);
+          // componentDidMount();
+          createNotification(taskText, userData.email);
           // const schedule = require('node-schedule');
           // const rule = new schedule.RecurrenceRule();
           // rule.minute = 27;
@@ -100,28 +106,28 @@ const ToDoList = () => {
         }
       };
       
-      const handleNotification = (taskText) => {
-        let notification;
-        // let interval;
-        Notification.requestPermission().then(perm => {
-          if(perm === 'granted') {
-            // document.addEventListener("visibilitychange", ()=>{
-              // if (document.visibilityState === "hidden") {
-                // interval = setInterval(() => {
-                  notification = new Notification("MyLife", {
-                    tag: "Status",
-                    // body: "Did you complete your tasks?",
-                    body: taskText,
-                  });
-                // }, 100);
-              // } else {
-              //   // clearInterval(interval);
-              //   notification.close();
-              // };
-            // });
-          }
-        });
-      };
+      // const handleNotification = (taskText) => {
+      //   let notification;
+      //   // let interval;
+      //   Notification.requestPermission().then(perm => {
+      //     if(perm === 'granted') {
+      //       // document.addEventListener("visibilitychange", ()=>{
+      //         // if (document.visibilityState === "hidden") {
+      //           // interval = setInterval(() => {
+      //             notification = new Notification("MyLife", {
+      //               tag: "Status",
+      //               // body: "Did you complete your tasks?",
+      //               body: taskText,
+      //             });
+      //           // }, 100);
+      //         // } else {
+      //         //   // clearInterval(interval);
+      //         //   notification.close();
+      //         // };
+      //       // });
+      //     }
+      //   });
+      // };
 
     // handleChange - Updates text input when adding reminder/task
     const handleChange = (event) => {
@@ -187,12 +193,80 @@ const ToDoList = () => {
       }
     };
 
+const createNotification = (taskText, email) => {
+  // Update headers
+  const myHeaders = new Headers();
+  myHeaders.append('X-MAGICBELL-API-KEY','65dc400d927974791246777c59a0d4cdae7029e0');
+  myHeaders.append('X-MAGICBELL-API-SECRET', 'z2Pic7hn4eeN3eKTmn6CBvt/Jj03eHjEK4xVkeZI');
+  myHeaders.append('X-MAGICBELL-USER-EMAIL', userData.email);
+  console.log(myHeaders.values);
+  // Set Up Admin Data for MagicBell
+  fetch('https://api.magicbell.com/notifications', {
+    headers: {
+      'X-MAGICBELL-API-KEY': '65dc400d927974791246777c59a0d4cdae7029e0',
+      'X-MAGICBELL-API-SECRET': 'z2Pic7hn4eeN3eKTmn6CBvt/Jj03eHjEK4xVkeZI',
+      'X-MAGICBELL-USER-EMAIL': userData.email
+    },
+  }).then(response => {
+      console.log(response.headers);
+  });
+
+  // Create Actual Notification
+  fetch('https://api.magicbell.com/notifications', {
+    method: 'POST',
+    headers: {
+      'X-MAGICBELL-API-KEY': '391b3143b9e12d49446b88586c9a7c7261aa4c7a',
+      'X-MAGICBELL-API-SECRET': 'z2Pic7hn4eeN3eKTmn6CBvt/Jj03eHjEK4xVkeZI',
+    },
+    body: JSON.stringify({
+      notification: {
+        title: "New Task Added",
+        content: taskText,
+        recipients: [{
+          email: email
+        }]
+      }
+    })
+  });
+}
+    const stores = [
+      { id: 'default', defaultQueryParams: { read: false } },
+      { id: 'read', defaultQueryParams: { read: true } },
+    ];
+
+    const tabs = [
+      { storeId: 'default', label: 'Latest' },
+      { storeId: 'read', label: 'Archive' },
+    ];
+
     return (
         <Box sx={{ backgroundColor: 'hsl(0, 100%, 30%, 0.9)', borderColor: 'green', width: '55vw', borderRadius: '16px' }}>
           <h1>Reminders</h1>
 
             <Grid>
-
+            {userData ? (
+              <MagicBell
+              apiKey="391b3143b9e12d49446b88586c9a7c7261aa4c7a"
+              userEmail={userData.email}
+              stores={stores}
+            >
+              {(props) => (
+                <FloatingNotificationInbox
+                  height={350}
+                  placement="bottom-start"
+                  tabs={tabs}
+                  closeOnNotificationClick={false}
+                  closeOnClickOutside={true}
+                  {...props}
+                />
+              )}
+            </MagicBell>
+            ) : null}
+            {/* <PushNotificationsSubscriber serviceWorkerPath="/service-worker.js">
+              {({ createSubscription }) => (
+                <button onClick={registerSubscription}>Enable push notifications</button>
+              )}
+            </PushNotificationsSubscriber> */}
               <form onSubmit={handleFormSubmit} >
                 <FormControl >
                   <TextField
@@ -208,7 +282,7 @@ const ToDoList = () => {
               </form>
               <h3>Current Tasks...</h3>
               <div id="taskList">
-                {tasks.map((task) => (
+                {tasks?.map((task) => (
                   <Card key={task._id} className="card mb-3">
                     {task.completed ? <p style={{textDecoration: 'line-through'}}>{task.taskText}</p> : <p style={{textDecoration: 'none'}}>{task.taskText}</p>}
                     {/* Edit Icon to Edit Existing Reminder/Task */}

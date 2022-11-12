@@ -11,6 +11,7 @@ const typeDefs = gql`
     tasks: [Task]
     totalTasks: Int
     completedTasks: Int
+    notifications: [Notification]
   }  
   
   type Task {
@@ -21,6 +22,39 @@ const typeDefs = gql`
     completed: Boolean
   }
 
+  type Notification {
+    totalCount: Int
+    unreadCount: Int
+    unseenCount: Int
+    edges: [Edges]
+    pageInfo: [PageInfo]
+  }
+
+  type Edges {
+      cursor: String
+      node: [Node]
+  }
+
+  type Node {
+    _id: ID
+    title: String
+    content: String
+    actionUrl: String
+    category: String
+    topic: String
+    customAttributes: String
+    sentAt: String
+    readAt: String
+    seenAt: String
+    archivedAt: String
+  }
+
+  type PageInfo {
+    hasNextPage: Boolean
+    hasPreviousPage: Boolean
+    startCursor: String
+    endCursor: String
+  }
   input savedTaskInput {
     _id: ID
     taskText: String
@@ -48,7 +82,7 @@ const typeDefs = gql`
     users: [User]
     user(email: String!): User
     me: User
-    
+    notifications: User
    
   }
 
