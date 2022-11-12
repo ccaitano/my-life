@@ -12,7 +12,6 @@ import Box from '@mui/material/Box';
 import '../css/index.css'
 
 import { autocompleteClasses, Typography } from '@mui/material';
-import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
