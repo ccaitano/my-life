@@ -9,13 +9,32 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Card } from '@mui/material';
-import { Button, FormControl, TextField} from '@mui/material';
+import { Button, FormControl, TextField, Stack, Box, Form} from '@mui/material';
 import { QUERY_TASKS, QUERY_ME } from '../../utils/queries';
 import { ADD_TASK, REMOVE_TASK, EDIT_TASK, COUNT_TOTAL, COUNT_COMPLETED, MARK_COMPLETED, COUNT_DELETE } from '../../utils/mutations';
 import './App.css'
 
 // Add next line in for validating if a user is logged in or not
 // import Auth from '../../utils/auth';
+
+import { createTheme } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#3f50b5',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+});
 
 const ToDoList = () => {
     // Declare queries and mutations
@@ -141,32 +160,21 @@ const ToDoList = () => {
     };
 
     return (
-        <div>
+        <Box sx={{ backgroundColor: 'hsl(0, 100%, 30%, 0.9)', borderColor: 'green', width: '55vw', borderRadius: '16px' }}>
           <h1>Reminders</h1>
-            <Grid>
+            <Grid 
+            >
               <form onSubmit={handleFormSubmit} >
-                <FormControl>
+                <FormControl >
                   <TextField
                     name="taskText" 
                     label="Write a reminder"
                     type="text"
                     value={taskText || ""}
                     onChange={handleChange}
-                    style={{ maxWidth: "25vw", width: "50vw"}}
+                    style={{ width: "50vw"}}
                   />
-                    {/* Following Block of Code is if we add in priority... */}
-                    {/* <div className="dropdown">
-                        <Button type="submit" variant="contained" color="primary" className={`dropbtn ${eagerness}`}>
-                        {eagerness || 'Priority'}
-                        </Button>
-                        <div className="dropdown-content">
-                            <p onClick={() => setEagerness(eagernessLevel[0])}>Must do</p>
-                            <p onClick={() => setEagerness(eagernessLevel[1])}>Want to</p>
-                            <p onClick={() => setEagerness(eagernessLevel[2])}>If time</p>
-                        </div>
-                    </div> */}
-                    {/* <button className="bucket-button">Add Reminder</button> */}
-                  <Button type="submit" variant="contained" color="primary"  >Add Reminder</Button>
+                  <Button type="submit" variant="contained" sx={{ color: 'yellow', backgroundColor: 'orange', borderColor: 'green' }} >Add Reminder</Button>
                 </FormControl>
               </form>
               <h3>Current Tasks...</h3>
@@ -210,7 +218,7 @@ const ToDoList = () => {
                
               </div>
             </Grid>
-        </div>
+        </Box>
     );
   };
   
