@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Task } = require('../models');
+const { User, Task, Notification } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -24,11 +24,17 @@ const resolvers = {
     // Query current User with associated tasks
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('tasks');
+        return User.findOne({ _id: context.user._id }).populate('tasks').populate('notifications');
       }
       throw new AuthenticationError('You need to be logged in!');
     },
     
+    notifications: async(parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate('notifications');
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    }
 
   },
 
