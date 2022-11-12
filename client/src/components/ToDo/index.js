@@ -88,13 +88,41 @@ const ToDoList = () => {
           // Adds +1 to totalTask count
           countTotalTask();
           setTaskText('');
+          handleNotification(taskText);
+          // const schedule = require('node-schedule');
+          // const rule = new schedule.RecurrenceRule();
+          // rule.minute = 27;
+          // schedule.scheduleJob(rule, handleNotification(taskText));
           window.location.reload();
-          console.log(tasks);
+          console.log(taskText);
         } catch (err) {
           console.error(err);
         }
       };
-    
+      
+      const handleNotification = (taskText) => {
+        let notification;
+        // let interval;
+        Notification.requestPermission().then(perm => {
+          if(perm === 'granted') {
+            // document.addEventListener("visibilitychange", ()=>{
+              // if (document.visibilityState === "hidden") {
+                // interval = setInterval(() => {
+                  notification = new Notification("MyLife", {
+                    tag: "Status",
+                    // body: "Did you complete your tasks?",
+                    body: taskText,
+                  });
+                // }, 100);
+              // } else {
+              //   // clearInterval(interval);
+              //   notification.close();
+              // };
+            // });
+          }
+        });
+      };
+
     // handleChange - Updates text input when adding reminder/task
     const handleChange = (event) => {
       event.preventDefault();
@@ -162,8 +190,9 @@ const ToDoList = () => {
     return (
         <Box sx={{ backgroundColor: 'hsl(0, 100%, 30%, 0.9)', borderColor: 'green', width: '55vw', borderRadius: '16px' }}>
           <h1>Reminders</h1>
-            <Grid 
-            >
+
+            <Grid>
+
               <form onSubmit={handleFormSubmit} >
                 <FormControl >
                   <TextField
@@ -182,10 +211,6 @@ const ToDoList = () => {
                 {tasks.map((task) => (
                   <Card key={task._id} className="card mb-3">
                     {task.completed ? <p style={{textDecoration: 'line-through'}}>{task.taskText}</p> : <p style={{textDecoration: 'none'}}>{task.taskText}</p>}
-                    {/* Following block of code is if we want to display when the task was created... */}
-                    {/* <span style={{ fontSize: '1rem' }}>
-                      created on {task.createdAt}
-                      </span> */}
                     {/* Edit Icon to Edit Existing Reminder/Task */}
                     <p onClick={() => handleOpen(task)}><EditIcon/></p>
                     {editItem ? (

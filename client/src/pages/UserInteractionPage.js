@@ -68,12 +68,8 @@ console.log('I am true');
         <Toolbar>
           <Grid container spacing={5} alignItems="center">
             <Grid item>
-              {/* <SearchIcon color="inherit" sx={{ display: 'block' }} /> */}
             </Grid>
             <Grid item xs >
-              {/* <Select
-              options={wordEntered}
-              /> */}
               <TextField
                 fullWidth
                 id="outlined-basic" label="Search Users" variant="outlined"
@@ -96,14 +92,6 @@ console.log('I am true');
         </div>
             </Grid>
             <Grid item>
-              {/* <Button variant="contained" sx={{ mr: 1 }}>
-                Search for user
-              </Button> */}
-              {/* <Tooltip title="Reload">
-                <IconButton>
-                  <RefreshIcon color="inherit" sx={{ display: 'block' }} />
-                </IconButton>
-              </Tooltip> */}
             </Grid>
           </Grid>
         </Toolbar> 
