@@ -17,6 +17,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
 import BeenhereTwoToneIcon from '@mui/icons-material/BeenhereTwoTone';
 import MobileScreenShareTwoToneIcon from '@mui/icons-material/MobileScreenShareTwoTone';
+import { Stack } from '@mui/system';
 
 const landingTheme = createTheme({
   typography: {
@@ -50,57 +51,30 @@ const Home = () => {
 
   return (
     <div>
-    <Container maxWidth="lg" background="none" sx={{ mt: 4, mb: 4 }} >      
-      {Auth.loggedIn() ? (
-                <>
-        <Grid container spacing={4}>
-          {/* Weather API Container */}
-          {/* <Box> */}
-            {/* <Draggable> */}
-              {/* <Grid item xs={12} md={8} lg={4}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    m: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <Weather />
-                </Paper>
+      <Container maxWidth="lg" background="none" sx={{ mt: 4, mb: 4 }} >      
+        {Auth.loggedIn() ? (
+          <>
+          <Grid container spacing={4}>
+            <Grid item xs={8}>
 
-              </Grid> */}
-            {/* </Draggable> */}
-          {/* </Box> */}
-          {/* To-Do List Container */}
-          {/* <Box> */}
-            {/* <Draggable> */}
-            <Box>
-              <Grid item xs={12} md={4} lg={8}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    width: 800,
-                    height: 800,
-                    justifyContent: 'center',
-                    backgroundColor: '344955',
-                    display: 'flex',
-                    // p: 0,
-                    // width: '100%',
-                    // height: '100%'
-                  }}
-                >
-                  <ToDoList />
-                </Paper>
-              </Grid>
-            </Box>
-            {/* </Draggable> */}
-          {/* </Box> */}
-          {/* Positive Affirmation Container */}
-          <Box>
-            {/* <Draggable> */}
-              <Grid item xs={12} md={4} lg={8}>
+              <Paper
+                sx={{
+                  p: 2,
+                  // width: 800,
+                  height: 800,
+                  justifyContent: 'center',
+                  backgroundColor: '344955',
+                  display: 'flex',
+                }}
+              >
+                <ToDoList />
+              </Paper>
+   
+            </Grid>
+            <Grid item xs={4}>
+           
+              <Stack spacing={2}>
+              {/* Positive Affirmation Container */}    
                 <Paper 
                   sx={{ 
                     p: 2, 
@@ -111,31 +85,24 @@ const Home = () => {
                 >
                   <Quote />
                 </Paper>
-              </Grid>
-            {/* </Draggable> */}
-          </Box>
-          {/* Chart/History Container */}
-          <Box>
-            {/* <Draggable>    */}
-              <Grid item xs={12} md={8} lg={4}>
+              {/* Chart/History Container */}
                 <Paper 
                   sx={{ 
                     p: 2, 
                     display: 'flex', 
                     flexDirection: 'column', 
                     height: 240, 
-                    width: 301,
+                    // width: 301,
                   }}
                 >
                   <TaskChart />
                 </Paper>
-              </Grid>
-            {/* </Draggable> */}
-          </Box>
+              </Stack>
+            
+            </Grid>
         </Grid>
         </>) : (
           <ThemeProvider theme={landingTheme}>
-            
           <Container
             sx={{
               bgcolor: 'text.disabled',
@@ -217,7 +184,6 @@ const Home = () => {
                 <Typography variant="h5" align="center">
                   Share your results with friends and review your history log of previous tasks met.
                 </Typography>
-         
         </Grid>
       </Grid>
     </div>
