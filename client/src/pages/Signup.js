@@ -1,18 +1,12 @@
 import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { spacing } from '@mui/system';
 import Container from '@mui/material/Container';
@@ -51,12 +45,7 @@ const Signup = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    
-    // const form = event.currentTarget;
-    // if (form.checkValidity() === false) {
-    //   event.preventDefault();
-    //   event.stopPropagation();
-    // };
+
 
     try {
       const { data } = await addUser({
@@ -92,12 +81,8 @@ const Signup = () => {
             alignItems: 'center',
           }}
         >
-          
           <Paper elevation={3} >
           <Box sx={{ p: 3 }}> 
-          {/* <Avatar textAlign="center" sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar> */}
           <Typography component="h1" variant="h5" fontFamily="'Arsenal', sans-serif;">
             SIGN UP
           </Typography>
@@ -185,61 +170,6 @@ const Signup = () => {
         </Box>
         </ThemeProvider>
         </main>
-    
-    //   <div className="col-12 col-lg-10">
-    //     <div className="card">
-    //       <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
-    //       <div className="card-body">
-    //         {data ? (
-    //           <p>
-    //             Success! You may now head{' '}
-    //             <Link to="/">back to the homepage.</Link>
-    //           </p>
-    //         ) : (
-    //           <form onSubmit={handleFormSubmit}>
-    //             <input
-    //               className="form-input"
-    //               placeholder="Your username"
-    //               name="username"
-    //               type="text"
-    //               value={formState.name}
-    //               onChange={handleChange}
-    //             />
-    //             <input
-    //               className="form-input"
-    //               placeholder="Your email"
-    //               name="email"
-    //               type="email"
-    //               value={formState.email}
-    //               onChange={handleChange}
-    //             />
-    //             <input
-    //               className="form-input"
-    //               placeholder="******"
-    //               name="password"
-    //               type="password"
-    //               value={formState.password}
-    //               onChange={handleChange}
-    //             />
-    //             <button
-    //               className="btn btn-block btn-primary"
-    //               style={{ cursor: 'pointer' }}
-    //               type="submit"
-    //             >
-    //               Submit
-    //             </button>
-    //           </form>
-    //         )}
-
-    //         {error && (
-    //           <div className="my-3 p-3 bg-danger text-white">
-    //             {error.message}
-    //           </div>
-    //         )}
-    //       </div>
-    //     </div>
-    //   </div>
-    
   );
 };
 
