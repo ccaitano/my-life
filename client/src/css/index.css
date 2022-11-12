@@ -1,4 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Arsenal&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+html {
+  font-family: "Montserrat", sans-serif;
+}
+
+.bluredForm {
+  width: 350px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.25);
+}
 
 .page{
   background-image: url("https://images.pexels.com/photos/844297/pexels-photo-844297.jpeg?auto=compress&cs=tinysrgb&w=1600");

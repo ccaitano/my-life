@@ -52,6 +52,7 @@ function App() {
           <ThemeProvider theme={mdTheme}>
             <Box sx={{ display: 'flex' }} textAlign="center">
               <Header />
+              {/* <DashboardLayout /> */}
               <Box
                 component="main"
                 sx={{
