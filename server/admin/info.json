@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "mylife-app-5fcb4",
+  "private_key_id": "b30b3bdaeb27e32f09dc0f0c3397d04e4d2a1dba",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQClqyDH7PHpUE8D\n2x9Q6fg+ehHHutIpQlPNT1g4BMfR9iQ+X/qyzqbnvBpjSxyMv0FkvBPEgifyg+0X\nnrN5ysoeqToPScmDzdIuuLnnjKNnRibKjn0bg1adngzd4cMAHgrG5os255QGo4mT\nMWeGSBLtASVc2QGXeAIAiZ+ReiSdctVk6MFfnnhQ7wy+phMrAI8mbnsXhG9AHHFX\nL6f85oZcOup5LRmCXYc8un5RN4cclWYRxGWMjqi8hP/p1Yn7bnwW106ErTZZ3lvp\nGqWe2k/M1pcAtfIiS9oX8gd5qmPafiMEcQEtgOro3QERqCPuefgMVYNNaLATK7ml\n9/Qa92DDAgMBAAECggEAFDumMUSa9ue7/riQRo2Mp/S4nzAN4sQbAAQkvhK3ZMku\n+/802wmqELtEbcQKpJXnIqplr6ZFwrSiDDRxrvo5XS1FzgAxAEvu0430BneCrWY/\n7pUgam/L8EwRPjgIXMdOgaQ+dGIsDfODJdruzdOXnCJ7sa8/JoSdmfs05cuJFUFy\nbGI/Kb33mkSCYT8a5scBPgWNydOEUgxOicTqcPRgkPGGKJA+ZWrJ3+lb44uJO7P3\nONIkC2cgmcumJ6c5H2Uso0CrTlrobszLGJ7ltx8IrZNN5AOXrXr4gskiHPMI9Unu\ngP7E1KdfMvODL49+LCbV2IpmeLrq6sS0KDQPVRKOwQKBgQDoIhPa9obs0SdZfYds\nd598PRlmpiRY8UwYIEeRsK12MEoE1d72hEMcIwFt4fhrki+4HxedsLgfYu8HDc0k\nmWwRGpojdrwgKGB8pODAxLZr9S8hW7vdX6erYgUTzn/DyO74gpcIzt8tzk+DYsUR\nnz5FZ9CrBGfogDK/GOJclZktWwKBgQC2s6ZYh6HtvxrWgjERuRNJw1+0Yfs0c2It\nRBn5tUvSNVdnCttIjXtJ4PGeSWVV515LJ/sMxFMEpphni+aYmfjSWA4iQhGfB77N\nkOyLvntnmNaOnSAWhGE1TqDt2EqMWyhwpodD3tE1KU56Yu9tBwuHrRUwNH0lCpra\nJ38GqUHuuQKBgBrk/9npoB5F6UI0CgGmJmM1jQDYlPN9GWzeKIyXpLFBzQGcadWz\n4zaaU6sQeEC2UjMJ3ymU9PAl/T2a+r6Xy+57X4pmUkuDghJO4/9RizUc1hYOU8jF\nMV7o31+5GBJt8En4j1kk5rSe55V4Vw7AnW1bJtD5lLRaTgbX8jn51yJrAoGBAJFO\ngl9oyB3JXzP56cLZuoBxFb3mK5+EoTG1Nx+F1F7EM9ZtKQgkFkkk0aX9Y84VrMYD\nb0SxJAHP6eh4uRbnZqEMjXkrqM4dn9/ogmmGPqmfQg2849dkw9dcyNtBqdDFc31c\nxLnzDdrFFnh6FUhWURJAU1i6dkmujIgy33FRznFpAoGBANCYyxcymoAAejK/8Nth\noGvWVhBeldsWuGCQ+ymzYX4tWQoeRVeQVlZUoCmbjTIfv1pyDdcMQkrXGIkRzYe1\n1hKEhyfHmi3h7tKUnhEPYJRk2OhDq+ZtC0i1s7TDxpb2ncH8IA35kRu5wxI5FH42\nWLoaCBf8+RkVJVLL1ckwecps\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-lsod7@mylife-app-5fcb4.iam.gserviceaccount.com",
+  "client_id": "110845186290191807490",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-lsod7%40mylife-app-5fcb4.iam.gserviceaccount.com"
+}

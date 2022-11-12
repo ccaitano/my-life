@@ -2,7 +2,7 @@ import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Drawer from '@mui/material/Drawer';
-import MuiAppBar from '@mui/material/AppBar';
+import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
@@ -16,12 +16,17 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { mainListItems} from './listItems';
-import { grey } from '@mui/material/colors';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
 import LogoutIcon from '@mui/icons-material/Logout';
-
+import Link from '@mui/material/Link';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import PeopleIcon from '@mui/icons-material/People';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import Button from '@mui/material/Button';
 import Auth from '../../utils/auth';
 
 const drawerWidth = 240;
@@ -32,24 +37,24 @@ const rightLink = {
   ml: 3,
 };
 
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(['width', 'margin'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
+// const AppBar = styled(MuiAppBar, {
+//   shouldForwardProp: (prop) => prop !== 'open',
+// })(({ theme, open }) => ({
+//   zIndex: theme.zIndex.drawer + 1,
+//   transition: theme.transitions.create(['width', 'margin'], {
+//     easing: theme.transitions.easing.sharp,
+//     duration: theme.transitions.duration.leavingScreen,
 
-  }),
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
+//   }),
+//   ...(open && {
+//     marginLeft: drawerWidth,
+//     width: `calc(100% - ${drawerWidth}px)`,
+//     transition: theme.transitions.create(['width', 'margin'], {
+//       easing: theme.transitions.easing.sharp,
+//       duration: theme.transitions.duration.enteringScreen,
+//     }),
+//   }),
+// }));
 
 // const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
 //   ({ theme, open }) => ({
@@ -87,11 +92,83 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 function Header() {
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-  const toggleDrawer = () => {
-    setOpen(!open);
+  const [state, setState] = React.useState({
+    // top: false,
+    left: false,
+    // bottom: false,
+    // right: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
   };
+
+  const list = (anchor) => (
+    <Box
+      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      {/* <List>
+        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List> */}
+       <ListItemButton component={Link} to='/login'>
+      <ListItemIcon>
+        <DashboardIcon />
+      </ListItemIcon>
+      <ListItemText primary="Log In" />
+    </ListItemButton>
+    <ListItemButton component={Link} to='/HomeReturn'>
+      <ListItemIcon>
+        <DashboardIcon />
+      </ListItemIcon>
+      <ListItemText primary="Homepage" />
+    </ListItemButton>
+    <ListItemButton component={Link} to='/UserPage'>
+      <ListItemIcon>
+        <PeopleIcon />
+      </ListItemIcon>
+      <ListItemText primary="Manage Friends!" />
+    </ListItemButton>
+    <ListItemButton>
+      <ListItemIcon>
+        <BarChartIcon />
+      </ListItemIcon>
+      <ListItemText primary="Progress" />
+    </ListItemButton>
+      {/* <Divider />
+      <List>
+        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List> */}
+    </Box>
+  );
+  // const [open, setOpen] = React.useState(false);
+  // const toggleDrawer = () => {
+  //   setOpen(!open);
+  // };
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -115,7 +192,8 @@ function Header() {
     <>
       <CssBaseline />
       {/* Top Header Nav Bar and Icons */}
-      <AppBar position="fixed" style={{ background: '#212121'}} open={open}>
+      {/* <StyledRoot> */}
+      <AppBar position="fixed" style={{ color: 'black', background: '	rgb(211,211,211, 0.2)'}} >
         <Toolbar
             sx={{
               pr: '24px', // keep right padding when drawer closed
@@ -128,10 +206,10 @@ function Header() {
                     color="inherit"
                     aria-label="open drawer"
                     onClick={toggleDrawer}
-                    sx={{
-                      marginRight: '36px',
-                      ...(open && { display: 'none' }),
-                    }}
+                    // sx={{
+                    //   marginRight: '36px',
+                    //   ...(open && { display: 'none' }),
+                    // }}
                   >
                     <MenuIcon />
                   </IconButton>
@@ -145,8 +223,6 @@ function Header() {
               sx={{ flexGrow: 10 }}
             >
               MyLife
-
-            
 
             </Typography>
             {Auth.loggedIn() ? (
@@ -217,8 +293,23 @@ function Header() {
               )}
         </Toolbar>
       </AppBar>
+
       {/* Drawer Menu on Left Hand Side of Page */}
-      <Drawer sx={{width: drawerWidth, flexShrink:0, '& .MuiDrawer-paper': {
+      <div>
+      {['left'].map((anchor) => (
+        <React.Fragment key={anchor}>
+          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+          <Drawer
+            anchor={anchor}
+            open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+          >
+            {list(anchor)}
+          </Drawer>
+        </React.Fragment>
+      ))}
+    </div>
+      {/* <Drawer sx={{width: drawerWidth, flexShrink:0, '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
           },
@@ -231,7 +322,7 @@ function Header() {
             px: [1],
           }}
         > */}
-        <DrawerHeader>
+        {/* <DrawerHeader>
           <IconButton onClick={toggleDrawer}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
@@ -240,10 +331,12 @@ function Header() {
         <List component="nav">
           {mainListItems}
         </List>
-      </Drawer>
+      </Drawer> */} 
+      {/* </StyledRoot> */}
     </>
   );
 }
 
 export default Header;
+
 

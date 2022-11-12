@@ -11,7 +11,7 @@ import Link from '@mui/material/Link';
 // import Draggable from 'react-draggable';
 import Box from '@mui/material/Box';
 import '../css/index.css'
-import { Typography } from '@mui/material';
+import { autocompleteClasses, Typography } from '@mui/material';
 
 const Home = () => {
 
@@ -22,12 +22,13 @@ const Home = () => {
                 <>
         <Grid container spacing={4}>
           {/* Weather API Container */}
-          <Box>
+          {/* <Box> */}
             {/* <Draggable> */}
-              <Grid item xs={12} md={8} lg={4}>
+              {/* <Grid item xs={12} md={8} lg={4}>
                 <Paper
                   sx={{
                     p: 2,
+                    m: 2,
                     display: 'flex',
                     flexDirection: 'column',
                     height: 240,
@@ -36,25 +37,33 @@ const Home = () => {
                   <Weather />
                 </Paper>
 
-              </Grid>
+              </Grid> */}
             {/* </Draggable> */}
-          </Box>
+          {/* </Box> */}
           {/* To-Do List Container */}
-          <Box>
+          {/* <Box> */}
             {/* <Draggable> */}
+            <Box>
               <Grid item xs={12} md={4} lg={8}>
                 <Paper
                   sx={{
                     p: 2,
+                    width: 800,
                     height: 800,
-                    maxWidth: '150%'
+                    justifyContent: 'center',
+                    backgroundColor: '344955',
+                    display: 'flex',
+                    // p: 0,
+                    // width: '100%',
+                    // height: '100%'
                   }}
                 >
                   <ToDoList />
                 </Paper>
               </Grid>
+            </Box>
             {/* </Draggable> */}
-          </Box>
+          {/* </Box> */}
           {/* Positive Affirmation Container */}
           <Box>
             {/* <Draggable> */}
