@@ -16,10 +16,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 
-
-
-
-function Drawer() {
+function MenuDrawer() {
   const [state, setState] = React.useState({
     // top: false,
     left: false,
@@ -112,4 +109,4 @@ function Drawer() {
   );
 }
 
-export default Drawer;
+export default MenuDrawer;

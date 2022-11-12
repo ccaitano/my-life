@@ -240,15 +240,17 @@ const createNotification = (taskText, email) => {
     ];
 
     return (
+        // <Box>
         <Box sx={{ backgroundColor: 'hsl(0, 100%, 30%, 0.9)', borderColor: 'green', width: '55vw', borderRadius: '16px' }}>
           <h1>Reminders</h1>
 
-            <Grid>
+            <Grid >
             {userData ? (
               <MagicBell
               apiKey="391b3143b9e12d49446b88586c9a7c7261aa4c7a"
               userEmail={userData.email}
               stores={stores}
+              
             >
               {(props) => (
                 <FloatingNotificationInbox
