@@ -93,12 +93,7 @@ const ToDoList = () => {
           // Adds +1 to totalTask count
           countTotalTask();
           setTaskText('');
-          // componentDidMount();
           createNotification(taskText, userData.email);
-          // const schedule = require('node-schedule');
-          // const rule = new schedule.RecurrenceRule();
-          // rule.minute = 27;
-          // schedule.scheduleJob(rule, handleNotification(taskText));
           window.location.reload();
           console.log(taskText);
         } catch (err) {
@@ -231,7 +226,6 @@ const createNotification = (taskText, email) => {
 }
 
     return (
-        // <Box>
         <Box sx={{ backgroundColor: 'hsl(0, 100%, 30%, 0.9)', borderColor: 'green', width: '55vw', borderRadius: '16px' }}>
           <h1>Reminders</h1>
 
