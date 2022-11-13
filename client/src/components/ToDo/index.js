@@ -226,7 +226,7 @@ const createNotification = (taskText, email) => {
 }
 
     return (
-        <Box sx={{ backgroundColor: 'hsl(0, 100%, 30%, 0.9)', borderColor: 'green', width: '55vw', borderRadius: '16px' }}>
+        <Box sx={{ backgroundColor: 'hsl(0, 100%, 30%, 0.9)', borderColor: 'green', width: 'auto', minWidth: "30vw !important", borderRadius: '16px' }}>
           <h1>Reminders</h1>
 
             <Grid >
@@ -244,7 +244,7 @@ const createNotification = (taskText, email) => {
                     type="text"
                     value={taskText || ""}
                     onChange={handleChange}
-                    style={{ width: "50vw"}}
+                    style={{ width: "auto", minWidth: "30vw !important"}}
                   />
                   <Button type="submit" variant="contained" sx={{ color: 'yellow', backgroundColor: 'orange', borderColor: 'green' }} >Add Reminder</Button>
                 </FormControl>

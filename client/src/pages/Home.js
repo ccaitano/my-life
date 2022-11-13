@@ -61,7 +61,8 @@ const Home = () => {
                 sx={{
                   p: 2,
                   // width: 800,
-                  height: 800,
+                  height: 'auto',
+                  minHeight: '50vh !important',
                   justifyContent: 'center',
                   backgroundColor: '344955',
                   display: 'flex',
@@ -80,7 +81,7 @@ const Home = () => {
                     p: 2, 
                     display: 'flex', 
                     flexDirection: 'column', 
-                    height: 240, 
+                    height: 'auto'
                   }}
                 >
                   <Quote />
@@ -91,7 +92,7 @@ const Home = () => {
                     p: 2, 
                     display: 'flex', 
                     flexDirection: 'column', 
-                    height: 240, 
+                    height: 'auto'
                     // width: 301,
                   }}
                 >
