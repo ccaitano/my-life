@@ -43,7 +43,6 @@ const ToDoList = () => {
     const { data } = useQuery( QUERY_ME );
     let tasks = data?.me.tasks || null;
     let userData = data?.me || null;
-    console.log(tasks);
     const [removeTask] = useMutation( REMOVE_TASK );
     const [editTask] = useMutation( EDIT_TASK );
     const [countTotalTask] = useMutation( COUNT_TOTAL );
@@ -63,7 +62,7 @@ const ToDoList = () => {
             }
         },
     });
-    console.log(userData);
+
     // Set states
     const [taskText, setTaskText] = useState('');
     const [editTaskText, setEditTaskText] = useState('');
@@ -96,7 +95,6 @@ const ToDoList = () => {
           setTaskText('');
           createNotification(taskText, userData.email);
           window.location.reload();
-          console.log(taskText);
         } catch (err) {
           console.error(err);
         }
