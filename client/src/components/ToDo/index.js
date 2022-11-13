@@ -43,6 +43,7 @@ const ToDoList = () => {
     const { data } = useQuery( QUERY_ME );
     let tasks = data?.me.tasks || null;
     let userData = data?.me || null;
+    console.log(tasks);
     const [removeTask] = useMutation( REMOVE_TASK );
     const [editTask] = useMutation( EDIT_TASK );
     const [countTotalTask] = useMutation( COUNT_TOTAL );
@@ -249,6 +250,8 @@ const createNotification = (taskText, email) => {
                   <Button type="submit" variant="contained" sx={{ color: 'yellow', backgroundColor: 'orange', borderColor: 'green' }} >Add Reminder</Button>
                 </FormControl>
               </form>
+              {(tasks === null || tasks.length > 0) ? (
+                <>
               <h3>Current Tasks...</h3>
               <div id="taskList">
                 {tasks?.map((task) => (
@@ -285,6 +288,10 @@ const createNotification = (taskText, email) => {
                 ))}
                
               </div>
+              </>
+              ) : (
+                <h2>No Tasks to Display</h2>
+              )}
             </Grid>
         </Box>
     );

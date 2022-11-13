@@ -51,6 +51,8 @@ const TaskChart = () => {
         <>
         <Box>
           <h2>Progress</h2>
+          {totalTasks > 0 ? (
+            <>
           <div>
             <Pie
                 data={state}
@@ -70,6 +72,10 @@ const TaskChart = () => {
           <div>
             <Button type="submit" variant="contained" color="primary" onClick={handleReset}>Reset</Button>
           </div>
+          </>
+          ) : (
+            <h3>No Data to Display</h3>
+          )}
           </Box>
         </>
     );
