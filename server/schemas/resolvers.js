@@ -24,18 +24,10 @@ const resolvers = {
     // Query current User with associated tasks
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('tasks').populate('notifications');
+        return User.findOne({ _id: context.user._id }).populate('tasks');
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    
-    notifications: async(parent, args, context) => {
-      if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('notifications');
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    }
-
   },
 
   Mutation: {

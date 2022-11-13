@@ -26,55 +26,37 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Link from '@mui/material/Link';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import PeopleIcon from '@mui/icons-material/People';
-import BarChartIcon from '@mui/icons-material/BarChart';
+import SettingsIcon from '@mui/icons-material/Settings';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import Button from '@mui/material/Button';
 import Auth from '../../utils/auth';
 import { Icon } from '@mui/material';
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import { QUERY_TASKS, QUERY_ME } from '../../utils/queries';
+import MagicBell, { FloatingNotificationInbox, NotificationList, useNotifications, PushNotificationsSubscriber } from '@magicbell/magicbell-react';
 
 function Header () {
+  const { data } = useQuery( QUERY_ME );
+  let userData = data?.me || null;
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [state, setState] = React.useState({
-    top: false,
     left: false,
-    bottom: false,
-    right: false,
   });
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
-
     setState({ ...state, [anchor]: open });
   };
-  const list = (anchor) => (
-    <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>  
-    </Box>
-  );
+
   const rightLink = {
       fontSize: 16,
       color: 'common.white',
       ml: 3,
     };
+
   const handleMenu = (event) => {
         setAnchorEl(event.currentTarget);
       };
@@ -87,6 +69,17 @@ function Header () {
         event.preventDefault();
         Auth.logout();
       };
+
+
+      const stores = [
+        { id: 'default', defaultQueryParams: { read: false } },
+        { id: 'read', defaultQueryParams: { read: true } },
+      ];
+  
+      const tabs = [
+        { storeId: 'default', label: 'Latest' },
+        { storeId: 'read', label: 'Archive' },
+      ];
 
   return (
     <AppBar position='fixed' style={{ color: 'black', background: '	rgb(211,211,211, 0.2)'}}>
@@ -109,22 +102,41 @@ function Header () {
             </Drawer>
           </div>
         </IconButton>
-        <Typography variant='h6' component='div'>
+        <Typography variant='h4' component='div' fontFamily="'Arsenal', sans-serif;" style={{ color: 'white', paddingLeft: 20}}>
           MyLife
         </Typography>
         {Auth.loggedIn() ? (
-                <>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
+          <>
+            <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end'}}>
+              <Box sx={{ display: 'flex', alignItems: 'center'}}>
+            {userData ? (
+              <MagicBell
+              apiKey="391b3143b9e12d49446b88586c9a7c7261aa4c7a"
+              userEmail={userData.email}
+              stores={stores}
+              theme={{
+                icon: { borderColor: 'black'}
+              }}
+            >
+              {(props) => (
+                <FloatingNotificationInbox
+                  height={350}
+                  placement="bottom-start"
+                  tabs={tabs}
+                  closeOnNotificationClick={false}
+                  closeOnClickOutside={true}
+                  {...props}
+                />
+              )}
+            </MagicBell>
+            ) : null}
+            </Box>
+              <IconButton
                 size="large"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                // onClick={handleMenu}
+                onClick={handleMenu}
                 color="inherit"
               >
                 <AccountCircle />
@@ -144,19 +156,26 @@ function Header () {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                {/* <MenuItem onClick={handleClose}>Profile</MenuItem> */}
-                {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
-              </Menu>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={logout}
-                color="inherit"
-              >
-                <LogoutIcon />
-              </IconButton>
+                  <MenuItem>
+                    <ListItemIcon>
+                      <PersonOutlineIcon />
+                    </ListItemIcon>
+                    <ListItemText>My Account</ListItemText>
+                  </MenuItem>
+                  <MenuItem>
+                    <ListItemIcon>
+                      <SettingsIcon />
+                    </ListItemIcon>
+                    <ListItemText>Settings</ListItemText>
+                  </MenuItem>
+                  <MenuItem onClick={logout}>
+                    <ListItemIcon>
+                      <LogoutIcon />
+                    </ListItemIcon>
+                    <ListItemText>Log Out</ListItemText>
+                  </MenuItem>       
+                </Menu>
+              </Box>
               </>) : (
                 <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
                 <Link

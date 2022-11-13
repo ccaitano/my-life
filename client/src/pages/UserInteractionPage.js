@@ -66,7 +66,7 @@ console.log('I am true');
         sx={{ borderBottom: '1px solid rgba(0, 0, 0, 0.12)' }}
       >
         <Toolbar>
-          <Grid container spacing={5} alignItems="center">
+          <Grid container spacing={5} sx={{ alignItems: "center"}}>
             <Grid item>
             </Grid>
             <Grid item xs >
@@ -74,9 +74,9 @@ console.log('I am true');
                 fullWidth
                 id="outlined-basic" label="Search Users" variant="outlined"
                 placeholder="Search by Username"
-                InputProps={{
-                  disableUnderline: true,
-                  sx: { fontSize: 'default' },
+                InputProps={{  
+                  
+                  sx: { fontSize: 'default', disableUnderline: true},
                 }} 
                  
                 // style
@@ -85,7 +85,7 @@ console.log('I am true');
               />
               <div>
           {filteredData.length === 0 ? (
-            <SearchIcon alignItems="left"/>
+            <SearchIcon sx={{alignItems: "left"}}/>
           ) : (
             <CloseIcon id="clearBtn" onClick={clearInput} />
           )}
@@ -102,9 +102,9 @@ console.log('I am true');
           {filteredData.slice(0, 15).map((value) => {
             return (
               <div key={value}>
-              <a className="dataItem" href={value.link} onClick={confirmFunk}>
-                <p>{value}</p>
-              </a>
+                <a className="dataItem" href={value.link} onClick={confirmFunk}>
+                  <span>{value}</span>
+                </a>
               </div>
             );
           })}

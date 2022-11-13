@@ -58,8 +58,10 @@ function App() {
                 sx={{
                   flexGrow: 1,
                   pt: '100px',
-                  height: '100vh',
-                  overflow: 'auto',
+                  // height: '100vh',
+                  // overflow: 'auto',
+                  height: 'auto',
+                  minHeight: '100vh !important'
                 }}
               >
                 <div className="container">

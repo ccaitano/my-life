@@ -14,7 +14,7 @@ import { QUERY_TASKS, QUERY_ME } from '../../utils/queries';
 import { ADD_TASK, REMOVE_TASK, EDIT_TASK, COUNT_TOTAL, COUNT_COMPLETED, MARK_COMPLETED, COUNT_DELETE } from '../../utils/mutations';
 import './App.css'
 import MagicBell, { FloatingNotificationInbox, NotificationList, useNotifications, PushNotificationsSubscriber } from '@magicbell/magicbell-react';
-
+// import createNotification from '../Header/index';
 // Add next line in for validating if a user is logged in or not
 // import Auth from '../../utils/auth';
 
@@ -229,15 +229,6 @@ const createNotification = (taskText, email) => {
     })
   });
 }
-    const stores = [
-      { id: 'default', defaultQueryParams: { read: false } },
-      { id: 'read', defaultQueryParams: { read: true } },
-    ];
-
-    const tabs = [
-      { storeId: 'default', label: 'Latest' },
-      { storeId: 'read', label: 'Archive' },
-    ];
 
     return (
         // <Box>
@@ -245,25 +236,7 @@ const createNotification = (taskText, email) => {
           <h1>Reminders</h1>
 
             <Grid >
-            {userData ? (
-              <MagicBell
-              apiKey="391b3143b9e12d49446b88586c9a7c7261aa4c7a"
-              userEmail={userData.email}
-              stores={stores}
-              
-            >
-              {(props) => (
-                <FloatingNotificationInbox
-                  height={350}
-                  placement="bottom-start"
-                  tabs={tabs}
-                  closeOnNotificationClick={false}
-                  closeOnClickOutside={true}
-                  {...props}
-                />
-              )}
-            </MagicBell>
-            ) : null}
+          
             {/* <PushNotificationsSubscriber serviceWorkerPath="/service-worker.js">
               {({ createSubscription }) => (
                 <button onClick={registerSubscription}>Enable push notifications</button>
