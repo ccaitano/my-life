@@ -85,7 +85,7 @@ function Header () {
                 </Box>
               </Drawer>
             </div>
-          ) : (null)};
+          ) : (null)}
         </IconButton>
         <Typography variant='h4' component='div' fontFamily="'Arsenal', sans-serif;" style={{ color: 'white', paddingLeft: 20}}>
           MyLife
