@@ -42,12 +42,6 @@ const userSchema = new Schema({
     type: Number,
     default: 0
   },
-  notifications: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Notification'
-    }
-  ]
 });
 
 userSchema.pre('save', async function (next) {

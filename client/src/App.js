@@ -48,7 +48,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh page">
+        <div className="flex-column justify-flex-start min-100-vh page min-100-vw">
           <ThemeProvider theme={mdTheme}>
             <Box sx={{ display: 'flex' }} textAlign="center">
               <Header />
@@ -58,8 +58,12 @@ function App() {
                 sx={{
                   flexGrow: 1,
                   pt: '100px',
-                  height: '100vh',
-                  overflow: 'auto',
+                  // height: '100vh',
+                  // overflow: 'auto',
+                  height: 'auto',
+                  width: 'auto',
+                  minWidth: '100vw !important', 
+                  minHeight: '100vh !important'
                 }}
               >
                 <div className="container">

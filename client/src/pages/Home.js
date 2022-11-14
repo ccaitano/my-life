@@ -60,13 +60,14 @@ const Home = () => {
         {Auth.loggedIn() ? (
           <>
           <Grid container spacing={4}>
-            <Grid item xs={8}>
+            <Grid item xs={12} md={8}>
 
               <Paper
                 sx={{
                   p: 2,
                   // width: 800,
-                  height: 800,
+                  height: 'auto',
+                  minHeight: '50vh !important',
                   justifyContent: 'center',
                   backgroundColor: '344955',
                   display: 'flex',
@@ -76,7 +77,7 @@ const Home = () => {
               </Paper>
    
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={12} md={4}>
            
               <Stack spacing={2}>
               {/* Positive Affirmation Container */}    
@@ -85,7 +86,7 @@ const Home = () => {
                     p: 2, 
                     display: 'flex', 
                     flexDirection: 'column', 
-                    height: 240, 
+                    height: 'auto'
                   }}
                 >
                   <Quote />
@@ -96,7 +97,7 @@ const Home = () => {
                     p: 2, 
                     display: 'flex', 
                     flexDirection: 'column', 
-                    height: 240, 
+                    height: 'auto'
                     // width: 301,
                   }}
                 >

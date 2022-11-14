@@ -14,7 +14,7 @@ import { QUERY_TASKS, QUERY_ME } from '../../utils/queries';
 import { ADD_TASK, REMOVE_TASK, EDIT_TASK, COUNT_TOTAL, COUNT_COMPLETED, MARK_COMPLETED, COUNT_DELETE } from '../../utils/mutations';
 import './App.css'
 import MagicBell, { FloatingNotificationInbox, NotificationList, useNotifications, PushNotificationsSubscriber } from '@magicbell/magicbell-react';
-
+// import createNotification from '../Header/index';
 // Add next line in for validating if a user is logged in or not
 // import Auth from '../../utils/auth';
 
@@ -62,7 +62,7 @@ const ToDoList = () => {
             }
         },
     });
-    console.log(userData);
+
     // Set states
     const [taskText, setTaskText] = useState('');
     const [editTaskText, setEditTaskText] = useState('');
@@ -93,14 +93,8 @@ const ToDoList = () => {
           // Adds +1 to totalTask count
           countTotalTask();
           setTaskText('');
-          // componentDidMount();
           createNotification(taskText, userData.email);
-          // const schedule = require('node-schedule');
-          // const rule = new schedule.RecurrenceRule();
-          // rule.minute = 27;
-          // schedule.scheduleJob(rule, handleNotification(taskText));
           window.location.reload();
-          console.log(taskText);
         } catch (err) {
           console.error(err);
         }
@@ -229,41 +223,13 @@ const createNotification = (taskText, email) => {
     })
   });
 }
-    const stores = [
-      { id: 'default', defaultQueryParams: { read: false } },
-      { id: 'read', defaultQueryParams: { read: true } },
-    ];
-
-    const tabs = [
-      { storeId: 'default', label: 'Latest' },
-      { storeId: 'read', label: 'Archive' },
-    ];
 
     return (
-        // <Box>
-        <Box sx={{ backgroundColor: 'hsl(0, 100%, 30%, 0.9)', borderColor: 'green', width: '55vw', borderRadius: '16px' }}>
+        <Box sx={{ backgroundColor: 'hsl(0, 100%, 30%, 0.9)', borderColor: 'green', width: 'auto', minWidth: "30vw !important", borderRadius: '16px' }}>
           <h1>Reminders</h1>
 
             <Grid >
-            {userData ? (
-              <MagicBell
-              apiKey="391b3143b9e12d49446b88586c9a7c7261aa4c7a"
-              userEmail={userData.email}
-              stores={stores}
-              
-            >
-              {(props) => (
-                <FloatingNotificationInbox
-                  height={350}
-                  placement="bottom-start"
-                  tabs={tabs}
-                  closeOnNotificationClick={false}
-                  closeOnClickOutside={true}
-                  {...props}
-                />
-              )}
-            </MagicBell>
-            ) : null}
+          
             {/* <PushNotificationsSubscriber serviceWorkerPath="/service-worker.js">
               {({ createSubscription }) => (
                 <button onClick={registerSubscription}>Enable push notifications</button>
@@ -277,11 +243,13 @@ const createNotification = (taskText, email) => {
                     type="text"
                     value={taskText || ""}
                     onChange={handleChange}
-                    style={{ width: "50vw"}}
+                    style={{ width: "auto", minWidth: "30vw !important"}}
                   />
                   <Button type="submit" variant="contained" sx={{ color: 'yellow', backgroundColor: 'orange', borderColor: 'green' }} >Add Reminder</Button>
                 </FormControl>
               </form>
+              {(tasks === null || tasks.length > 0) ? (
+                <>
               <h3>Current Tasks...</h3>
               <div id="taskList">
                 {tasks?.map((task) => (
@@ -318,6 +286,10 @@ const createNotification = (taskText, email) => {
                 ))}
                
               </div>
+              </>
+              ) : (
+                <h2>No Tasks to Display</h2>
+              )}
             </Grid>
         </Box>
     );

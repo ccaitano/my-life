@@ -3,6 +3,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 import { QUERY_ME } from '../../utils/queries';
 import { RESET_DATA } from '../../utils/mutations';
 
@@ -48,7 +49,10 @@ const TaskChart = () => {
 
     return (
         <>
+        <Box>
           <h2>Progress</h2>
+          {totalTasks > 0 ? (
+            <>
           <div>
             <Pie
                 data={state}
@@ -68,6 +72,11 @@ const TaskChart = () => {
           <div>
             <Button type="submit" variant="contained" color="primary" onClick={handleReset}>Reset</Button>
           </div>
+          </>
+          ) : (
+            <h3>No Data to Display</h3>
+          )}
+          </Box>
         </>
     );
   };
