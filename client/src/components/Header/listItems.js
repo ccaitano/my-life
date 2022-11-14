@@ -33,7 +33,7 @@ function MainListItems() {
             <ListItemIcon>
               <PeopleIcon />
             </ListItemIcon>
-            <ListItemText primary="Manage Friends!" />
+            <ListItemText primary="Manage Friends!"/>
           </ListItemButton>
         </ListItem>
         <ListItem key='settings' disablePadding>

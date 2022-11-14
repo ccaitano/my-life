@@ -12,6 +12,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import {useQuery} from '@apollo/react-hooks';
 import {QUERY_USERS} from '../utils/queries';
 import Box from '@mui/material/Box';
+import '../css/index.css';
 const Content = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
@@ -48,11 +49,11 @@ console.log('I am true');
  }
   }
   return (
-    <Paper sx={{ maxWidth: 936, margin: 'auto', overflow: 'hidden' }}>
+    <Paper sx={{ maxWidth: 936, margin: 'auto', overflow: 'hidden', backgroundColor: '#A0C4FF' }}>
             <Box
       component="form"
       sx={{
-        '& > :not(style)': { m: 1, width: '25ch' },
+        '& > :not(style)': { m: 5, width: '25ch' }, 
       }}
       noValidate
       autoComplete="off"
@@ -62,9 +63,11 @@ console.log('I am true');
       <AppBar
         position="static"
         color="default"
+        backgroundcolor="#081c15"
         elevation={4}
-        sx={{ borderBottom: '1px solid rgba(0, 0, 0, 0.12)' }}
+        sx={{ borderBottom: '1px solid rgba(0, 0, 0, 0.12)', backgroundColor: '#ffadad', mt: 2, mb: 2}}
       >
+        
         <Toolbar>
           <Grid container spacing={5} sx={{ alignItems: "center"}}>
             <Grid item>
@@ -96,7 +99,7 @@ console.log('I am true');
           </Grid>
         </Toolbar> 
       </AppBar>
-      <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center"> 
+      <Typography sx={{ my: 25, mx: 10 }} color="#081c15" align="center"> 
              {filteredData.length !== 0 && (
         <div>
           {filteredData.slice(0, 15).map((value) => {
