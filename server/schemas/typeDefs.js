@@ -67,7 +67,7 @@ const typeDefs = gql`
     # CHART MUTATIONS
     resetData: User
 
-    addUser(firstName: String!, lastName: String!, location: String!, email: String!, password: String!): Auth
+    addUser(firstName: String!, lastName: String!, location: String, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
   }
 `;
