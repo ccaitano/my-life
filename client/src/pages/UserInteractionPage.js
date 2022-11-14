@@ -50,7 +50,7 @@ console.log('I am true');
  }
   }
   return (
-    <Paper sx={{ maxWidth: 936, margin: 'auto', overflow: 'hidden', backgroundColor: '#A0C4FF' }}>
+    <Paper sx={{ maxWidth: 936, m: 'auto', overflow: 'hidden', backgroundColor: '#FFFBF8', borderRadius: '20px', p: 2 }}>
             <Box
       component="form"
       sx={{
@@ -62,39 +62,38 @@ console.log('I am true');
     >
     </Box>
     {/* <div backgroundColor='#ffadad'> */}
+    <Typography variant='h4' fontFamily='Oswald' sx={{p:3}}>Search for Existing Users</Typography>
       <AppBar
         position="static"
         color="default"
         backgroundcolor="#081c15"
         elevation={1}
-        sx={{ borderBottom: '1px solid rgba(0, 0, 0, 0.12)', backgroundColor: '#ffadad', borderRight: 50, borderLeft: 50, borderBottom: 10, borderColor: '#A0C4FF', borderRadius: 10}}
+        sx={{width: '50vw', margin: 'auto', backgroundColor: "#4B80A8", borderRadius: '20px'}}
+        // sx={{ borderBottom: '1px solid rgba(0, 0, 0, 0.12)', backgroundColor: '#ffadad', borderRight: 50, borderLeft: 50, borderBottom: 10, borderColor: '#A0C4FF', borderRadius: 10}}
       >
-        
-        <Toolbar>
-          <Grid container spacing={5} sx={{ alignItems: "center"}}>
-            <Grid item>
-            </Grid>
-            <Grid item xs >
+        <Toolbar sx={{ alignItems: "center", p: 2, backgroundColor: "#4B80A8", borderRadius: '20px'}}>
+          <Grid container spacing={5} sx={{ alignItems: "center", m: 2}}>
+            <Grid item xs sx={{display: 'flex'}}>
               <TextField
                 fullWidth
                 id="outlined-basic" label="Search Users" variant="outlined"
                 placeholder="Search by Username"
                 InputProps={{  
-                  
-                  sx: { fontSize: 'default', disableUnderline: true},
+                  sx: { fontSize: 'default', disableUnderline: true, backgroundColor: "#FFFBF8"},
                 }} 
                  
                 // style
                 value={wordEntered}
                 onChange={handleFilter}
               />
+              
               <div>
-          {filteredData.length === 0 ? (
-            <SearchIcon sx={{alignItems: "left"}}/>
-          ) : (
-            <CloseIcon id="clearBtn" onClick={clearInput} />
-          )}
-        </div>
+                {filteredData.length === 0 ? (
+                  <SearchIcon sx={{display: "flex", alignItems: "center", p: 2}}/>
+                ) : (
+                  <CloseIcon id="clearBtn" onClick={clearInput} />
+                )}
+              </div>
             </Grid>
             <Grid item>
             </Grid>
@@ -108,7 +107,7 @@ console.log('I am true');
           {filteredData.slice(0, 15).map((value) => {
             return (
               <div key={value}>
-                <a className="dataItem" href={value.link} onClick={confirmFunk}>
+                <a className="dataItem" href={value.link} onClick={confirmFunk} cursor='grab'>
                   <span>{value}</span>
                 </a>
               </div>

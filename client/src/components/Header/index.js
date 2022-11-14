@@ -63,13 +63,8 @@ function Header () {
     { storeId: 'default', label: 'Latest' },
     { storeId: 'read', label: 'Archive' },
   ];
+  const theme = {"icon":{"borderColor":"#423240","width":"24px"},"banner":{"fontSize":"14px","backgroundColor":"#FFFBF8","textColor":"#3A424D","backgroundOpacity":1},"unseenBadge":{"backgroundColor":"#FFDEA4"},"header":{"fontSize":"15px","backgroundColor":"#423240","textColor":"#E4BCC5","borderRadius":"16px"},"footer":{"fontSize":"15px","backgroundColor":"#423240","textColor":"#E4BCC5","borderRadius":"16px"},"notification":{"default":{"fontSize":"14px","textColor":"#423240","borderRadius":"16px","backgroundColor":"#FFFBF8","hover":{"backgroundColor":"#E4BCC5"},"state":{"color":"transparent"},"margin":"8px"},"unseen":{"textColor":"#423240","backgroundColor":"#E4BCC5","hover":{"backgroundColor":"#E4BCC5"},"state":{"color":"#975D66"}},"unread":{"textColor":"#423240","backgroundColor":"#E4BCC5","hover":{"backgroundColor":"#E4BCC5"},"state":{"color":"#975D66"}}}};
 
-  const theme = {"icon":{"borderColor":"#2C262B","width":"24px"},
-                 "banner":{"fontSize":"14px","backgroundColor":"#FFFBF8","textColor":"#3A424D","backgroundOpacity":1},
-                 "unseenBadge":{"backgroundColor":"#FFDEA4"},
-                 "header":{"fontSize":"15px","backgroundColor":"#423240","textColor":"#E4BCC5","borderRadius":"16px"},
-                 "footer":{"fontSize":"15px","backgroundColor":"#423240","textColor":"#E4BCC5","borderRadius":"16px"},
-                 "notification":{"default":{"fontSize":"14px","textColor":"#423240","borderRadius":"16px","backgroundColor":"#FFFBF8","hover":{"backgroundColor":"#E4BCC5"},"state":{"color":"transparent"},"margin":"8px"},"unseen":{"textColor":"#423240","backgroundColor":"#E4BCC5","hover":{"backgroundColor":"#E4BCC5"},"state":{"color":"#975D66"}},"unread":{"textColor":"#423240","backgroundColor":"#E4BCC5","hover":{"backgroundColor":"#E4BCC5"},"state":{"color":"#975D66"}}}};
 
   return (
     <AppBar position='fixed' style={{ color: '#001219', background: '	rgb(211,211,211, 0.2)'}}>
@@ -77,14 +72,14 @@ function Header () {
         <IconButton>
           {Auth.loggedIn() ? (
             <div>
-              <MenuIcon style={{color: "#2C262B"}} onClick={toggleDrawer('left', true)} />
+              <MenuIcon style={{color: "#423240"}} onClick={toggleDrawer('left', true)} />
               <Drawer
                 anchor='left'
                 open={state['left']}
                 onClose={toggleDrawer('left', false)}
               >
                 <Box
-                  sx={{ width: 250}}
+                  sx={{ width: 250 }}
                   // role="presentation"
                   onClick={toggleDrawer('left', false)}
                 >
@@ -94,7 +89,7 @@ function Header () {
             </div>
           ) : (null)}
         </IconButton>
-        <Typography variant='h4' component='div' fontFamily='Oswald' style={{ color: '#001219', paddingLeft: 20}}>
+        <Typography variant='h4' component='div'  fontFamily="'Arsenal', sans-serif;" style={{ color: '#001219', paddingLeft: 20}}>
           MyLife
         </Typography>
         {Auth.loggedIn() ? (
@@ -107,7 +102,6 @@ function Header () {
                   userEmail={userData.email}
                   // stores={stores}
                   theme={theme}
-                  locale="en"
                   >
                     {(props) => (
                       <FloatingNotificationInbox
@@ -130,7 +124,7 @@ function Header () {
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle sx={{color: '#2C262B'}}/>
+                <AccountCircle sx={{color: '#423240'}}/>
               </IconButton>
                 <Menu
                   id="menu-appbar"
@@ -146,23 +140,22 @@ function Header () {
                   }}
                   open={Boolean(anchorEl)}
                   onClose={handleClose}
-                  backgroundColor='#FCEBDB'
                 >
-                  <MenuItem  sx={{color:'#423240'}}>
+                  <MenuItem sx={{color: '#423240'}}>
                     <ListItemIcon>
-                      <PersonOutlineIcon  sx={{color:'#423240'}}/>
+                      <PersonOutlineIcon sx={{color: '#423240'}}/>
                     </ListItemIcon>
                     <ListItemText>My Account</ListItemText>
                   </MenuItem>
-                  <MenuItem  sx={{color:'#423240'}}>
+                  <MenuItem sx={{color: '#423240'}}>
                     <ListItemIcon>
-                      <SettingsIcon  sx={{color:'#423240'}}/>
+                      <SettingsIcon sx={{color: '#423240'}}/>
                     </ListItemIcon>
                     <ListItemText>Settings</ListItemText>
-                  </MenuItem >
-                  <MenuItem onClick={logout} sx={{color:'#423240'}}>
+                  </MenuItem>
+                  <MenuItem onClick={logout} sx={{color: '#423240'}}>
                     <ListItemIcon>
-                      <LogoutIcon sx={{color:'#423240'}}/>
+                      <LogoutIcon sx={{color: '#423240'}}/>
                     </ListItemIcon>
                     <ListItemText>Log Out</ListItemText>
                   </MenuItem>       
@@ -171,11 +164,15 @@ function Header () {
           </>) : (
             <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
               <Box sx={{ '& > :not(style)': { m: 1 } }}>
-                <Fab variant="extended" href='/login'>
+                <Fab variant="extended" href='/login' sx={{backgroundColor: "#423240", color:'#FFFBF8', '&:hover': {
+      backgroundColor: '#FCEBDB',
+      color: '#975D66'}, m:2 }}>
                   <LoginIcon sx={{ mr: 1 }} />
                     Sign In
                 </Fab>
-                <Fab variant="extended" href='/signup'>
+                <Fab variant="extended" href='/signup' sx={{backgroundColor: "#423240", color:'#FFFBF8', '&:hover': {
+      backgroundColor: '#FCEBDB',
+      color: '#975D66'}, m:2 }}>
                   <EditIcon sx={{ mr: 1 }} />
                     Sign Up
                 </Fab>

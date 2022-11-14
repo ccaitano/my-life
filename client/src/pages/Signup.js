@@ -56,6 +56,7 @@ const Signup = () => {
       console.log(formState);
     } catch (e) {
       setShowAlert(true);
+      alert('Error: Please Try Again');
       console.error(e);
     };
 
@@ -111,7 +112,7 @@ const Signup = () => {
                   onChange={handleChange}
                 />
               </Grid>
-              <Grid item xs={12}>
+              {/* <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
@@ -121,7 +122,7 @@ const Signup = () => {
                   autoComplete="location"
                   onChange={handleChange}
                 />
-              </Grid>
+              </Grid> */}
               <Grid item xs={12}>
                 <TextField
                   required
