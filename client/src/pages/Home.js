@@ -64,13 +64,14 @@ const Home = () => {
 
               <Paper
                 sx={{
-                  p: 2,
+                  p: 1,
                   // width: 800,
                   height: 'auto',
                   minHeight: '50vh !important',
                   justifyContent: 'center',
                   backgroundColor: '#FFFBF8',
                   display: 'flex',
+                  borderRadius: '12px'
                 }}
               >
                 <ToDoList />
@@ -83,11 +84,12 @@ const Home = () => {
               {/* Positive Affirmation Container */}    
                 <Paper 
                   sx={{ 
-                    p: 2, 
+                    p: 1, 
                     display: 'flex', 
                     flexDirection: 'column', 
                     backgroundColor: "#FFFBF8",
-                    height: 'auto'
+                    height: 'auto',
+                    borderRadius: '12px'
                   }}
                 >
                   <Quote />
@@ -95,11 +97,12 @@ const Home = () => {
               {/* Chart/History Container */}
                 <Paper 
                   sx={{ 
-                    p: 2, 
+                    p: 1, 
                     display: 'flex', 
                     flexDirection: 'column', 
                     backgroundColor: '#FFFBF8',
-                    height: 'auto'
+                    height: 'auto',
+                    borderRadius: '12px'
                     // width: 301,
                   }}
                 >
