@@ -8,7 +8,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { Card, Typography } from '@mui/material';
+import { Card, Typography, FormGroup } from '@mui/material';
 import { Button, FormControl, TextField, Stack, Box, Form} from '@mui/material';
 import { QUERY_TASKS, QUERY_ME } from '../../utils/queries';
 import { ADD_TASK, REMOVE_TASK, EDIT_TASK, COUNT_TOTAL, COUNT_COMPLETED, MARK_COMPLETED, COUNT_DELETE } from '../../utils/mutations';
@@ -17,25 +17,6 @@ import MagicBell, { FloatingNotificationInbox, NotificationList, useNotification
 // import createNotification from '../Header/index';
 // Add next line in for validating if a user is logged in or not
 // import Auth from '../../utils/auth';
-
-import { createTheme } from '@mui/material/styles';
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      light: '#757ce8',
-      main: '#3f50b5',
-      dark: '#002884',
-      contrastText: '#fff',
-    },
-    secondary: {
-      light: '#ff7961',
-      main: '#f44336',
-      dark: '#ba000d',
-      contrastText: '#000',
-    },
-  },
-});
 
 const ToDoList = () => {
 
@@ -99,29 +80,7 @@ const ToDoList = () => {
           console.error(err);
         }
       };
-      
-      // const handleNotification = (taskText) => {
-      //   let notification;
-      //   // let interval;
-      //   Notification.requestPermission().then(perm => {
-      //     if(perm === 'granted') {
-      //       // document.addEventListener("visibilitychange", ()=>{
-      //         // if (document.visibilityState === "hidden") {
-      //           // interval = setInterval(() => {
-      //             notification = new Notification("MyLife", {
-      //               tag: "Status",
-      //               // body: "Did you complete your tasks?",
-      //               body: taskText,
-      //             });
-      //           // }, 100);
-      //         // } else {
-      //         //   // clearInterval(interval);
-      //         //   notification.close();
-      //         // };
-      //       // });
-      //     }
-      //   });
-      // };
+  
 
     // handleChange - Updates text input when adding reminder/task
     const handleChange = (event) => {
@@ -225,16 +184,10 @@ const createNotification = (taskText, email) => {
 }
 
     return (
-        <Box sx={{ backgroundColor: '#a0c4ff', color: 'black', width: '99%', borderRadius: '12px' }}>
+        <Box sx={{ flexGrow: 1, backgroundColor: '#a0c4ff', color: 'black', width: '99%', borderRadius: '12px' }}>
           <h1>Reminders</h1>
 
             <Grid >
-          
-            {/* <PushNotificationsSubscriber serviceWorkerPath="/service-worker.js">
-              {({ createSubscription }) => (
-                <button onClick={registerSubscription}>Enable push notifications</button>
-              )}
-            </PushNotificationsSubscriber> */}
               <form onSubmit={handleFormSubmit} >
                 <FormControl sx={{width: '40%'}}>
                   <TextField
@@ -252,12 +205,19 @@ const createNotification = (taskText, email) => {
                 <>
               <h3>Current Tasks...</h3>
               <div id="taskList">
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={12}>
                   {tasks?.map((task) => (
                     <Card key={task._id} className="card mb-3" sx={{ backgroundColor: '#fffffc', m: 1}}>
-                      {task.completed ? <Typography style={{textDecoration: 'line-through', mt: 4, mb: 2}}>{task.taskText}</Typography> : <Typography style={{textDecoration: 'none'}}>{task.taskText}</Typography>}
+                      <FormGroup row sx={{display: "flex"}}>
+                       
+                        <Grid item xs={6} md={8}>
+
+                          {task.completed ? <Typography variant="h5" style={{fontFamily: 'Oswald', textDecoration: 'line-through'}} component="h5">{task.taskText}</Typography> : <Typography variant="h5" style={{textDecoration: 'none', fontFamily: 'Oswald'}}>{task.taskText}</Typography>}
+                        </Grid>
                       {/* Edit Icon to Edit Existing Reminder/Task */}
-                      <Button sx={{ backgroundColor: '#AE2012', color: '#001219', m: 0.5}} onClick={() => handleOpen(task)}><EditIcon/></Button>
+                      <Grid item xs={6} md={4}>
+
+                      <Button sx={{ backgroundColor: '#AE2012', color: '#001219'}} onClick={() => handleOpen(task)}><EditIcon/></Button>
                       {editItem ? (
                         <Dialog open={open} onClose={handleClose}>
                           <DialogTitle>Edit Task</DialogTitle>
@@ -283,6 +243,8 @@ const createNotification = (taskText, email) => {
                       <Button onClick={() => handleDeleteTask(task._id)} sx={{ backgroundColor: '#AE2012', color: '#001219', m: 0.5}}><CloseIcon/> </Button>
                       {/* Mark Existing Item as Completed */}
                       <Button onClick={() => handleComplete(task._id)} sx={{ backgroundColor: '#AE2012', color: '#001219',  m: 0.5}}><CheckCircleIcon/> </Button>
+                      </Grid>
+                      </FormGroup>
                     </Card>
                   ))}
                 </Grid>

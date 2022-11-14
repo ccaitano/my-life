@@ -25,12 +25,12 @@ const TaskChart = () => {
           {
             label: 'Tasks',
             backgroundColor: [
-              '#0A9396',
-              '#EE9B00'
+              '#AAB9D0',
+              '#4B80A8'
             ],
             hoverBackgroundColor: [
-            '#005F73',
-            '#CA6702'
+            '#FCEBDB',
+            '#FFDEA4'
             ],
             // data: [50, 50]
             data: [completedTasks, tasksToGo]
@@ -49,7 +49,7 @@ const TaskChart = () => {
 
     return (
         <>
-        <Box>
+        <Box sx={{backgroundColor: "#FFFBF8"}}>
           <h2>Progress</h2>
           {totalTasks > 0 ? (
             <>
@@ -70,7 +70,9 @@ const TaskChart = () => {
             />
           </div>
           <div>
-            <Button type="submit" variant="contained" color="primary" onClick={handleReset}>Reset</Button>
+            <Button sx={{backgroundColor: "#423240", color:'#D6CAD8', '&:hover': {
+      backgroundColor: '#FCEBDB',
+      color: '#975D66'}, m:2 }} type="submit" variant="contained" onClick={handleReset}>Reset</Button>
           </div>
           </>
           ) : (
