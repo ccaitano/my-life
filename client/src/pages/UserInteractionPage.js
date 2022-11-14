@@ -51,9 +51,9 @@ console.log('I am true');
     <Paper sx={{ maxWidth: 936, margin: 'auto', overflow: 'hidden' }}>
             <Box
       component="form"
-      sx={{
-        '& > :not(style)': { m: 1, width: '25ch' },
-      }}
+      // sx={{
+      //   '& > :not(style)': { m: 1, width: '25ch' },
+      // }}
       noValidate
       autoComplete="off"
       height={4}
@@ -63,7 +63,7 @@ console.log('I am true');
         position="static"
         color="default"
         elevation={4}
-        sx={{ borderBottom: '1px solid rgba(0, 0, 0, 0.12)' }}
+        sx={{ borderBottom: '1px solid rgba(0, 0, 0, 0.12)'}}
       >
         <Toolbar>
           <Grid container spacing={5} sx={{ alignItems: "center"}}>
