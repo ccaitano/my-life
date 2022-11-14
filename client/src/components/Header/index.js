@@ -65,12 +65,12 @@ function Header () {
   ];
 
   return (
-    <AppBar position='fixed' style={{ color: 'black', background: '	rgb(211,211,211, 0.2)'}}>
+    <AppBar position='fixed' style={{ color: '#001219', background: '	rgb(211,211,211, 0.2)'}}>
       <Toolbar>
         <IconButton>
           {Auth.loggedIn() ? (
             <div>
-              <MenuIcon onClick={toggleDrawer('left', true)} />
+              <MenuIcon style={{color: "#001219"}} onClick={toggleDrawer('left', true)} />
               <Drawer
                 anchor='left'
                 open={state['left']}
@@ -87,7 +87,7 @@ function Header () {
             </div>
           ) : (null)}
         </IconButton>
-        <Typography variant='h4' component='div' fontFamily="'Arsenal', sans-serif;" style={{ color: 'white', paddingLeft: 20}}>
+        <Typography variant='h4' component='div'  fontFamily="'Arsenal', sans-serif;" style={{ color: '#001219', paddingLeft: 20}}>
           MyLife
         </Typography>
         {Auth.loggedIn() ? (
@@ -100,7 +100,7 @@ function Header () {
                   userEmail={userData.email}
                   stores={stores}
                   theme={{
-                    icon: { borderColor: 'black'}
+                    icon: { borderColor: '#001219'}
                   }}
                   >
                     {(props) => (

@@ -8,7 +8,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { Card } from '@mui/material';
+import { Card, Typography } from '@mui/material';
 import { Button, FormControl, TextField, Stack, Box, Form} from '@mui/material';
 import { QUERY_TASKS, QUERY_ME } from '../../utils/queries';
 import { ADD_TASK, REMOVE_TASK, EDIT_TASK, COUNT_TOTAL, COUNT_COMPLETED, MARK_COMPLETED, COUNT_DELETE } from '../../utils/mutations';
@@ -225,7 +225,7 @@ const createNotification = (taskText, email) => {
 }
 
     return (
-        <Box sx={{ backgroundColor: 'hsl(0, 100%, 30%, 0.9)', borderColor: 'green', width: 'auto', minWidth: "30vw !important", borderRadius: '16px' }}>
+        <Box sx={{ backgroundColor: '#a0c4ff', color: 'black', width: '99%', borderRadius: '12px' }}>
           <h1>Reminders</h1>
 
             <Grid >
@@ -236,54 +236,56 @@ const createNotification = (taskText, email) => {
               )}
             </PushNotificationsSubscriber> */}
               <form onSubmit={handleFormSubmit} >
-                <FormControl >
+                <FormControl sx={{width: '40%'}}>
                   <TextField
                     name="taskText" 
                     label="Write a reminder"
                     type="text"
                     value={taskText || ""}
                     onChange={handleChange}
-                    style={{ width: "auto", minWidth: "30vw !important"}}
+                    style={{ width: "100%"}}
                   />
-                  <Button type="submit" variant="contained" sx={{ color: 'yellow', backgroundColor: 'orange', borderColor: 'green' }} >Add Reminder</Button>
+                  <Button type="submit" variant="contained" sx={{ color: 'black', backgroundColor: '#AE2012'}} >Add Reminder</Button>
                 </FormControl>
               </form>
               {(tasks === null || tasks.length > 0) ? (
                 <>
               <h3>Current Tasks...</h3>
               <div id="taskList">
-                {tasks?.map((task) => (
-                  <Card key={task._id} className="card mb-3">
-                    {task.completed ? <p style={{textDecoration: 'line-through'}}>{task.taskText}</p> : <p style={{textDecoration: 'none'}}>{task.taskText}</p>}
-                    {/* Edit Icon to Edit Existing Reminder/Task */}
-                    <p onClick={() => handleOpen(task)}><EditIcon/></p>
-                    {editItem ? (
-                      <Dialog open={open} onClose={handleClose}>
-                        <DialogTitle>Edit Task</DialogTitle>
-                          <DialogContent>
-                            <TextField
-                              autoFocus
-                              id={editTaskId || ""}
-                              margin="dense"
-                              name="editTaskText"
-                              value={editTaskText || ""}
-                              type="text"
-                              fullWidth
-                              variant="outlined"
-                              onChange={handleEditChange}
-                            />
-                          </DialogContent>
-                          <DialogActions>
-                            <Button onClick={() => handleEditTask(editTaskId, editTaskText)}>Update</Button>
-                            <Button onClick={handleClose}>Cancel</Button>
-                          </DialogActions>
-                      </Dialog>) : null}
-                    {/* Delete Existing Item Button */}
-                    <p onClick={() => handleDeleteTask(task._id)}><CloseIcon/> </p>
-                    {/* Mark Existing Item as Completed */}
-                    <p onClick={() => handleComplete(task._id)}><CheckCircleIcon/> </p>
-                  </Card>
-                ))}
+                <Grid item xs={12} md={6}>
+                  {tasks?.map((task) => (
+                    <Card key={task._id} className="card mb-3" sx={{ backgroundColor: '#fffffc', m: 1}}>
+                      {task.completed ? <Typography style={{textDecoration: 'line-through', mt: 4, mb: 2}}>{task.taskText}</Typography> : <Typography style={{textDecoration: 'none'}}>{task.taskText}</Typography>}
+                      {/* Edit Icon to Edit Existing Reminder/Task */}
+                      <Button sx={{ backgroundColor: '#AE2012', color: '#001219', m: 0.5}} onClick={() => handleOpen(task)}><EditIcon/></Button>
+                      {editItem ? (
+                        <Dialog open={open} onClose={handleClose}>
+                          <DialogTitle>Edit Task</DialogTitle>
+                            <DialogContent>
+                              <TextField
+                                autoFocus
+                                id={editTaskId || ""}
+                                // margin="dense"
+                                name="editTaskText"
+                                value={editTaskText || ""}
+                                type="text"
+                                fullWidth
+                                variant="outlined"
+                                onChange={handleEditChange}
+                              />
+                            </DialogContent>
+                            <DialogActions>
+                              <Button onClick={() => handleEditTask(editTaskId, editTaskText)} sx={{ backgroundColor: '#AE2012', color: '#001219'}}>Update</Button>
+                              <Button onClick={handleClose} sx={{ backgroundColor: '#AE2012', color: '#001219'}}>Cancel</Button>
+                            </DialogActions>
+                        </Dialog>) : null}
+                      {/* Delete Existing Item Button */}
+                      <Button onClick={() => handleDeleteTask(task._id)} sx={{ backgroundColor: '#AE2012', color: '#001219', m: 0.5}}><CloseIcon/> </Button>
+                      {/* Mark Existing Item as Completed */}
+                      <Button onClick={() => handleComplete(task._id)} sx={{ backgroundColor: '#AE2012', color: '#001219',  m: 0.5}}><CheckCircleIcon/> </Button>
+                    </Card>
+                  ))}
+                </Grid>
                
               </div>
               </>
