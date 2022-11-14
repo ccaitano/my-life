@@ -51,6 +51,7 @@ const Login = (props) => {
 
       Auth.login(data.login.token);
     } catch (e) {
+      alert('Error: Please Try Again');
       console.error(e);
     }
 

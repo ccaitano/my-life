@@ -118,6 +118,7 @@ const Home = () => {
               mt: 2,
               flexDirection: 'column',
               alignItems: 'center',
+              borderRadius: '20px'
             }}>
             {/* <Box 
               sx={{
@@ -144,12 +145,12 @@ const Home = () => {
                 component="a"
                 href="/signup"
                 type='submit'
-                sx={{ minWidth: 200 }}>
+                sx={{ minWidth: 200, borderRadius: '20px', backgroundColor: '#2C262B' }}>
                   REGISTER
               </Button>
               <Container
                 sx={{
-                  backgroundColor: 'tansparent',
+                  backgroundColor: 'transparent',
                   mt: 5,
                   mb: 5,
                   position: 'relative',
