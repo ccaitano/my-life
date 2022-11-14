@@ -103,22 +103,20 @@ const Home = () => {
         </Grid>
         </>) : (
           <ThemeProvider theme={landingTheme}>
-          <Container
-            sx={{
-              bgcolor: 'text.disabled',
-              mt: 10,
-              mb: 15,
-              position: 'relative',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <Typography color="#bdbdbd" align="center" variant="h2" marked="center">
+           <Box 
+          sx={{
+            backgroundColor: 'hsl(0, 100%, 30%, 0.9)',
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+            <Typography color="inherti" align="center" variant="h2" marked="center">
               Simplify your life with MyLife
             </Typography>
               <Typography
-                color="#bdbdbd"
+                color="inherit"
                 align="center"
                 variant="h5"
                 sx={{ mb: 4, mt: { sx: 4, sm: 10 } }}
@@ -127,7 +125,7 @@ const Home = () => {
               
               </Typography>
                 <Button
-                  color="primary"
+                  
                   variant="contained"
                   size="large"
                   component="a"
@@ -139,7 +137,7 @@ const Home = () => {
                 </Button>
               <Container
                 sx={{
-                  bgcolor: '#eeeeee',
+                  backgroundColor: 'tansparent',
                   mt: 10,
                   mb: 15,
                   position: 'relative',
@@ -188,7 +186,7 @@ const Home = () => {
       </Grid>
     </div>
         </Container>
-        </Container>
+        </Box>
       </ThemeProvider>
         )}
     </Container>
