@@ -49,8 +49,8 @@ const TaskChart = () => {
 
     return (
         <>
-        <Box sx={{backgroundColor: "#FFFBF8"}}>
-          <h2>Progress</h2>
+        <Box sx={{ flexGrow: 1, backgroundColor: '#BDB2FF', color: 'black', width: '99%', borderRadius: '12px' }}>
+          <h1>Progress</h1>
           {totalTasks > 0 ? (
             <>
           <div>

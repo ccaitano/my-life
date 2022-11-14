@@ -184,7 +184,7 @@ const createNotification = (taskText, email) => {
 }
 
     return (
-        <Box sx={{ flexGrow: 1, backgroundColor: '#a0c4ff', color: 'black', width: '99%', borderRadius: '12px' }}>
+        <Box sx={{ flexGrow: 1, backgroundColor: '#BDB2FF', color: 'black', width: '99%', borderRadius: '12px' }}>
           <h1>Reminders</h1>
 
             <Grid >
@@ -198,7 +198,9 @@ const createNotification = (taskText, email) => {
                     onChange={handleChange}
                     style={{ width: "100%"}}
                   />
-                  <Button type="submit" variant="contained" sx={{ color: 'black', backgroundColor: '#AE2012'}} >Add Reminder</Button>
+                  <Button type="submit" variant="contained" sx={{backgroundColor: "#423240", color:'#D6CAD8', '&:hover': {
+      backgroundColor: '#FCEBDB',
+      color: '#975D66'}, m:2 }} >Add Reminder</Button>
                 </FormControl>
               </form>
               {(tasks === null || tasks.length > 0) ? (
@@ -217,7 +219,9 @@ const createNotification = (taskText, email) => {
                       {/* Edit Icon to Edit Existing Reminder/Task */}
                       <Grid item xs={6} md={4}>
 
-                      <Button sx={{ backgroundColor: '#AE2012', color: '#001219'}} onClick={() => handleOpen(task)}><EditIcon/></Button>
+                      <Button sx={{backgroundColor: "#423240", color:'#D6CAD8', '&:hover': {
+      backgroundColor: '#FCEBDB',
+      color: '#975D66'}, m:2 }} onClick={() => handleOpen(task)}><EditIcon/></Button>
                       {editItem ? (
                         <Dialog open={open} onClose={handleClose}>
                           <DialogTitle>Edit Task</DialogTitle>
@@ -235,14 +239,22 @@ const createNotification = (taskText, email) => {
                               />
                             </DialogContent>
                             <DialogActions>
-                              <Button onClick={() => handleEditTask(editTaskId, editTaskText)} sx={{ backgroundColor: '#AE2012', color: '#001219'}}>Update</Button>
-                              <Button onClick={handleClose} sx={{ backgroundColor: '#AE2012', color: '#001219'}}>Cancel</Button>
+                              <Button onClick={() => handleEditTask(editTaskId, editTaskText)} sx={{backgroundColor: "#423240", color:'#D6CAD8', '&:hover': {
+      backgroundColor: '#FCEBDB',
+      color: '#975D66'}, m:2 }}>Update</Button>
+                              <Button onClick={handleClose} sx={{backgroundColor: "#423240", color:'#D6CAD8', '&:hover': {
+      backgroundColor: '#FCEBDB',
+      color: '#975D66'}, m:2 }}>Cancel</Button>
                             </DialogActions>
                         </Dialog>) : null}
                       {/* Delete Existing Item Button */}
-                      <Button onClick={() => handleDeleteTask(task._id)} sx={{ backgroundColor: '#AE2012', color: '#001219', m: 0.5}}><CloseIcon/> </Button>
+                      <Button onClick={() => handleDeleteTask(task._id)} sx={{backgroundColor: "#423240", color:'#D6CAD8', '&:hover': {
+      backgroundColor: '#FCEBDB',
+      color: '#975D66'}, m:2 }}><CloseIcon/> </Button>
                       {/* Mark Existing Item as Completed */}
-                      <Button onClick={() => handleComplete(task._id)} sx={{ backgroundColor: '#AE2012', color: '#001219',  m: 0.5}}><CheckCircleIcon/> </Button>
+                      <Button onClick={() => handleComplete(task._id)} sx={{backgroundColor: "#423240", color:'#D6CAD8', '&:hover': {
+      backgroundColor: '#FCEBDB',
+      color: '#975D66'}, m:2 }}><CheckCircleIcon/> </Button>
                       </Grid>
                       </FormGroup>
                     </Card>
