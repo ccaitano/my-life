@@ -69,7 +69,7 @@ const Home = () => {
                   height: 'auto',
                   minHeight: '50vh !important',
                   justifyContent: 'center',
-                  backgroundColor: '344955',
+                  backgroundColor: '#ade8f4',
                   display: 'flex',
                 }}
               >
@@ -86,6 +86,7 @@ const Home = () => {
                     p: 2, 
                     display: 'flex', 
                     flexDirection: 'column', 
+                    backgroundColor: '#ffadad',
                     height: 'auto'
                   }}
                 >
@@ -97,6 +98,7 @@ const Home = () => {
                     p: 2, 
                     display: 'flex', 
                     flexDirection: 'column', 
+                    backgroundColor: '#a0c4ff',
                     height: 'auto'
                     // width: 301,
                   }}
