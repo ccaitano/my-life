@@ -11,9 +11,18 @@ import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import {useQuery} from '@apollo/react-hooks';
 import {QUERY_USERS} from '../utils/queries';
-import Box from '@mui/material/Box';
 import '../css/index.css';
-import { borderRight } from '@mui/system';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const SearchFriendUpTheme = createTheme({
+  spacing: 8,
+  palette: {
+    primary: {
+      main: '#424242'
+    } ,
+  }
+});
+
 const Content = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
@@ -50,30 +59,18 @@ console.log('I am true');
  }
   }
   return (
-    <Paper sx={{ maxWidth: 936, m: 'auto', overflow: 'hidden', backgroundColor: '#FFFBF8', borderRadius: '20px', p: 2 }}>
-            <Box
-      component="form"
-      sx={{
-        '& > :not(style)': { m: 5, width: '25ch' }, 
-      }}
-      noValidate
-      autoComplete="off"
-      height={4}
-    >
-    </Box>
+  <ThemeProvider theme={SearchFriendUpTheme}>
+    <Paper sx={{ flexGrow: 1, ml: 2, mr: 4, display: 'flex', flexDirection: 'column', backgroundColor: '#FFFBF8', borderRadius: '16px', p: 2, alignItems:'center', backgroundColor: '#D6CAD8'}}>
     {/* <div backgroundColor='#ffadad'> */}
     <Typography variant='h4' fontFamily='Oswald' sx={{p:3}}>Search for Existing Users</Typography>
       <AppBar
-        position="static"
+       position="static"
         color="default"
-        backgroundcolor="#081c15"
-        elevation={1}
-        sx={{width: '50vw', margin: 'auto', backgroundColor: "#4B80A8", borderRadius: '20px'}}
-        // sx={{ borderBottom: '1px solid rgba(0, 0, 0, 0.12)', backgroundColor: '#ffadad', borderRight: 50, borderLeft: 50, borderBottom: 10, borderColor: '#A0C4FF', borderRadius: 10}}
+        elevation={3}
+        sx={{width: '100%', margin: 'auto', backgroundColor: "#FCEBDB", borderRadius: '16px'}}
       >
-        <Toolbar sx={{ alignItems: "center", p: 2, backgroundColor: "#4B80A8", borderRadius: '20px'}}>
-          <Grid container spacing={5} sx={{ alignItems: "center", m: 2}}>
-            <Grid item xs sx={{display: 'flex'}}>
+          <Grid container spacing={0} sx={{ alignItems: "center", m: 2}}>
+            <Grid item xs={12} sx={{display: 'flex'}}>
               <TextField
                 fullWidth
                 id="outlined-basic" label="Search Users" variant="outlined"
@@ -89,19 +86,18 @@ console.log('I am true');
               
               <div>
                 {filteredData.length === 0 ? (
-                  <SearchIcon sx={{display: "flex", alignItems: "center", p: 2}}/>
+                  <SearchIcon sx={{display: "flex", alignItems: "center", p: 2, mr: 2}}/>
                 ) : (
-                  <CloseIcon id="clearBtn" onClick={clearInput} />
+                  <CloseIcon  sx={{display: "flex", alignItems: "center", p: 2, mr: 2}} id="clearBtn" onClick={clearInput} />
                 )}
               </div>
             </Grid>
-            <Grid item>
+            <Grid>
             </Grid>
           </Grid>
-        </Toolbar> 
       </AppBar>
       {/* </div> */}
-      <Typography sx={{ my: 25, mx: 10 }} color="#081c15" align="center"> 
+      <Typography sx={{ my: 5, mx: 10 }} color="#081c15" align="center"> 
              {filteredData.length !== 0 && (
         <div>
           {filteredData.slice(0, 15).map((value) => {
@@ -117,6 +113,7 @@ console.log('I am true');
       )}
       </Typography>
     </Paper>
+    </ThemeProvider>
   );
 }
 

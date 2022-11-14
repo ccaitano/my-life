@@ -70,20 +70,22 @@ const Signup = () => {
 
   };
 
-
   return (
     <main>
       <ThemeProvider theme={signUpTheme}>
     <Box
           sx={{
             marginTop: 8,
+            ml: 2,
+            mr: 4,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            flexGrow: 1,
           }}
-        >
-          <Paper elevation={3} >
-          <Box sx={{ p: 3 }}> 
+      >
+      <Paper elevation={3} sx={{  borderRadius: '12px', backgroundColor: '#D6CAD8'}} >
+        <Box sx={{ p: 3}}> 
           <Typography component="h1" variant="h5" fontFamily="'Arsenal', sans-serif;">
             SIGN UP
           </Typography>
@@ -112,17 +114,6 @@ const Signup = () => {
                   onChange={handleChange}
                 />
               </Grid>
-              {/* <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="location"
-                  label="Location (e.g. Seattle, WA)"
-                  name="location"
-                  autoComplete="location"
-                  onChange={handleChange}
-                />
-              </Grid> */}
               <Grid item xs={12}>
                 <TextField
                   required
@@ -149,26 +140,29 @@ const Signup = () => {
             </Grid>
             <Button
               type="submit"
-              fullWidth
+              // fullWidth
               variant="contained"
               color="primary"
-              sx={{ mt: 3, mb: 2 }}
+              // sx={{ mt: 3, mb: 2 }}
+              sx={{ width: '100%', backgroundColor: "#423240", color:'#D6CAD8', '&:hover': {
+                backgroundColor: '#FCEBDB',
+                color: '#975D66'}, mt: 3, mb: 2}} 
               fontFamily="'Arsenal', sans-serif"
             >
               SUBMIT
             </Button>
             <Grid container justifyContent="center" >
-              <Grid item>
+              <Grid item xs={12}>
                 <Link href="/login" variant="body2" fontFamily="'Arsenal', sans-serif">
                   Already have an account? Log In
                 </Link>
               </Grid>
             </Grid>
           </Box>
-          </Box>
-          </Paper>
-          
         </Box>
+      </Paper>
+          
+    </Box>
         </ThemeProvider>
         </main>
   );

@@ -2,8 +2,7 @@ import React from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
+import {Button, Box, Grid} from '@mui/material';
 import { QUERY_ME } from '../../utils/queries';
 import { RESET_DATA } from '../../utils/mutations';
 
@@ -32,6 +31,7 @@ const TaskChart = () => {
             '#FCEBDB',
             '#FFDEA4'
             ],
+
             // data: [50, 50]
             data: [completedTasks, tasksToGo]
           }
@@ -49,11 +49,11 @@ const TaskChart = () => {
 
     return (
         <>
-        <Box sx={{ flexGrow: 1, backgroundColor: '#BDB2FF', color: 'black', width: '99%', borderRadius: '12px' }}>
+        <Box sx={{ flexGrow: 1, backgroundColor: '#BDB2FF', color: 'black', borderRadius: '12px'}}>
           <h1>Progress</h1>
           {totalTasks > 0 ? (
             <>
-          <div>
+          <Grid sx={{}}>
             <Pie
                 data={state}
                 options={{
@@ -67,8 +67,12 @@ const TaskChart = () => {
                     position:'right'
                     }
                 }}
+                width={"30%"}
+                sx={{width:'100%'}}
+              
+
             />
-          </div>
+          </Grid>
           <div>
             <Button sx={{backgroundColor: "#423240", color:'#D6CAD8', '&:hover': {
       backgroundColor: '#FCEBDB',
