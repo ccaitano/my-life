@@ -13,6 +13,7 @@ import {useQuery} from '@apollo/react-hooks';
 import {QUERY_USERS} from '../utils/queries';
 import Box from '@mui/material/Box';
 import '../css/index.css';
+import { borderRight } from '@mui/system';
 const Content = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
@@ -60,12 +61,13 @@ console.log('I am true');
       height={4}
     >
     </Box>
+    {/* <div backgroundColor='#ffadad'> */}
       <AppBar
         position="static"
         color="default"
         backgroundcolor="#081c15"
-        elevation={4}
-        sx={{ borderBottom: '1px solid rgba(0, 0, 0, 0.12)', backgroundColor: '#ffadad', mt: 2, mb: 2}}
+        elevation={1}
+        sx={{ borderBottom: '1px solid rgba(0, 0, 0, 0.12)', backgroundColor: '#ffadad', borderRight: 50, borderLeft: 50, borderBottom: 10, borderColor: '#A0C4FF', borderRadius: 10}}
       >
         
         <Toolbar>
@@ -99,6 +101,7 @@ console.log('I am true');
           </Grid>
         </Toolbar> 
       </AppBar>
+      {/* </div> */}
       <Typography sx={{ my: 25, mx: 10 }} color="#081c15" align="center"> 
              {filteredData.length !== 0 && (
         <div>
