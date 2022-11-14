@@ -74,8 +74,8 @@ const Login = (props) => {
         >
           <Paper elevation={3} >
           <Box sx={{ p: 3 }}> 
-          <Typography component="h1" variant="h5">
-            Sign in
+          <Typography component="h1" variant="h5" fontFamily="'Arsenal', sans-serif;">
+            SIGN IN
           </Typography>
           <Box component="form" onSubmit={handleFormSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -109,7 +109,7 @@ const Login = (props) => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              SIGN IN
             </Button>
             <Grid container>
               <Grid item xs>
