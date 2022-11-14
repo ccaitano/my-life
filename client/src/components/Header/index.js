@@ -64,20 +64,27 @@ function Header () {
     { storeId: 'read', label: 'Archive' },
   ];
 
+  const theme = {"icon":{"borderColor":"#2C262B","width":"24px"},
+                 "banner":{"fontSize":"14px","backgroundColor":"#FFFBF8","textColor":"#3A424D","backgroundOpacity":1},
+                 "unseenBadge":{"backgroundColor":"#FFDEA4"},
+                 "header":{"fontSize":"15px","backgroundColor":"#423240","textColor":"#E4BCC5","borderRadius":"16px"},
+                 "footer":{"fontSize":"15px","backgroundColor":"#423240","textColor":"#E4BCC5","borderRadius":"16px"},
+                 "notification":{"default":{"fontSize":"14px","textColor":"#423240","borderRadius":"16px","backgroundColor":"#FFFBF8","hover":{"backgroundColor":"#E4BCC5"},"state":{"color":"transparent"},"margin":"8px"},"unseen":{"textColor":"#423240","backgroundColor":"#E4BCC5","hover":{"backgroundColor":"#E4BCC5"},"state":{"color":"#975D66"}},"unread":{"textColor":"#423240","backgroundColor":"#E4BCC5","hover":{"backgroundColor":"#E4BCC5"},"state":{"color":"#975D66"}}}};
+
   return (
     <AppBar position='fixed' style={{ color: '#001219', background: '	rgb(211,211,211, 0.2)'}}>
       <Toolbar>
         <IconButton>
           {Auth.loggedIn() ? (
             <div>
-              <MenuIcon style={{color: "#001219"}} onClick={toggleDrawer('left', true)} />
+              <MenuIcon style={{color: "#2C262B"}} onClick={toggleDrawer('left', true)} />
               <Drawer
                 anchor='left'
                 open={state['left']}
                 onClose={toggleDrawer('left', false)}
               >
                 <Box
-                  sx={{ width: 250 }}
+                  sx={{ width: 250}}
                   // role="presentation"
                   onClick={toggleDrawer('left', false)}
                 >
@@ -87,7 +94,7 @@ function Header () {
             </div>
           ) : (null)}
         </IconButton>
-        <Typography variant='h4' component='div'  fontFamily="'Arsenal', sans-serif;" style={{ color: '#001219', paddingLeft: 20}}>
+        <Typography variant='h4' component='div' fontFamily='Oswald' style={{ color: '#001219', paddingLeft: 20}}>
           MyLife
         </Typography>
         {Auth.loggedIn() ? (
@@ -98,16 +105,15 @@ function Header () {
                   <MagicBell
                   apiKey="391b3143b9e12d49446b88586c9a7c7261aa4c7a"
                   userEmail={userData.email}
-                  stores={stores}
-                  theme={{
-                    icon: { borderColor: '#001219'}
-                  }}
+                  // stores={stores}
+                  theme={theme}
+                  locale="en"
                   >
                     {(props) => (
                       <FloatingNotificationInbox
                         height={350}
                         placement="bottom-start"
-                        tabs={tabs}
+                        // tabs={tabs}
                         closeOnNotificationClick={false}
                         closeOnClickOutside={true}
                         {...props}
@@ -124,7 +130,7 @@ function Header () {
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
+                <AccountCircle sx={{color: '#2C262B'}}/>
               </IconButton>
                 <Menu
                   id="menu-appbar"
@@ -140,22 +146,23 @@ function Header () {
                   }}
                   open={Boolean(anchorEl)}
                   onClose={handleClose}
+                  backgroundColor='#FCEBDB'
                 >
-                  <MenuItem>
+                  <MenuItem  sx={{color:'#423240'}}>
                     <ListItemIcon>
-                      <PersonOutlineIcon />
+                      <PersonOutlineIcon  sx={{color:'#423240'}}/>
                     </ListItemIcon>
                     <ListItemText>My Account</ListItemText>
                   </MenuItem>
-                  <MenuItem>
+                  <MenuItem  sx={{color:'#423240'}}>
                     <ListItemIcon>
-                      <SettingsIcon />
+                      <SettingsIcon  sx={{color:'#423240'}}/>
                     </ListItemIcon>
                     <ListItemText>Settings</ListItemText>
-                  </MenuItem>
-                  <MenuItem onClick={logout}>
+                  </MenuItem >
+                  <MenuItem onClick={logout} sx={{color:'#423240'}}>
                     <ListItemIcon>
-                      <LogoutIcon />
+                      <LogoutIcon sx={{color:'#423240'}}/>
                     </ListItemIcon>
                     <ListItemText>Log Out</ListItemText>
                   </MenuItem>       
