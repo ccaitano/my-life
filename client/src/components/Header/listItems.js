@@ -11,7 +11,7 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 
 function MainListItems() {
   return (
-      <List>
+      <List >
         {/* <ListItem key='login' disablePadding>
           <ListItemButton component={Link} to='/login'>
             <ListItemIcon>
@@ -20,26 +20,26 @@ function MainListItems() {
             <ListItemText primary="Log In" />
           </ListItemButton>
         </ListItem> */}
-        <ListItem key='home' disablePadding>
+        <ListItem key='home' disablePadding sx={{color:'#423240'}}>
           <ListItemButton component={Link} to='/HomeReturn'>
             <ListItemIcon>
-              <HomeIcon />
+              <HomeIcon sx={{color:'#423240'}}/>
             </ListItemIcon>
             <ListItemText primary="Homepage" />
           </ListItemButton>
         </ListItem>
-        <ListItem key='user' disablePadding>
+        <ListItem key='user' disablePadding sx={{color:'#423240'}}>
           <ListItemButton component={Link} to='/UserPage'>
             <ListItemIcon>
-              <PeopleIcon />
+              <PeopleIcon sx={{color:'#423240'}}/>
             </ListItemIcon>
             <ListItemText primary="Manage Friends!" />
           </ListItemButton>
         </ListItem>
-        <ListItem key='settings' disablePadding>
+        <ListItem key='settings' disablePadding sx={{color:'#423240'}}>
           <ListItemButton>
             <ListItemIcon>
-              <BarChartIcon />
+              <BarChartIcon sx={{color:'#423240'}}/>
             </ListItemIcon>
             <ListItemText primary="Progress" />
           </ListItemButton>

@@ -21,7 +21,7 @@ import { Stack } from '@mui/system';
 
 const landingTheme = createTheme({
   typography: {
-    fontFamily: "'Arsenal', sans-serif",
+    fontFamily: "'Oswald', sans-serif",
     fontSize: 14,
 
     h2: {
@@ -69,7 +69,7 @@ const Home = () => {
                   height: 'auto',
                   minHeight: '50vh !important',
                   justifyContent: 'center',
-                  backgroundColor: '#ade8f4',
+                  backgroundColor: '#FFFBF8',
                   display: 'flex',
                 }}
               >
@@ -86,7 +86,7 @@ const Home = () => {
                     p: 2, 
                     display: 'flex', 
                     flexDirection: 'column', 
-                    backgroundColor: '#ffadad',
+                    backgroundColor: "#FFFBF8",
                     height: 'auto'
                   }}
                 >
@@ -98,7 +98,7 @@ const Home = () => {
                     p: 2, 
                     display: 'flex', 
                     flexDirection: 'column', 
-                    backgroundColor: '#a0c4ff',
+                    backgroundColor: '#FFFBF8',
                     height: 'auto'
                     // width: 301,
                   }}
@@ -111,93 +111,92 @@ const Home = () => {
         </Grid>
         </>) : (
           <ThemeProvider theme={landingTheme}>
-           <Box 
-          sx={{
-            backgroundColor: 'hsl(0, 100%, 30%, 0.9)',
-            marginTop: 8,
-           
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-            <Typography color="inherti" align="center" variant="h2" marked="center">
-              Simplify your life with MyLife
-            </Typography>
+            <Paper
+            sx={{
+              p: 4,
+              backgroundColor: '#D6CAD8',
+              mt: 2,
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}>
+            {/* <Box 
+              sx={{
+                backgroundColor: 'hsl(0, 100%, 30%, 0.9)',
+                marginTop: 8,
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
+            > */}
+              <Typography color="#2C262B" align="center" variant="h2" marked="center">
+                Simplify your life with MyLife
+              </Typography>
               <Typography
-                color="inherit"
+                color="#2C262B"
                 align="center"
                 variant="h5"
-                sx={{ mb: 4, mt: { sx: 4, sm: 10 } }}
+                sx={{ mb: 4, mt: { sx: 4, sm: 5 } }}
                 >
-                Are you struggling with time management and consistency? Forgetting to take your medication everyday? With MyLife, it can help you create a ToDoList with simple reminders in place for the tasks you need to accomplish in a given day, so that you can decrease your stress and increase your productivity.
-              
+                  Are you struggling with time management and consistency? Forgetting to take your medication everyday? With MyLife, it can help you create a ToDoList with simple reminders in place for the tasks you need to accomplish in a given day, so that you can decrease your stress and increase your productivity.
               </Typography>
-                <Button
-                
-                  variant="contained"
-                  size="large"
-                  component="a"
-                  href="/signup"
-                  type='submit'
-                  sx={{ minWidth: 200 }}>
-
+              <Button
+                variant="contained"
+                size="large"
+                component="a"
+                href="/signup"
+                type='submit'
+                sx={{ minWidth: 200 }}>
                   REGISTER
-
-                </Button>
+              </Button>
               <Container
                 sx={{
                   backgroundColor: 'tansparent',
-                  mt: 10,
-                  mb: 15,
+                  mt: 5,
+                  mb: 5,
                   position: 'relative',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
                 }}
               >
-          <Typography color="inherit" align="center" variant="h2"     marked="center">
-              How it Works
-          </Typography>
-        <div>
-      <Grid container spacing={5}>
-        <Grid item xs={12} md={4}>
-          
-          <Box sx={number}>1.</Box>
+                <Typography color="#2C262B" align="center" variant="h2"   marked="center">
+                  How it Works
+                </Typography>
+      <div>
+        <Grid container spacing={5}>
+          <Grid item xs={12} md={4}>
+            <Box sx={number}>1.</Box>
             <Box sx={image}>
-              <AddBoxTwoToneIcon color="primary" fontSize="large"/>
+              <AddBoxTwoToneIcon color="#2C262B" fontSize="large"/>
             </Box>
-              <Typography variant="h5" align="center">
+            <Typography variant="h5" align="center" color="#2C262B">
               Create a new reminder and set a notification time.
-              </Typography>
-      
-        </Grid>
-        <Grid item xs={12} md={4}>
-         
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={4}>
             <Box sx={number}>2.</Box>
-              <Box sx={image}>
-                <BeenhereTwoToneIcon color="primary" fontSize="large"/>
-              </Box>
-                <Typography variant="h5" align="center">
-                  Approve notification if task has been completed or not.
-                </Typography>
-          
-        </Grid>
-        <Grid item xs={12} md={4}>
-          
+            <Box sx={image}>
+              <BeenhereTwoToneIcon color="#2C262B" fontSize="large"/>
+            </Box>
+            <Typography variant="h5" align="center" color="#2C262B">
+              Approve notification if task has been completed or not.
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={4}>
             <Box sx={number}>3.</Box>
-              <Box sx={image}>
-                  <MobileScreenShareTwoToneIcon color="primary" fontSize="large"/>
-              </Box>
-                <Typography variant="h5" align="center">
-                  Share your results with friends and review your history log of previous tasks met.
-                </Typography>
+            <Box sx={image}>
+              <MobileScreenShareTwoToneIcon color="#2C262B" fontSize="large"/>
+            </Box>
+            <Typography variant="h5" align="center" color="#2C262B">
+              Share your results with friends and review your history log of previous tasks met.
+            </Typography>
+          </Grid>
         </Grid>
-      </Grid>
-    </div>
-        </Container>
-        </Box>
+      </div>
+      </Container>
+      {/* </Box> */}
+      </Paper>
       </ThemeProvider>
-        )}
+      )}
     </Container>
  </div> 
   );
