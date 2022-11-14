@@ -33,6 +33,11 @@ const landingTheme = createTheme({
       fontWeight: 'medium',
     },
   },
+  palette: {
+    primary: {
+      main: '#424242'
+    } ,
+  }
 }); 
 
 const number = {
@@ -107,7 +112,7 @@ const Home = () => {
           sx={{
             backgroundColor: 'hsl(0, 100%, 30%, 0.9)',
             marginTop: 8,
-            display: 'flex',
+           
             flexDirection: 'column',
             alignItems: 'center',
           }}
@@ -125,14 +130,15 @@ const Home = () => {
               
               </Typography>
                 <Button
-                  
+                
                   variant="contained"
                   size="large"
                   component="a"
                   href="/signup"
+                  type='submit'
                   sx={{ minWidth: 200 }}>
 
-                  Register
+                  REGISTER
 
                 </Button>
               <Container
