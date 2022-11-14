@@ -6,7 +6,7 @@ const Quote = () => {
   const randomNumber = Math.floor(Math.random()* affirmations.length);
   // sx={{ flexGrow: 1, backgroundColor: '#BDB2FF', color: 'black', width: '99%', borderRadius: '12px' }}
   return (  
-    <Box sx={{ flexGrow: 1, backgroundColor: '#BDB2FF', color: 'black', width: '99%', borderRadius: '12px' }}> 
+    <Box sx={{ flexGrow: 1, backgroundColor: '#BDB2FF', color: 'black', borderRadius: '12px' }}> 
       <h1>Positive Affirmation</h1>
       <p>{affirmations[randomNumber]}</p>
     </Box>    

@@ -58,8 +58,6 @@ function App() {
                 sx={{
                   flexGrow: 1,
                   pt: '100px',
-                  // height: '100vh',
-                  // overflow: 'auto',
                   height: 'auto',
                   width: 'auto',
                   minWidth: '100vw !important', 

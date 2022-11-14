@@ -71,9 +71,12 @@ const Login = (props) => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            ml: 2,
+            mr: 4,
+            borderRadius: '12px'
           }}
         >
-          <Paper elevation={3} >
+          <Paper elevation={3} sx={{  borderRadius: '12px', backgroundColor: '#D6CAD8'}} >
           <Box sx={{ p: 3 }}> 
           <Typography component="h1" variant="h5" fontFamily="'Arsenal', sans-serif;">
             SIGN IN
@@ -106,19 +109,22 @@ const Login = (props) => {
             />
             <Button
               type="submit"
-              fullWidth
+              // fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              // sx={{ mt: 3, mb: 2 }}
+              sx={{ width: '100%', backgroundColor: "#423240", color:'#D6CAD8', '&:hover': {
+                backgroundColor: '#FCEBDB',
+                color: '#975D66'}, mt: 2, mb: 2}} 
             >
               SIGN IN
             </Button>
             <Grid container>
-              <Grid item xs>
+              <Grid item xs={12}>
                 <Link href="/signup" variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
-              <Grid item>
+              <Grid item xs={12}>
                 <Link href="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>

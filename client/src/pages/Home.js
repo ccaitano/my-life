@@ -56,22 +56,22 @@ const Home = () => {
 
   return (
     <div>
-      <Container maxWidth="lg" background="none" sx={{ mt: 4, mb: 4 }} >      
+      <Container maxWidth="lg" background="none" sx={{ mt: 1, mb: 4 }} >      
         {Auth.loggedIn() ? (
           <>
-          <Grid container spacing={4}>
+          <Grid container spacing={3}>
             <Grid item xs={12} md={8}>
 
               <Paper
                 sx={{
                   p: 1,
-                  // width: 800,
                   height: 'auto',
                   minHeight: '50vh !important',
                   justifyContent: 'center',
                   backgroundColor: '#FFFBF8',
                   display: 'flex',
-                  borderRadius: '12px'
+                  borderRadius: '12px',
+                  mr: 2
                 }}
               >
                 <ToDoList />
@@ -80,7 +80,7 @@ const Home = () => {
             </Grid>
             <Grid item xs={12} md={4}>
            
-              <Stack spacing={2}>
+              <Grid >
               {/* Positive Affirmation Container */}    
                 <Paper 
                   sx={{ 
@@ -89,7 +89,9 @@ const Home = () => {
                     flexDirection: 'column', 
                     backgroundColor: "#FFFBF8",
                     height: 'auto',
-                    borderRadius: '12px'
+                    borderRadius: '12px',
+                    mr: 2,
+                    mb: 3
                   }}
                 >
                   <Quote />
@@ -102,13 +104,13 @@ const Home = () => {
                     flexDirection: 'column', 
                     backgroundColor: '#FFFBF8',
                     height: 'auto',
-                    borderRadius: '12px'
-                    // width: 301,
+                    borderRadius: '12px',
+                    mr: 2
                   }}
                 >
                   <TaskChart />
                 </Paper>
-              </Stack>
+              </Grid>
             
             </Grid>
         </Grid>
@@ -121,16 +123,11 @@ const Home = () => {
               mt: 2,
               flexDirection: 'column',
               alignItems: 'center',
-              borderRadius: '20px'
+              borderRadius: '20px',
+              mr: 2,
+
+
             }}>
-            {/* <Box 
-              sx={{
-                backgroundColor: 'hsl(0, 100%, 30%, 0.9)',
-                marginTop: 8,
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-            > */}
               <Typography color="#2C262B" align="center" variant="h2" marked="center">
                 Simplify your life with MyLife
               </Typography>
