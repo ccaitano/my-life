@@ -33,7 +33,7 @@ function MainListItems() {
             <ListItemIcon>
               <PeopleIcon sx={{color:'#423240'}}/>
             </ListItemIcon>
-            <ListItemText primary="Manage Friends!" />
+            <ListItemText primary="Manage Friends!"/>
           </ListItemButton>
         </ListItem>
         <ListItem key='settings' disablePadding sx={{color:'#423240'}}>

@@ -16,6 +16,12 @@ html {
   background-size: cover;
 }
 
+/* .Content{
+  background-color: aqua;
+  color: blue;
+} */
+
+
 .box{
   position: absolute;
   cursor: move;
